@@ -1,0 +1,15 @@
+package Mapa;
+
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
+
+public class Interfaz {
+
+	public static void main(String[] args) {
+		Ventana ventana = new Ventana("Battle City","Mapas/Mapa 1.txt");
+		ventana.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		ventana.pack();
+		ventana.setSize(676, 676);
+		ventana.setVisible(true);
+	}
+}

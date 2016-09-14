@@ -1,0 +1,20 @@
+package Mapa;
+
+import Obstaculo.*;
+
+public class Mapa{
+	private Obstaculo[][] obstaculos;
+	
+	public Mapa(){
+		obstaculos=new Obstaculo[13][13];
+	}
+	public void cargarMapa(){
+		
+	}
+	
+	
+	
+	public int getLongitud(){
+		return obstaculos.length;
+	}
+}

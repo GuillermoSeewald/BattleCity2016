@@ -1,0 +1,9 @@
+package Tanque;
+
+import Mapa.*;
+
+public class Disparo extends Celda{
+	public Disparo(String dir){
+		direccion=dir;
+	}
+}

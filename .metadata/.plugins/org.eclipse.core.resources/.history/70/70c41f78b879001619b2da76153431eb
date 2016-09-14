@@ -1,0 +1,12 @@
+package Tanque;
+
+import Mapa.*;
+
+public class Tanque extends Celda{
+	private int vida, velMovimiento, velDisparo, golpesQueResiste;
+	private String nombre;
+	
+	public Tanque(){
+	}
+	
+}

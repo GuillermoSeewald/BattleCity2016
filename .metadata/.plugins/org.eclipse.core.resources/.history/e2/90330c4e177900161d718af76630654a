@@ -1,0 +1,9 @@
+package Mapa;
+
+import Obstaculo.*;
+
+public class Mapa{
+	private Obstaculo[][] obstaculos;
+	
+	
+}

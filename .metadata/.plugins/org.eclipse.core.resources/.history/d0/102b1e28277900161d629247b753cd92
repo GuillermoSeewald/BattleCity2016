@@ -1,0 +1,22 @@
+package Mapa;
+
+import Lista.*;
+import Obstaculo.*;
+import java.util.Iterator;
+
+public class Tester {
+
+	public static void main(String[] args) {
+		Mapa mapa= new Mapa("C:/Users/Guille/Desktop/Uni/Tecnología de Programación/Proyecto/Repositorio/Mapas/Mapa 1.txt");
+		Iterator<Character> it;
+		char o;
+		for(ListaSimplementeEnlazada<Character> l: mapa.retornarLetras()){
+			it=l.iterator();
+			while(it.hasNext()){
+				System.out.print(it.next());
+			}
+			System.out.println("  ajar  ");
+		}
+	}
+
+}

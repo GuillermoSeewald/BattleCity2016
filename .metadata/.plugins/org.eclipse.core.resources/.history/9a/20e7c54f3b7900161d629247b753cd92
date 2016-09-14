@@ -1,0 +1,26 @@
+package Mapa;
+
+import javax.swing.JFrame;
+import java.awt.GridLayout;
+import Lista.*;
+import Obstaculo.*;
+
+public class Ventana extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	private Mapa mapa;
+	
+	Ventana(String nom){
+		super(nom);
+		
+		mapa=new Mapa("Mapa 1");
+		this.setLayout(new GridLayout(mapa.getLongitud(),mapa.getLongitud()));
+		armarMapa();
+	}
+	
+	private void armarMapa(){
+		for(ListaSimplementeEnlazada<Obstaculo> l: mapa.retornarMapa()){
+			
+		}
+	}
+}

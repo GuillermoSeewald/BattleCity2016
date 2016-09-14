@@ -1,0 +1,45 @@
+package Tanque;
+
+import Mapa.*;
+
+public class Tanque extends Celda{
+	private int vida, velMovimiento, velDisparo, golpesQueResiste;
+	private String nombre, direccion;
+	
+	public Tanque(){
+	}
+	
+	public void asignarVida(int v){
+		vida=v;
+	}
+	public void asignarVelocidadDisparo(int v){
+		velDisparo=v;
+	}
+	public void asignarVelocidadMovimientoo(int v){
+		velMovimiento=v;
+	}
+	public void asignarGolpes(int g){
+		golpesQueResiste=g;
+	}
+	public void disparar(){
+		new Disparo(direccion);
+	}
+	public int getVidas(){
+		return vida;
+	}
+	public int getVelDisparo(){
+		return velDisparo;
+	}
+	public int getvelMovimiento(){
+		return velMovimiento;
+	}
+	public int getGolpes(){
+		return golpesQueResiste;
+	}
+	public String getNombre(){
+		return nombre;
+	}
+	public String getDireccion(){
+		return direccion;
+	}
+}

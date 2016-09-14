@@ -1,0 +1,51 @@
+package Mapa;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.BoxLayout;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import javax.swing.event.*;
+
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
+import java.util.Iterator;
+
+import Lista.*;
+import Obstaculo.*;
+
+public class Ventana extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	private Mapa mapa;
+	
+	Ventana(String nom, String map){
+		super(nom);
+		
+		mapa=new Mapa(map);
+		this.setLayout(new GridLayout(mapa.getLongitud(),mapa.getLongitud()));
+		
+		Iterator<Obstaculo> it;
+		JLabel etiqueta= new JLabel();
+		for(ListaSimplementeEnlazada<Obstaculo> l: mapa.retornarMapa()){
+			it=l.iterator();
+			while(it.hasNext()){
+				etiqueta.setText(""+it.next().getNombre());
+				this.add(etiqueta);
+			}
+		}
+	}
+	
+	private void armarMapa(){
+		
+	}
+}
