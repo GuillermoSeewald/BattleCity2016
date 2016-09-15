@@ -1,0 +1,14 @@
+package Obstaculo;
+
+import Mapa.*;
+import javax.swing.*;;
+
+public class Obstaculo extends Celda{
+	private ImageIcon imagen;
+	
+	public Obstaculo(String nom, int X, int Y){
+		super(nom);
+		this.setX(X);
+		this.setY(Y);
+	}
+}

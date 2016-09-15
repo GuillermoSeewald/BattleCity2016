@@ -1,27 +1,17 @@
 package Mapa;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import javax.swing.BoxLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.BorderFactory;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
 
-import java.awt.*;
+
 import javax.swing.*;
 import java.awt.event.*;
-import javax.swing.event.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
 import java.util.Iterator;
 
 import Lista.*;
-import Obstaculo.*;
 
 public class Ventana extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -29,15 +19,24 @@ public class Ventana extends JFrame{
 	private Mapa mapa;
 	private JPanel panelUno;
 	private JLabel[][] etiqueta;
+	private String juego;
 	
 	Ventana(String nom, String map){
-		super(nom);
+		super(nom);	
 		
+		addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				try {
+					mover(arg0);
+				} catch (IOException e) {
+				}
+			}
+		});
+			
 		this.setLayout(new BorderLayout());
-		
-		
-		armarPanelUno(map);
-		
+		juego=map;
+		armarPanelUno(map);	
 		this.add(panelUno, BorderLayout.CENTER);
 	}
 	
@@ -50,21 +49,14 @@ public class Ventana extends JFrame{
 		Iterator<Celda> it;
 		etiqueta= new JLabel[mapa.getLongitud()][mapa.getLongitud()];
 		int fila=0;int columna=0;
-		String nombre;
-		int contador=0;
+		ImageIcon imagen;
 		for(ListaSimplementeEnlazada<Celda> l: mapa.retornarMapa()){
 			it=l.iterator();
 			while(it.hasNext()){
 				etiqueta[fila][columna]= new JLabel();
-				etiqueta[fila][columna].setSize(26,26);
-				nombre=it.next().getNombre();
-				if(nombre.equals("bandera")){
-					etiqueta[fila][columna].setIcon(new ImageIcon("Imagenes/"+nombre+""+contador+".jpg"));
-					contador++;
-				}
-				else{
-					etiqueta[fila][columna].setIcon(new ImageIcon("Imagenes/"+nombre+".png"));;
-				}
+				etiqueta[fila][columna].setSize(52,52);
+				imagen=it.next().getImagen();
+				etiqueta[fila][columna].setIcon(imagen);
 				columna++;
 			}
 			columna=0;
@@ -75,5 +67,10 @@ public class Ventana extends JFrame{
 				panelUno.add(etiqueta[i][j]);
 			}
 		}
+	}
+	
+	protected void mover(KeyEvent key) throws FileNotFoundException, IOException{
+		mapa.mover(key.getKeyCode());
+		mapa.cargarMapa(juego);
 	}
 }

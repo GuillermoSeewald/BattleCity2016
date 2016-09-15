@@ -1,0 +1,13 @@
+package Obstaculo;
+
+import Mapa.*;
+import javax.swing.*;;
+
+public class Obstaculo extends Celda{
+	
+	public Obstaculo(String nom, int X, int Y){
+		this.setNombre(nom);
+		this.setX(X);
+		this.setY(Y);
+	}
+}
