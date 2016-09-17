@@ -1,0 +1,12 @@
+package Obstaculo;
+
+import Mapa.*;
+
+public abstract class Obstaculo extends Celda{
+	
+	public Obstaculo(){
+		super(nom);
+		this.setX(X);
+		this.setY(Y);
+	}
+}

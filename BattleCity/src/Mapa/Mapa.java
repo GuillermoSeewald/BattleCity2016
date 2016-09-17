@@ -1,7 +1,6 @@
 package Mapa;
 
 import Obstaculo.*;
-import Lista.*;
 import Tanque.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -33,18 +32,6 @@ public class Mapa{
 		return celdas;
 	}
 	
-	public Iterable<ListaSimplementeEnlazada<Celda>> retornarMapa(){
-		PositionList<ListaSimplementeEnlazada<Celda>> lista= new ListaSimplementeEnlazada<ListaSimplementeEnlazada<Celda>>();
-		ListaSimplementeEnlazada<Celda> listaAux= new ListaSimplementeEnlazada<Celda>();
-		for(int i=0;i<getLongitud();i++){
-			for(int j=0;j<getLongitud();j++){
-				listaAux.addLast(celdas[i][j]);
-			}
-			lista.addLast(listaAux);
-			listaAux= new ListaSimplementeEnlazada<Celda>();
-		}
-		return lista;
-	}
 	public Tanque getJugador(){
 		return jugador;
 	}
@@ -79,22 +66,22 @@ public class Mapa{
 			for(int i=0;i<c.length;i++){
 				switch (c[i]){
 				case 'A':
-					celdas[fila][i]= new Obstaculo("acero1",i,fila);
+					celdas[fila][i]= new Acero("acero",i,fila);
 					break;
 				case 'L':
-					celdas[fila][i]= new Obstaculo("ladrillo1",i,fila);
+					celdas[fila][i]= new Ladrillo("ladrillo",i,fila);
 					break;
 				case 'G':
-					celdas[fila][i]= new Obstaculo("agua",i,fila);
+					celdas[fila][i]= new Agua("agua",i,fila);
 					break;
 				case 'C':
-					celdas[fila][i]= new Obstaculo("cesped",i,fila);
+					celdas[fila][i]= new Cesped("cesped",i,fila);
 					break;
 				case 'N':
-					celdas[fila][i]= new Obstaculo("nulo",i,fila);
+					celdas[fila][i]= new Nulo("nulo",i,fila);
 					break;
 				case 'B':
-					celdas[fila][i]= new Obstaculo("bandera1",i,fila);
+					celdas[fila][i]= new Bandera("bandera1",i,fila);
 					break;
 				}
 				

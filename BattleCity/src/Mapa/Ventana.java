@@ -9,10 +9,6 @@ import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import java.util.Iterator;
-
-import Lista.*;
-
 public class Ventana extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
@@ -45,7 +41,7 @@ public class Ventana extends JFrame{
 	}
 	
 	
-/*	private void armarPanelUno(String map){
+	private void armarPanelUno(String map){
 		mapa= new Mapa(map);
 		panelUno= new JPanel();
 		panelUno.setLayout(new GridLayout(mapa.getLongitud(),mapa.getLongitud()));
@@ -64,35 +60,7 @@ public class Ventana extends JFrame{
 			}
 		}
 	}
-*/	
-	private void armarPanelUno(String map){
-		mapa= new Mapa(map);
-		
-		panelUno= new JPanel();
-		panelUno.setLayout(new GridLayout(mapa.getLongitud(),mapa.getLongitud()));
-		
-		Iterator<Celda> it;
-		etiqueta= new JLabel[mapa.getLongitud()][mapa.getLongitud()];
-		int fila=0;int columna=0;
-		ImageIcon imagen;
-		for(ListaSimplementeEnlazada<Celda> l: mapa.retornarMapa()){
-			it=l.iterator();
-			while(it.hasNext()){
-				etiqueta[fila][columna]= new JLabel();
-				etiqueta[fila][columna].setSize(52,52);
-				imagen=it.next().getImagen();
-				etiqueta[fila][columna].setIcon(imagen);
-				columna++;
-			}
-			columna=0;
-			fila++;
-		}
-		for(int i=0;i<etiqueta.length;i++){
-			for(int j=0;j<etiqueta.length;j++){
-				panelUno.add(etiqueta[i][j]);
-			}
-		}
-	}
+	
 	public void armarPanelDos(){
 		panelDos= new JPanel();
 		panelDos.setLayout(new GridLayout(5,1));
@@ -145,7 +113,6 @@ public class Ventana extends JFrame{
 				mapa.cargarMapa(juego);
 			} catch (IOException e1) {
 			}
-			
 		}
 	}
 }
