@@ -36,11 +36,11 @@ public abstract class Tanque extends Celda{
 	public void mover(int dir){
 		switch(dir){
 			case 0:
-				this.setY(this.getY()+1);
+				this.setY(this.getY()-1);
 				direccion="arriba";
 				break;
 			case 1:
-				this.setY(this.getY()-1);
+				this.setY(this.getY()+1);
 				direccion="abajo";
 				break;
 			case 2:

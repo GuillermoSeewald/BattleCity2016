@@ -29,6 +29,10 @@ public class Mapa{
 	public int getLongitud(){
 		return celdas.length;
 	}
+	public Celda[][] retornarMap(){
+		return celdas;
+	}
+	
 	public Iterable<ListaSimplementeEnlazada<Celda>> retornarMapa(){
 		PositionList<ListaSimplementeEnlazada<Celda>> lista= new ListaSimplementeEnlazada<ListaSimplementeEnlazada<Celda>>();
 		ListaSimplementeEnlazada<Celda> listaAux= new ListaSimplementeEnlazada<Celda>();

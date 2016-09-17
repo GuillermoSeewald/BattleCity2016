@@ -8,7 +8,7 @@ public class Interfaz {
 		Ventana ventana = new Ventana("Battle City","Mapas/Mapa 1.txt");
 		ventana.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		ventana.pack();
-		ventana.setSize(676, 676);
+		ventana.setSize(900, 676);
 		ventana.setVisible(true);
 	}
 }
