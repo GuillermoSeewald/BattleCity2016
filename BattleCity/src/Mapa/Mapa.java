@@ -53,7 +53,10 @@ public class Mapa{
 				break;
 		}
 		
-		jugador.mover(direccion);
+		celdas[jugador.getY()][jugador.getX()]= new Nulo(jugador.getY(),jugador.getX());
+		jugador.mover(dir);
+		agregarJugador(jugador.getY(),jugador.getX());
+		
 	}
 	public void cargarMapa(String map) throws IOException, FileNotFoundException{
 		String cadena;
@@ -66,19 +69,19 @@ public class Mapa{
 			for(int i=0;i<c.length;i++){
 				switch (c[i]){
 				case 'A':
-					celdas[fila][i]= new Acero("acero",i,fila);
+					celdas[fila][i]= new Acero(i,fila);
 					break;
 				case 'L':
-					celdas[fila][i]= new Ladrillo("ladrillo",i,fila);
+					celdas[fila][i]= new Ladrillo(i,fila);
 					break;
 				case 'G':
-					celdas[fila][i]= new Agua("agua",i,fila);
+					celdas[fila][i]= new Agua(i,fila);
 					break;
 				case 'C':
-					celdas[fila][i]= new Cesped("cesped",i,fila);
+					celdas[fila][i]= new Cesped(i,fila);
 					break;
 				case 'N':
-					celdas[fila][i]= new Nulo("nulo",i,fila);
+					celdas[fila][i]= new Nulo(i,fila);
 					break;
 				case 'B':
 					celdas[fila][i]= new Bandera("bandera1",i,fila);
@@ -91,6 +94,8 @@ public class Mapa{
 		}
 		b.close();
 	}
+	
+	
 	private void agregarJugador(int y, int x){
 		celdas[y][x]= jugador;
 	}

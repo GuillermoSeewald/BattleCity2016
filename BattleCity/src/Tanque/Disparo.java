@@ -11,10 +11,20 @@ public class Disparo extends Celda{
 		direccion=dir;
 		tanque=t;
 	}
-	public void setDireccio(String dir){
+	public void setDireccion(String dir){
 		direccion=dir;
 	}
 	public String getDireccion(){
 		return direccion;
 	}
+/*	public boolean collide(Jugador jug){
+		
+	}
+	public boolean collide(Enemigo ene){
+		
+	}
+	public boolean collide(Disparo dis){
+		
+	}
+	*/
 }

@@ -20,7 +20,8 @@ public class Ventana extends JFrame{
 	private String juego;
 	
 	Ventana(String nom, String map){
-		super(nom);	
+		super(nom);
+		mapa= new Mapa(map);
 		
 		addKeyListener(new KeyAdapter() {
 			@Override
@@ -34,24 +35,21 @@ public class Ventana extends JFrame{
 			
 		this.setLayout(new BorderLayout());
 		juego=map;
-		armarPanelUno(map);
+		armarPanelUno();
 		armarPanelDos();
 		this.add(panelUno, BorderLayout.CENTER);
 		this.add(panelDos, BorderLayout.EAST);
 	}
 	
 	
-	private void armarPanelUno(String map){
-		mapa= new Mapa(map);
+	private void armarPanelUno(){
 		panelUno= new JPanel();
 		panelUno.setLayout(new GridLayout(mapa.getLongitud(),mapa.getLongitud()));
 		etiqueta= new JLabel[mapa.getLongitud()][mapa.getLongitud()];
 		Celda[][] celdas= mapa.retornarMap();
 		for(int i=0;i<celdas.length;i++){
 			for(int j=0;j<celdas.length;j++){
-				etiqueta[j][i]= new JLabel();
-				etiqueta[j][i].setSize(52,52);
-				etiqueta[j][i].setIcon(celdas[j][i].getImagen());
+				etiqueta[j][i]= celdas[j][i].getEtiqueta();
 			}
 		}
 		for(int i=0;i<etiqueta.length;i++){
@@ -107,12 +105,13 @@ public class Ventana extends JFrame{
 					pos=i;
 				}
 			}
-			mapa.getJugador().mover(pos);
+			mapa.mover(pos);
 			etiquetas.setText("Posicion del tanque= X: "+mapa.getJugador().getX()+" / Y: "+mapa.getJugador().getY()+" / "+mapa.getJugador().getDireccion());
 			try {
 				mapa.cargarMapa(juego);
 			} catch (IOException e1) {
 			}
+			armarPanelUno();
 		}
 	}
 }

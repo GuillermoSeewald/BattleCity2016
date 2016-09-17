@@ -2,7 +2,18 @@ package Obstaculo;
 
 public class Agua extends Obstaculo{
 	
-	public Agua(String nom, int x, int y){
-		super(nom, x, y);
+	public Agua(int x, int y){
+		super("Agua", x, y);
 	}
+	
+	/*	public boolean collide(Jugador jug){
+	
+	}
+	public boolean collide(Enemigo ene){
+		
+	}
+	public boolean collide(Disparo dis){
+		
+	}
+	*/
 }

@@ -4,12 +4,12 @@ import Mapa.*;
 import javax.swing.ImageIcon;
 
 public abstract class Tanque extends Celda{
-	private int vida, velMovimiento, velDisparo, golpesQueResiste;
-	private String direccion;
-	private boolean hayDisparo;
+	protected int vida, velMovimiento, velDisparo, golpesQueResiste;
+	protected String direccion;
+	protected boolean hayDisparo;
 	
 	public Tanque(int v,int velM,int velD,int golpes,String nom,String dir){
-		super(nom+dir);
+		super(nom+" "+dir);
 		vida=v;
 		velDisparo=velD;
 		velMovimiento=velM;

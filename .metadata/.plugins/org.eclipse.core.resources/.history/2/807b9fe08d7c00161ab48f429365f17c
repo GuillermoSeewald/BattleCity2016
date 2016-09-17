@@ -1,0 +1,17 @@
+package Tanque;
+
+public class TanqueBasico extends Enemigo{
+	public TanqueBasico(){
+		
+	}
+	/*	public boolean collide(Jugador jug){
+	
+	}
+	public boolean collide(Enemigo ene){
+		
+	}
+	public boolean collide(Disparo dis){
+		
+	}
+	*/
+}
