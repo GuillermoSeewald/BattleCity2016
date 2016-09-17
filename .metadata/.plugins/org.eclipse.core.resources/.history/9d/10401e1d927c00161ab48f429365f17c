@@ -1,0 +1,23 @@
+package Obstaculo;
+
+impor Mpa.*;
+
+public class Nulo extends Celda{
+	
+	public Nulo(int x, int y){
+		setX(x);
+		setY(y);
+		setNombre("Nulo");
+	}
+	
+	/*	public boolean collide(Jugador jug){
+	
+	}
+	public boolean collide(Enemigo ene){
+		
+	}
+	public boolean collide(Disparo dis){
+		
+	}
+	*/
+}

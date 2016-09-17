@@ -1,0 +1,21 @@
+package Obstaculo;
+
+public class Ladrillo extends Obstaculo{
+	
+	public Ladrillo(int x, int y){
+		setX(x);
+		setY(y);
+		setNombre("Ladrillo");
+	}
+	
+	/*	public boolean collide(Jugador jug){
+	
+	}
+	public boolean collide(Enemigo ene){
+		
+	}
+	public boolean collide(Disparo dis){
+		
+	}
+	*/
+}

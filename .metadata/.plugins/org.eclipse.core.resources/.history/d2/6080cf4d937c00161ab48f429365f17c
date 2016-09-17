@@ -1,0 +1,7 @@
+package PowerUp;
+
+public class Casco extends PowerUp{
+	public Casco(){
+		super("Casco");
+	}
+}

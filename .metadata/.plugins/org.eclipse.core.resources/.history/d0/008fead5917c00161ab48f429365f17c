@@ -1,0 +1,21 @@
+package Obstaculo;
+
+public class Agua extends Obstaculo{
+	
+	public Agua(int x, int y){
+		setX(x);
+		setY(y);
+		setNombre("Agua");
+	}
+	
+	/*	public boolean collide(Jugador jug){
+	
+	}
+	public boolean collide(Enemigo ene){
+		
+	}
+	public boolean collide(Disparo dis){
+		
+	}
+	*/
+}

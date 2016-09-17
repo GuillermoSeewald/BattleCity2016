@@ -1,0 +1,6 @@
+package Obstaculo;
+
+import Mapa.*;
+
+public abstract class Obstaculo extends Celda{
+}

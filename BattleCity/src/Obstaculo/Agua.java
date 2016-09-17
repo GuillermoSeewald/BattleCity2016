@@ -1,9 +1,13 @@
 package Obstaculo;
 
-public class Agua extends Obstaculo{
+import Mapa.*;
+
+public class Agua extends Celda{
 	
 	public Agua(int x, int y){
-		super("Agua", x, y);
+		super("Agua");
+		setX(x);
+		setY(y);
 	}
 	
 	/*	public boolean collide(Jugador jug){

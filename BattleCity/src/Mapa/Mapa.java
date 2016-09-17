@@ -84,7 +84,7 @@ public class Mapa{
 					celdas[fila][i]= new Nulo(i,fila);
 					break;
 				case 'B':
-					celdas[fila][i]= new Bandera("bandera1",i,fila);
+					celdas[fila][i]= new Bandera("Bandera1",i,fila);
 					break;
 				}
 				

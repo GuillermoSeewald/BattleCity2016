@@ -1,9 +1,13 @@
 package Obstaculo;
 
-public class Acero extends Obstaculo{
+import Mapa.*;
+
+public class Acero extends Celda{
 	
 	public Acero(int x, int y){
-		super("Acero", x, y);
+		super("Acero");
+		setX(x);
+		setY(y);
 	}
 	
 	/*	public boolean collide(Jugador jug){

@@ -26,6 +26,9 @@ public abstract class Celda{
 			posicionY=y;
 		}
 	}
+	public void setNombre(String n){
+		nombre=n;
+	}
 	public int getX(){
 		return posicionX;
 	}

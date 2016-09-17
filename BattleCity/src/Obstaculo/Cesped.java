@@ -1,9 +1,13 @@
 package Obstaculo;
 
-public class Cesped extends Obstaculo{
+import Mapa.*;
+
+public class Cesped extends Celda{
 	
 	public Cesped(int x, int y){
-		super("Cesped", x, y);
+		super("Cesped");
+		setX(x);
+		setY(y);
 	}
 	
 	/*	public boolean collide(Jugador jug){

@@ -1,9 +1,13 @@
 package Obstaculo;
 
-public class Nulo extends Obstaculo{
+import Mapa.*;
+
+public class Nulo extends Celda{
 	
 	public Nulo(int x, int y){
-		super("Nulo", x, y);
+		super("Nulo");
+		setX(x);
+		setY(y);
 	}
 	
 	/*	public boolean collide(Jugador jug){
