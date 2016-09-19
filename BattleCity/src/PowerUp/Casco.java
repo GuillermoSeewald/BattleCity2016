@@ -1,8 +1,8 @@
 package PowerUp;
 
 public class Casco extends PowerUp{
-	public Casco(){
-		super("Casco");
+	public Casco(int x, int y){
+		super("Casco", x, y);
 	}
 	
 /*	public boolean collide(Jugador jug){

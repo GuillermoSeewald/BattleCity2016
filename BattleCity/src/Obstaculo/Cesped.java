@@ -5,9 +5,7 @@ import Mapa.*;
 public class Cesped extends Celda{
 	
 	public Cesped(int x, int y){
-		super("Cesped");
-		setX(x);
-		setY(y);
+		super("Cesped",x ,y);
 	}
 	
 	/*	public boolean collide(Jugador jug){

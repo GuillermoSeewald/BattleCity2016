@@ -1,0 +1,39 @@
+package Mapa;
+
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+public abstract class Celda{
+	
+	private String nombre= "Jugador ";
+	private String direccion;
+	
+	private int x;
+	private int y;
+	private int dx;
+	private int dy;
+	
+	private Image imagen;
+	
+	public Celda(){
+		x=400;
+		y=400;
+		direccion="arriba";
+		ImageIcon ima = new ImageIcon("Imagenes/"+nombre+direccion+".png");
+		imagen= ima.getImage();
+	}
+	public void mover(){
+		x+=dx;
+		y+=dy;
+	}
+	public int getX(){
+		return x;
+	}
+	public int getY(){
+		return y;
+	}
+	public Image getImagen(){
+		return imagen;
+	}
+}

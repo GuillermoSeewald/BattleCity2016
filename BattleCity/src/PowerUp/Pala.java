@@ -1,8 +1,8 @@
 package PowerUp;
 
 public class Pala extends PowerUp{
-	public Pala(){
-		super("Pala");
+	public Pala(int x, int y){
+		super("Pala", x, y);
 	}
 	
 /*	public boolean collide(Jugador jug){

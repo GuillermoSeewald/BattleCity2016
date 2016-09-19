@@ -1,8 +1,8 @@
 package PowerUp;
 
 public class VidaExtra extends PowerUp{
-	public VidaExtra(){
-		super("Vida extra");
+	public VidaExtra(int x, int y){
+		super("Vida extra", x, y);
 	}
 	
 /*	public boolean collide(Jugador jug){

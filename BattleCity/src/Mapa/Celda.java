@@ -1,47 +1,35 @@
 package Mapa;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;;
 
 public abstract class Celda{
-	protected int posicionX,posicionY;
-	protected String nombre;
-	protected ImageIcon imagen;
-	protected JLabel etiqueta;
 	
-	public Celda(String nom){
+	protected String nombre;
+	
+	protected int x;
+	protected int y;
+	
+	protected Image imagen;
+	
+	public Celda(String nom, int X, int Y){
+		x=X;
+		y=Y;
 		nombre=nom;
-		imagen= new ImageIcon("Imagenes/"+nom+".png");
-		etiqueta= new JLabel();
-		etiqueta.setSize(52,52);
-		etiqueta.setIcon(imagen);
+		ImageIcon ima = new ImageIcon("Imagenes/"+nombre+".png");
+		imagen= ima.getImage();
 	}
-	public void setX(int x){
-		if((x>=0)&&(x<13)){
-			posicionX=x;
-		}
-	}
-	public void setY(int y){
-		if((y>=0)&&(y<13)){
-			posicionY=y;
-		}
-	}
-	public void setNombre(String n){
-		nombre=n;
+	public void setImagen(Image ima){
+		imagen= ima;
 	}
 	public int getX(){
-		return posicionX;
+		return x;
 	}
 	public int getY(){
-		return posicionY;
+		return y;
 	}
-	public String getNombre(){
-		return nombre;
-	}
-	public ImageIcon getImagen(){
+	public Image getImagen(){
 		return imagen;
-	}
-	public JLabel getEtiqueta(){
-		return etiqueta;
 	}
 }

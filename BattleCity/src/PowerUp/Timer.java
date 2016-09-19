@@ -1,8 +1,8 @@
 package PowerUp;
 
 public class Timer extends PowerUp{
-	public Timer(){
-		super("Timer");
+	public Timer(int x, int y){
+		super("Timer", x, y);
 	}
 	
 /*	public boolean collide(Jugador jug){

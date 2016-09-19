@@ -6,8 +6,8 @@ public class Disparo extends Celda{
 	private String direccion;
 	private Tanque tanque;
 	
-	public Disparo(String dir, Tanque t){
-		super("disparo");
+	public Disparo(String dir, int x, int y, Tanque t){
+		super("disparo",x, y);
 		direccion=dir;
 		tanque=t;
 	}

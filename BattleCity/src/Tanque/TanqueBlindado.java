@@ -1,8 +1,8 @@
 package Tanque;
 
 public class TanqueBlindado extends Enemigo{
-	public TanqueBlindado(){
-		super(1,1,2,4,"Tanque blindado","abajo");
+	public TanqueBlindado(int x, int y){
+		super(1,1,2,4,"Tanque blindado","abajo", x, y);
 	}
 	/*	public boolean collide(Jugador jug){
 	

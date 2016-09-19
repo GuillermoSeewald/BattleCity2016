@@ -8,8 +8,8 @@ public abstract class Tanque extends Celda{
 	protected String direccion;
 	protected boolean hayDisparo;
 	
-	public Tanque(int v,int velM,int velD,int golpes,String nom,String dir){
-		super(nom+" "+dir);
+	public Tanque(int v,int velM,int velD,int golpes,String nom,String dir, int x, int y){
+		super(nom+" "+dir, x, y);
 		vida=v;
 		velDisparo=velD;
 		velMovimiento=velM;
@@ -29,37 +29,10 @@ public abstract class Tanque extends Celda{
 	public void asignarGolpes(int g){
 		golpesQueResiste=g;
 	}
-	public void disparar(){
-		hayDisparo=true;
-		new Disparo(direccion, this);
-	}
-	public void mover(int dir){
-		switch(dir){
-			case 0:
-				this.setY(this.getY()-1);
-				direccion="arriba";
-				break;
-			case 1:
-				this.setY(this.getY()+1);
-				direccion="abajo";
-				break;
-			case 2:
-				this.setX(this.getX()-1);
-				direccion="izquierda";
-				break;
-			case 3:
-				this.setX(this.getX()+1);
-				direccion="derecha";
-				break;
-		}
-		setImagen();
-	}
-	public void setDireccion(String dir){
-		direccion=dir;
-	}
-	public void setImagen(){
-		this.imagen= new ImageIcon("Imagenes/"+this.nombre+this.direccion+".png");
-	}
+//	public void disparar(){
+//		hayDisparo=true;
+//		new Disparo(direccion, this);
+//	}
 	public int getVidas(){
 		return vida;
 	}

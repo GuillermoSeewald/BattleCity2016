@@ -1,8 +1,8 @@
 package PowerUp;
 
 public class Estrella extends PowerUp{
-	public Estrella(){
-		super("Estrella");
+	public Estrella(int x, int y){
+		super("Estrella", x, y);
 	}
 	
 /*	public boolean collide(Jugador jug){

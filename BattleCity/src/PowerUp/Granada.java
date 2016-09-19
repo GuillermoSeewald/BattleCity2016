@@ -1,8 +1,8 @@
 package PowerUp;
 
 public class Granada extends PowerUp{
-	public Granada(){
-		super("Granada");
+	public Granada(int x, int y){
+		super("Granada", x, y);
 	}
 	
 /*	public boolean collide(Jugador jug){
