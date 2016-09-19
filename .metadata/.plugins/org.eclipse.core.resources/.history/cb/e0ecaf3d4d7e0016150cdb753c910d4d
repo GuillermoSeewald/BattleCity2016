@@ -77,6 +77,9 @@ public class Jugador extends Tanque{
 			break;
 		}
 	}
+	public String getDireccion(){
+		return direccion;
+	}	
 	public int getNivel(){
 		return nivel;
 	}

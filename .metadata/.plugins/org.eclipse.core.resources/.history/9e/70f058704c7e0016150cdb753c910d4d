@@ -19,7 +19,7 @@ public class Mapa extends JPanel implements ActionListener{
 	private Jugador jugador;
 	private Timer timer;
 	private Celda[][] celdas;
-	private Tanque[] enemigos;
+	private Enemigo[] Tanque;
 	
 	public Mapa(String mapa){
 		setBackground(Color.BLACK);
