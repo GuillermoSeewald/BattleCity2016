@@ -1,7 +1,0 @@
-package Tanque;
-
-import Mapa.*;
-
-public class Tanque extends Celda{
-
-}

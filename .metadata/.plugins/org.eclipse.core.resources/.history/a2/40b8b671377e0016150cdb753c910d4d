@@ -1,5 +1,0 @@
-import javax.swing.*;
-import java.awt.event.*;
-
-public class Dibujar extends JPanel implements ActionListener{
-}
