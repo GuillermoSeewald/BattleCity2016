@@ -16,29 +16,26 @@ import java.io.IOException;
 public class Map extends JPanel implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	
-	protected Player player;
-	protected Timer timer;
-	protected Obstacle[][] obstacles;
-	protected Enemy[] enemies;
-	protected int cantEnemy;
-	protected Play game;
+	private Player jugador;
+	private Timer timer;
+	private Element[][] obstacles;
+	private Enemy[] enemigos;
+	private int cantEnemy;
 	
-	public Map(String mapa, Play p){
+	public Map(String mapa){
 		setBackground(Color.BLACK);
 		setFocusable(true);
 		addKeyListener(new Teclado());
 		
-		game=p;
-		
-		obstacles=new Obstacle[13][13];
+		obstacles=new Element[13][13];
 		try{
 			cargarMapa(mapa);
 		}catch(FileNotFoundException e){
 		}catch(IOException e){
 		}
 		
-		player= game.getJugador();
-		timer= new Timer(player.getVelMovimiento(),this);
+		jugador= new Player();
+		timer= new Timer(2,this);
 		timer.start();
 	}
 	
@@ -78,15 +75,6 @@ public class Map extends JPanel implements ActionListener{
 		}
 		b.close();
 	}
-	public Enemy[] getEnemies(){
-		return enemies;
-	}
-	public Obstacle[][] getMap(){
-		return obstacles;
-	}
-	public Obstacle getObstacle(int x, int y){
-		return obstacles[x][y];
-	}
 	
 	
 	
@@ -97,7 +85,7 @@ public class Map extends JPanel implements ActionListener{
 	public void paint(Graphics grafica){
 		super.paint(grafica);
 		Graphics2D g= (Graphics2D) grafica;
-		g.drawImage(player.getImagen(), player.getX(), player.getY(), null);
+		g.drawImage(jugador.getImagen(), jugador.getX(), jugador.getY(), null);
 		for(int i=0;i<obstacles.length;i++){
 			for(int j=0;j<obstacles.length;j++){
 				if(obstacles[i][j]!=null){
@@ -108,15 +96,15 @@ public class Map extends JPanel implements ActionListener{
 	}
 	private class Teclado extends KeyAdapter{
 		public void keyReleased(KeyEvent e){
-			player.keyReleased(e);
+			jugador.keyReleased(e);
 		}
 		public void keyPressed(KeyEvent e){
-			player.keyPressed(e);
+			jugador.keyPressed(e);
 		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		player.mover();
+		jugador.mover();
 		repaint();
 	}
 }

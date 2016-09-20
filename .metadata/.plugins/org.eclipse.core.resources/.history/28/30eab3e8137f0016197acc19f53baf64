@@ -16,19 +16,16 @@ import java.io.IOException;
 public class Map extends JPanel implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	
-	protected Player player;
-	protected Timer timer;
-	protected Obstacle[][] obstacles;
-	protected Enemy[] enemies;
-	protected int cantEnemy;
-	protected Play game;
+	private Player player;
+	private Timer timer;
+	private Obstacle[][] obstacles;
+	private Enemy[] enemies;
+	private int cantEnemy;
 	
-	public Map(String mapa, Play p){
+	public Map(String mapa){
 		setBackground(Color.BLACK);
 		setFocusable(true);
 		addKeyListener(new Teclado());
-		
-		game=p;
 		
 		obstacles=new Obstacle[13][13];
 		try{
@@ -37,8 +34,8 @@ public class Map extends JPanel implements ActionListener{
 		}catch(IOException e){
 		}
 		
-		player= game.getJugador();
-		timer= new Timer(player.getVelMovimiento(),this);
+		player= new Player();
+		timer= new Timer(2,this);
 		timer.start();
 	}
 	
@@ -81,11 +78,8 @@ public class Map extends JPanel implements ActionListener{
 	public Enemy[] getEnemies(){
 		return enemies;
 	}
-	public Obstacle[][] getMap(){
+	public Obstacle[][] getObstacles(){
 		return obstacles;
-	}
-	public Obstacle getObstacle(int x, int y){
-		return obstacles[x][y];
 	}
 	
 	

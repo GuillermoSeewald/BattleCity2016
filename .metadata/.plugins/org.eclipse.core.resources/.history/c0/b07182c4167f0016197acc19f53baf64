@@ -1,0 +1,32 @@
+package Mapa;
+
+import Tanque.*;
+import javax.swing.JFrame;
+
+public class Play extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	protected Map map;
+	protected Player player;
+	protected int cantEnemyDead;
+	
+	public Play(String m){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		map= new Map(m, this);
+		add(map);
+		player= new Player();
+		cantEnemyDead=0;
+		
+		
+		setTitle("Battle City");
+		setSize(850,707);
+		setVisible(true);
+		setLocationRelativeTo(null);
+		setResizable(false);
+	}
+	
+	public Player getJugador(){
+		return player;
+	}
+	
+}

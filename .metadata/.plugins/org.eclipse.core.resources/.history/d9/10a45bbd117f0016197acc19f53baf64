@@ -1,5 +1,6 @@
 package Tanque;
 
+import Mapa.*;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
@@ -12,7 +13,7 @@ public class Player extends Character{
 	protected int nivel, puntos, disparosSimultaneos;
 	
 	public Player(){
-		super(3,12,1,1,"Jugador","arriba",208,624);
+		super(3,12,1,1,"Jugador","arriba",208,674);
 		nom= "Jugador";
 		nivel=1;
 		puntos=0;

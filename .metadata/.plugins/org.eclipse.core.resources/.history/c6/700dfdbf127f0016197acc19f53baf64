@@ -34,8 +34,12 @@ public abstract class Character extends Element{
 		golpesQueResiste=g;
 	}
 	public void mover(){
-		x+=dx;
-		y+=dy;
+		if((x>=0)&&(x<=850)){
+			x+=dx;
+		}
+		if((y>=0)&&(y<=624)){
+			y+=dy;
+		}
 	}
 //	public void disparar(){
 //		hayDisparo=true;
