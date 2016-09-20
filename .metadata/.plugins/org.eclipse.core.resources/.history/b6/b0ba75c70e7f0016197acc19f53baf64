@@ -55,7 +55,7 @@ public class Player extends Character{
 		else{
 			movImagen=1;
 		}
-		ImageIcon ima = new ImageIcon("Imagenes/"+nom+" "+direccion+"-mov"+movImagen+".png");
+		ImageIcon ima = new ImageIcon("Imagenes/"+nom+" "+direccion+"mov"+movImagen+".png");
 		setImagen(ima.getImage());
 	}
 	public void keyReleased(KeyEvent k){

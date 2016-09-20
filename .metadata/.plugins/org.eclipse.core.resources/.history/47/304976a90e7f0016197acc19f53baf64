@@ -12,7 +12,7 @@ public abstract class Character extends Element{
 	protected int dy;
 	
 	public Character(int v,int velM,int velD,int golpes,String nom,String dir, int x, int y){
-		super(nom+" "+dir+"-mov"+1, x, y);
+		super(nom+" "+dir+"-"+0, x, y);
 		vida=v;
 		velDisparo=velD;
 		velMovimiento=velM;

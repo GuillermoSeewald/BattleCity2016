@@ -49,13 +49,7 @@ public class Player extends Character{
 			direccion="derecha";
 			break;
 		}
-		if(movImagen==1){
-			movImagen=2;
-		}
-		else{
-			movImagen=1;
-		}
-		ImageIcon ima = new ImageIcon("Imagenes/"+nom+" "+direccion+"-mov"+movImagen+".png");
+		ImageIcon ima = new ImageIcon("Imagenes/"+nom+" "+direccion+".png");
 		setImagen(ima.getImage());
 	}
 	public void keyReleased(KeyEvent k){
