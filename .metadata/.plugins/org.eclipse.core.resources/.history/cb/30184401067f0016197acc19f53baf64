@@ -1,0 +1,9 @@
+package Obstaculo;
+
+import Mapa.*;
+
+public abstract class Obstaculo extends Element{
+	public Obstaculo(String n, int x, int y){
+		super(n,x,y);
+	}
+}

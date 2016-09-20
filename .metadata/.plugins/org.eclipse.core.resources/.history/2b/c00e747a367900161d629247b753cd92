@@ -1,8 +1,0 @@
-package Obstaculo;
-
-public class Acero extends Obstaculo{
-	public Acero(){
-		resistencia=10;
-		nombre="acero";
-	}
-}

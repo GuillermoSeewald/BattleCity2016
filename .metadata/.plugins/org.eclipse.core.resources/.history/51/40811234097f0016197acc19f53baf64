@@ -1,0 +1,21 @@
+package Mapa;
+
+import javax.swing.JFrame;
+
+public class Ventana extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	private Map mapa;
+	private Player jugador;
+	
+	public Ventana(String mapa){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mapa= new Mapa(mapa);
+		add(new Map(mapa));
+		setTitle("Battle City");
+		setSize(850,707);
+		setVisible(true);
+		setLocationRelativeTo(null);
+		setResizable(false);
+	}
+}

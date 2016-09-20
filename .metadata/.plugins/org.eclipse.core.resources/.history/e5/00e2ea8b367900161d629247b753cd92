@@ -1,8 +1,0 @@
-package Obstaculo;
-
-public class Ladrillo extends Obstaculo{
-	public Ladrillo(){
-		resistencia=4;
-		nombre="ladrillo";
-	}
-}

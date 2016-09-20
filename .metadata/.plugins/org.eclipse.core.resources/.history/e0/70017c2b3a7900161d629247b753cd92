@@ -1,8 +1,0 @@
-package Obstaculo;
-
-public class Bandera extends Obstaculo{
-	public Bandera(){
-		setResistencia(8);
-		setNombre("bandera");
-	}
-}

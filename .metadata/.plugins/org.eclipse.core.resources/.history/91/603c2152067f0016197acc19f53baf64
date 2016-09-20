@@ -1,0 +1,19 @@
+package Obstaculo;
+
+public class Steel extends Obstacle{
+	
+	public Steel(int x, int y){
+		super("Acero", x, y);
+	}
+	
+/*	public int kill(){
+		
+	}
+	public boolean collide(Player jug){
+	
+	}
+	public boolean collide(Enemy ene){
+		
+	}
+	*/
+}

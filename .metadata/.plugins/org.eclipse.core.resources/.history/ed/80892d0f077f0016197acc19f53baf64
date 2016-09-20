@@ -1,0 +1,20 @@
+package PowerUp;
+
+import Obstaculo.*;
+
+public class Helmet extends Obstacle{
+	public Helmet(int x, int y){
+		super("Casco", x, y);
+	}
+	
+/*	public int kill(){
+		
+	}
+	public boolean collide(Player jug){
+	
+	}
+	public boolean collide(Enemy ene){
+		
+	}
+	*/
+}

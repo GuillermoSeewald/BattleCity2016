@@ -1,0 +1,20 @@
+package PowerUp;
+
+import Obstaculo.*;
+
+public class Tank extends Obstacle{
+	public Tank(int x, int y){
+		super("Vida extra", x, y);
+	}
+	
+/*	public int kill(){
+		
+	}
+	public boolean collide(Player jug){
+	
+	}
+	public boolean collide(Enemy ene){
+		
+	}
+	*/
+}

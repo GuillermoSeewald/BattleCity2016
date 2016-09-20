@@ -1,0 +1,20 @@
+package PowerUp;
+
+import Obstaculo.*;
+
+public class Star extends Obstacle{
+	public Star(int x, int y){
+		super("Estrella", x, y);
+	}
+	
+/*	public boolean collide(Jugador jug){
+	
+	}
+	public boolean collide(Enemigo ene){
+		
+	}
+	public boolean collide(Disparo dis){
+		
+	}
+	*/
+}

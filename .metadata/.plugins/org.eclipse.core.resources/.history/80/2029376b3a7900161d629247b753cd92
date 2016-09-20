@@ -1,9 +1,0 @@
-package Base;
-
-import Mapa.*;
-
-public class Base extends Celda{
-	public Base(){
-		
-	}
-}

@@ -5,13 +5,13 @@ public class Timer extends PowerUp{
 		super("Timer", x, y);
 	}
 	
-/*	public boolean collide(Jugador jug){
-	
-	}
-	public boolean collide(Enemigo ene){
+/*	public int kill(){
 		
 	}
-	public boolean collide(Disparo dis){
+	public boolean collide(Player jug){
+	
+	}
+	public boolean collide(Enemy ene){
 		
 	}
 	*/
