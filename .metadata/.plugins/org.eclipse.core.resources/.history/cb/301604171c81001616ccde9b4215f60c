@@ -87,14 +87,12 @@ public class Map extends JPanel implements ActionListener{
 		}
 	}
 	public void deleteEnemy(int x){
-		player.setPuntos(player.getPuntos()+enemies[x].getPuntos());
 		enemies[x]=null;
 	}
 	public void deleteEnemy(){
 		boolean delete=false;
 		for(int i=0;(i<enemies.length)&&(!delete);i++){
 			if(enemies[i]!=null){
-				player.setPuntos(player.getPuntos()+enemies[i].getPuntos());
 				enemies[i]=null;
 				delete=true;
 			}

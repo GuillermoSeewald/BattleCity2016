@@ -9,8 +9,4 @@ public abstract class Enemy extends Character{
 		super(v,velM,golpes,nom,dir,x,y,map);
 		posEnEnemies=posE;
 	}
-	
-	public int getPosEnEnemies(){
-		return posEnEnemies;
-	}
 }

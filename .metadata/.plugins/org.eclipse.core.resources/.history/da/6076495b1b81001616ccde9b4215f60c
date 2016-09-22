@@ -3,7 +3,7 @@ package Tanque;
 import Mapa.*;
 
 public abstract class Character extends Element{
-	protected int vida, velMovimiento, golpesQueResiste, movImagen,puntos;
+	protected int vida, velMovimiento, golpesQueResiste, movImagen;
 	protected String direccion;
 	protected boolean hayDisparo;
 	
@@ -27,9 +27,6 @@ public abstract class Character extends Element{
 	}
 	public void asignarGolpes(int g){
 		golpesQueResiste=g;
-	}
-	public void setPuntos(int p){
-		puntos=p;
 	}
 	public void mover(){
 		if((x==0)&&(dx==(-1))){
@@ -73,8 +70,5 @@ public abstract class Character extends Element{
 	}
 	public boolean hayDisparo(){
 		return hayDisparo;
-	}
-	public int getPuntos(){
-		return puntos;
 	}
 }

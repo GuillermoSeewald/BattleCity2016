@@ -10,7 +10,7 @@ public class Player extends Character{
 	protected String nom;
 	
 
-	protected int nivel, disparosSimultaneos;
+	protected int nivel, puntos, disparosSimultaneos;
 	
 	public Player(Map map){
 		super(3,12,1,"Jugador","arriba",208,624, map);

@@ -153,8 +153,6 @@ public class Play extends JFrame{
 			aux.add(aux2);			
 		}
 		
-		etiquetaPuntos= new JLabel();
-		
 		aux2= new JPanel();	aux2.setLayout(new GridLayout(2,1));
 		aux2.add(botones[0]);aux2.add(botones[1]);
 		panelDetalles.add(aux2, BorderLayout.NORTH);
@@ -175,8 +173,6 @@ public class Play extends JFrame{
 			}
 			else{
 				map.deleteEnemy();
-				etiquetaPuntos.setForeground(Color.GREEN);
-				etiquetaPuntos.setText("Puntos jugador: "+player.getPuntos());
 			}
 		}
 	}

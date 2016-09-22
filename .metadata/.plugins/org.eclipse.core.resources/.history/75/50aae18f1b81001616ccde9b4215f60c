@@ -16,7 +16,6 @@ public class Player extends Character{
 		super(3,12,1,"Jugador","arriba",208,624, map);
 		nom= "Jugador";
 		nivel=1;
-		puntos=0;
 		disparosSimultaneos=1;
 	}
 	public void setMap(Map m){

@@ -28,9 +28,6 @@ public abstract class Character extends Element{
 	public void asignarGolpes(int g){
 		golpesQueResiste=g;
 	}
-	public void setPuntos(int p){
-		puntos=p;
-	}
 	public void mover(){
 		if((x==0)&&(dx==(-1))){
 			x=0;

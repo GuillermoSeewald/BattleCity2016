@@ -10,7 +10,7 @@ public class Player extends Character{
 	protected String nom;
 	
 
-	protected int nivel, disparosSimultaneos;
+	protected int nivel, puntos, disparosSimultaneos;
 	
 	public Player(Map map){
 		super(3,12,1,"Jugador","arriba",208,624, map);
@@ -24,6 +24,9 @@ public class Player extends Character{
 	}
 	public void setNivel(int i){
 		nivel=i;
+	}
+	public void setPuntos(int p){
+		puntos=p;
 	}
 	public void setDisparos(int d){
 		disparosSimultaneos=d;
@@ -82,6 +85,9 @@ public class Player extends Character{
 	}
 	public int getNivel(){
 		return nivel;
+	}
+	public int getPuntos(){
+		return puntos;
 	}
 	public int getDisparos(){
 		return disparosSimultaneos;

@@ -94,7 +94,7 @@ public class Map extends JPanel implements ActionListener{
 		boolean delete=false;
 		for(int i=0;(i<enemies.length)&&(!delete);i++){
 			if(enemies[i]!=null){
-				player.setPuntos(player.getPuntos()+enemies[i].getPuntos());
+				player.setPuntos(player.getPuntos()+enemies[x].getPuntos());
 				enemies[i]=null;
 				delete=true;
 			}

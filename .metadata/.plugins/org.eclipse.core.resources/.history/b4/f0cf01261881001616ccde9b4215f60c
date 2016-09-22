@@ -87,42 +87,16 @@ public class Map extends JPanel implements ActionListener{
 		}
 	}
 	public void deleteEnemy(int x){
-		player.setPuntos(player.getPuntos()+enemies[x].getPuntos());
 		enemies[x]=null;
-	}
-	public void deleteEnemy(){
-		boolean delete=false;
-		for(int i=0;(i<enemies.length)&&(!delete);i++){
-			if(enemies[i]!=null){
-				player.setPuntos(player.getPuntos()+enemies[i].getPuntos());
-				enemies[i]=null;
-				delete=true;
-			}
-		}
 	}
 	public boolean insertEnemy(){
 		boolean insert= false;
 		int posicion=0;
-		Random r= new Random();
-		int x= r.nextInt(4);
 		if(game.getCantEnemyDead()<20){
 			for(int i=0;(i<enemies.length)&&(!insert);i++){
 				if(enemies[i]==null){
 					insert=true;
-					switch(x){
-					case 0:
-						enemies[i]= new ArmoredTank(posicion,0,this, i);
-						break;
-					case 1:
-						enemies[i]= new FastTank(posicion, 0, this, i);
-						break;
-					case 2:
-						enemies[i]= new PowerTank(posicion, 0, this, i);
-						break;
-					case 3:
-						enemies[i]= new BasicTank(posicion, 0, this, i);
-						break;
-					}
+					enemies[i]= new ArmoredTank(posicion,0,this, i);
 				}
 				else{
 					posicion+=(enemies[i].getWidth()*4);
