@@ -29,7 +29,7 @@ public class Map extends JPanel implements ActionListener{
 		addKeyListener(new Teclado());
 		
 		game=p;
-		
+		enemies= new Enemy[4];
 		obstacles=new Obstacle[13][13];
 		try{
 			cargarMapa(mapa);
@@ -41,7 +41,7 @@ public class Map extends JPanel implements ActionListener{
 		timer= new Timer(player.getVelMovimiento(),this);
 		timer.start();
 		
-		setSize(707,707);
+		setSize(677,707);
 	}
 	
 	public void cargarMapa(String map) throws IOException, FileNotFoundException{
@@ -80,6 +80,12 @@ public class Map extends JPanel implements ActionListener{
 		}
 		b.close();
 	}
+	public void fullEnemyKill(){
+		
+	}
+	public void insertEnemy(){
+		
+	}
 	public Enemy[] getEnemies(){
 		return enemies;
 	}
@@ -89,10 +95,20 @@ public class Map extends JPanel implements ActionListener{
 	public Obstacle getObstacle(int x, int y){
 		return obstacles[x][y];
 	}
-	
+	public Play getPlay(){
+		return game;
+	}
 	
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
