@@ -34,7 +34,7 @@ public abstract class Character extends Element{
 	}
 //	public void disparar(){
 //		hayDisparo=true;
-//		new Disparo(direccion, this);
+//		new Disparo(direccion);
 //	}
 	public int getVidas(){
 		return vida;

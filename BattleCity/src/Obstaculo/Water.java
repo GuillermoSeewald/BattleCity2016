@@ -2,8 +2,8 @@ package Obstaculo;
 
 public class Water extends Obstacle{
 	
-	public Water(int x, int y){
-		super("Agua", x, y);
+	public Water(int x, int y, int posX, int posY){
+		super("Agua", x, y, posX, posY);
 	}
 	
 /*	public int kill(){

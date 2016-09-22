@@ -1,8 +1,8 @@
 package PowerUp;
 
 public class Helmet extends PowerUp{
-	public Helmet(int x, int y){
-		super("Casco", x, y);
+	public Helmet(int x, int y, int posX, int posY){
+		super("Casco", x, y, posX, posY);
 	}
 	
 /*	public int kill(){

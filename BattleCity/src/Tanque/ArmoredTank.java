@@ -2,7 +2,7 @@ package Tanque;
 
 public class ArmoredTank extends Enemy{
 	public ArmoredTank(int x, int y){
-		super(1,1,4,"Tanque blindado","abajo", x, y);
+		super(1,12,4,"Tanque blindado","abajo", x, y);
 	}
 	
 /*	public int kill(){

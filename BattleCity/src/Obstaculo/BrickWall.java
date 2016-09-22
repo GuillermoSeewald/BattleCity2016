@@ -2,8 +2,8 @@ package Obstaculo;
 
 public class BrickWall extends Wall{
 	
-	public BrickWall(int x, int y){
-		super("Ladrillo", x, y);
+	public BrickWall(int x, int y, int posX, int posY){
+		super("Ladrillo", x, y, posX, posY);
 	}
 	
 /*	public int kill(){

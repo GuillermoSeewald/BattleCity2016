@@ -2,8 +2,8 @@ package Obstaculo;
 
 public class Tree extends Obstacle{
 	
-	public Tree(int x, int y){
-		super("Cesped",x ,y);
+	public Tree(int x, int y, int posX, int posY){
+		super("Cesped",x ,y, posX, posY);
 	}
 	
 /*	public int kill(){

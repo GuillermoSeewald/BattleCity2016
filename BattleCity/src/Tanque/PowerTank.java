@@ -2,7 +2,7 @@ package Tanque;
 
 public class PowerTank extends Enemy{
 	public PowerTank(int x, int y){
-		super(1,2,1,"Tanque de poder","abajo", x, y);
+		super(1,12,1,"Tanque de poder","abajo", x, y);
 	}
 	
 /*	public int kill(){

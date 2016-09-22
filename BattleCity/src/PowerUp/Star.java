@@ -1,8 +1,8 @@
 package PowerUp;
 
 public class Star extends PowerUp{
-	public Star(int x, int y){
-		super("Estrella", x, y);
+	public Star(int x, int y, int posX, int posY){
+		super("Estrella", x, y, posX, posY);
 	}
 	
 /*	public int kill(){

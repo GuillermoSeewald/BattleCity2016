@@ -2,8 +2,8 @@ package Obstaculo;
 
 public class SteelWall extends Wall{
 	
-	public SteelWall(int x, int y){
-		super("Acero", x, y);
+	public SteelWall(int x, int y, int posX, int posY){
+		super("Acero", x, y, posX, posY);
 	}
 	
 /*	public int kill(){

@@ -1,0 +1,51 @@
+package Mapa;
+
+import Tanque.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+
+public class Play extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	protected Map map;
+	protected Player player;
+	protected int cantEnemyDead;
+	protected JPanel panelDetalles;
+	
+	public Play(String m){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		player= new Player();
+		map= new Map(m, this, player);
+		add(map);
+		cantEnemyDead=0;
+		
+		setTitle("Battle City");
+		setSize(850,707);
+		setVisible(true);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		
+		JButton boton= new JButton();
+		boton.setBounds(800, 50, 52, 52);
+		add(boton);
+	}
+	public void setPlayer(){
+	}
+	public void incrementEnemyDead(){
+		cantEnemyDead++;
+	}
+	public void createEnemy(){
+	}
+	public Player getJugador(){
+		return player;
+	}
+	public int getCantEnemyDead(){
+		return cantEnemyDead;
+	}
+	public Map getMap(){
+		return map;
+	}
+	
+	
+}

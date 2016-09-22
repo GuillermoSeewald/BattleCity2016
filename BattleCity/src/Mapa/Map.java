@@ -55,19 +55,19 @@ public class Map extends JPanel implements ActionListener{
 			for(int i=0;i<c.length;i++){
 				switch (c[i]){
 				case 'A':
-					obstacles[fila][i]= new SteelWall(x,y);
+					obstacles[fila][i]= new SteelWall(x,y,i,fila);
 					break;
 				case 'L':
-					obstacles[fila][i]= new BrickWall(x,y);
+					obstacles[fila][i]= new BrickWall(x,y,i,fila);
 					break;
 				case 'G':
-					obstacles[fila][i]= new Water(x,y);
+					obstacles[fila][i]= new Water(x,y,i,fila);
 					break;
 				case 'C':
-					obstacles[fila][i]= new Tree(x,y);
+					obstacles[fila][i]= new Tree(x,y,i,fila);
 					break;
 				case 'B':
-					obstacles[fila][i]= new Base("Bandera1",x,y);
+					obstacles[fila][i]= new Base("Bandera1",x,y,i,fila);
 					break;
 				}
 				x=x+52;
