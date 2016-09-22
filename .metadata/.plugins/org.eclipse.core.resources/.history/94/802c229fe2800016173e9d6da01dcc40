@@ -29,28 +29,8 @@ public abstract class Character extends Element{
 		golpesQueResiste=g;
 	}
 	public void mover(){
-		if((x==0)&&(dx==(-1))){
-			x=0;
-		}
-		else{
-			if((x==625)&&(dx==1)){
-				x=625;
-			}
-			else{
-				x+=dx;
-			}
-		}
-		if((y==0)&&(dy==(-1))){
-			y=0;
-		}
-		else{
-			if((y==625)&&(dy==1)){
-				y=625;
-			}
-			else{
-				y+=dy;
-			}
-		}
+		x+=dx;
+		y+=dy;
 	}
 //	public void disparar(){
 //		hayDisparo=true;
