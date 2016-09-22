@@ -4,7 +4,7 @@ import Mapa.*;
 
 public class FastTank extends Enemy{
 	public FastTank(int x, int y, Map map){
-		super(1,8,1,"Tanque basico","abajo", x, y, map);
+		super(1,8,1,"Fast tank","abajo", x, y, map);
 	}
 	
 /*	public int kill(){

@@ -26,7 +26,6 @@ public class Map extends JPanel implements ActionListener{
 	public Map(String mapa, Play p, Player jug){
 		setBackground(Color.BLACK);
 		setFocusable(true);
-		addKeyListener(new Teclado());
 		
 		game=p;
 		enemies= new Enemy[4];
@@ -141,14 +140,6 @@ public class Map extends JPanel implements ActionListener{
 					g.drawImage(obstacles[i][j].getImagen(), obstacles[i][j].getX(), obstacles[i][j].getY(), null);
 				}
 			}
-		}
-	}
-	private class Teclado extends KeyAdapter{
-		public void keyReleased(KeyEvent e){
-			player.keyReleased(e);
-		}
-		public void keyPressed(KeyEvent e){
-			player.keyPressed(e);
 		}
 	}
 

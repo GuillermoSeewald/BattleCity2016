@@ -86,17 +86,14 @@ public class Map extends JPanel implements ActionListener{
 	public boolean insertEnemy(){
 		boolean insert= false;
 		int posicion=0;
-		if(game.getCantEnemyDead()<20){
-			for(int i=0;(i<enemies.length)&&(!insert);i++){
-				if(enemies[i]==null){
-					insert=true;
-					enemies[i]= new ArmoredTank(posicion,0,this);
-				}
-				else{
-					posicion+=(enemies[i].getWidth()*4);
-				}
+		for(int i=0;(i<enemies.length)&&(!insert);i++){
+			if(enemies[i]==null){
+				insert=true;
+				enemies[i]= new ArmoredTank(posicion,0,this);
 			}
-			
+			else{
+				posicion+=(enemies[i].getWidth()*4);
+			}
 		}
 		return insert;
 	}
