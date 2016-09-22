@@ -1,6 +1,0 @@
-package Tanque;
-
-import Mapa.*;
-
-public class Disparo extends Celda{
-}

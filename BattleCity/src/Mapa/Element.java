@@ -3,6 +3,7 @@ package Mapa;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public abstract class Element{
 	
@@ -12,6 +13,7 @@ public abstract class Element{
 	protected int y;
 	
 	protected Image imagen;
+	protected JLabel etiqueta;
 	
 	public Element(String nom, int X, int Y){
 		x=X;

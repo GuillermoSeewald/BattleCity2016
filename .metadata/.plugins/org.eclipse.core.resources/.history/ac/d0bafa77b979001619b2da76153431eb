@@ -1,5 +1,0 @@
-package Tanque;
-
-public class Jugador extends Tanque{
-
-}

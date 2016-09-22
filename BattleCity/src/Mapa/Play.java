@@ -2,6 +2,7 @@ package Mapa;
 
 import Tanque.*;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class Play extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -9,23 +10,25 @@ public class Play extends JFrame{
 	protected Map map;
 	protected Player player;
 	protected int cantEnemyDead;
+	protected JPanel panelDetalles;
 	
 	public Play(String m){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		map= new Map(m, this);
+		player= new Player();
+		map= new Map(m, this, player);
 		add(map);
-		setPlayer();
 		cantEnemyDead=0;
-		
 		
 		setTitle("Battle City");
 		setSize(850,707);
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setResizable(false);
+		
+		armarPanelDetalles();
+//		add(panelDetalles);
 	}
 	public void setPlayer(){
-		player= new Player();
 	}
 	public void incrementEnemyDead(){
 		cantEnemyDead++;
@@ -42,4 +45,8 @@ public class Play extends JFrame{
 		return map;
 	}
 	
+	
+	private void armarPanelDetalles(){
+		
+	}
 }
