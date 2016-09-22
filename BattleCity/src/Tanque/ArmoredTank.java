@@ -4,7 +4,7 @@ import Mapa.*;
 
 public class ArmoredTank extends Enemy{
 	public ArmoredTank(int x, int y, Map map){
-		super(1,12,4,"Tanque blindado","abajo", x, y, map);
+		super(1,12,4,"Armored tank","abajo", x, y, map);
 	}
 	
 /*	public int kill(){

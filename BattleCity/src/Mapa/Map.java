@@ -83,8 +83,19 @@ public class Map extends JPanel implements ActionListener{
 	public void fullEnemyKill(){
 		
 	}
-	public void insertEnemy(){
-		
+	public boolean insertEnemy(){
+		boolean insert= false;
+		int posicion=0;
+		for(int i=0;(i<enemies.length)&&(!insert);i++){
+			if(enemies[i]==null){
+				insert=true;
+				enemies[i]= new ArmoredTank(posicion,0,this);
+			}
+			else{
+				posicion+=(enemies[i].getWidth()*4);
+			}
+		}
+		return insert;
 	}
 	public Enemy[] getEnemies(){
 		return enemies;
@@ -121,6 +132,11 @@ public class Map extends JPanel implements ActionListener{
 				if(obstacles[i][j]!=null){
 					g.drawImage(obstacles[i][j].getImagen(), obstacles[i][j].getX(), obstacles[i][j].getY(), null);
 				}
+			}
+		}
+		for(int j=0;j<enemies.length;j++){
+			if(enemies[j]!=null){
+				g.drawImage(enemies[j].getImagen(), enemies[j].getX(), enemies[j].getY(), null);
 			}
 		}
 	}
