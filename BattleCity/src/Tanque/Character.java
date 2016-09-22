@@ -10,8 +10,8 @@ public abstract class Character extends Element{
 	protected int dx;
 	protected int dy;
 	
-	public Character(int v,int velM,int golpes,String nom,String dir, int x, int y){
-		super(nom+" "+dir+"-mov1", x, y);
+	public Character(int v,int velM,int golpes,String nom,String dir, int x, int y, Map map){
+		super(nom+" "+dir+"-mov1", x, y,map);
 		vida=v;
 		velMovimiento=velM;
 		golpesQueResiste=golpes;

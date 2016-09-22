@@ -14,13 +14,16 @@ public class Play extends JFrame{
 	
 	public Play(String m){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		player= new Player();
+		player= new Player(null);
 		map= new Map(m, this, player);
+		player.setMap(map);
 		add(map);
 		cantEnemyDead=0;
 		
+		int x=map.getWidth();
+		int y=map.getHeight();
 		setTitle("Battle City");
-		setSize(850,707);
+		setSize(x,y);
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setResizable(false);
@@ -35,7 +38,7 @@ public class Play extends JFrame{
 	}
 	public void createEnemy(){
 	}
-	public Player getJugador(){
+	public Player getPlayer(){
 		return player;
 	}
 	public int getCantEnemyDead(){

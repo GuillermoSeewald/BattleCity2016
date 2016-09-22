@@ -5,8 +5,8 @@ import Mapa.*;
 public class Shoot extends Element{
 	private String direccion;
 	
-	public Shoot(String dir, int x, int y){
-		super("disparo",x, y);
+	public Shoot(String dir, int x, int y, Map map){
+		super("disparo",x, y, map);
 		direccion=dir;
 	}
 	public void setDireccion(String dir){

@@ -1,8 +1,10 @@
 package PowerUp;
 
+import Mapa.*;
+
 public class Shovel extends PowerUp{
-	public Shovel(int x, int y, int posX, int posY){
-		super("Pala", x, y, posX, posY);
+	public Shovel(int x, int y, int posX, int posY, Map map){
+		super("Pala", x, y, posX, posY, map);
 	}
 	
 /*	public int kill(){

@@ -1,8 +1,10 @@
 package Tanque;
 
+import Mapa.*;
+
 public class BasicTank extends Enemy{
-	public BasicTank(int x, int y){
-		super(1,12,1,"Tanque basico","abajo", x, y);
+	public BasicTank(int x, int y, Map map){
+		super(1,12,1,"Tanque basico","abajo", x, y, map);
 	}
 	
 /*	public int kill(){

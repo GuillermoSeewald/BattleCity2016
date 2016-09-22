@@ -1,8 +1,10 @@
 package PowerUp;
 
+import Mapa.*;
+
 public class Grenade extends PowerUp{
-	public Grenade(int x, int y, int posX, int posY){
-		super("Granada", x, y, posX, posY);
+	public Grenade(int x, int y, int posX, int posY, Map map){
+		super("Granada", x, y, posX, posY, map);
 	}
 	
 /*	public int kill(){

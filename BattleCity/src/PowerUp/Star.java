@@ -1,8 +1,10 @@
 package PowerUp;
 
+import Mapa.*;
+
 public class Star extends PowerUp{
-	public Star(int x, int y, int posX, int posY){
-		super("Estrella", x, y, posX, posY);
+	public Star(int x, int y, int posX, int posY, Map map){
+		super("Estrella", x, y, posX, posY, map);
 	}
 	
 /*	public int kill(){

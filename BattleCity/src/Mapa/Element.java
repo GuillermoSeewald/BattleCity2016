@@ -8,14 +8,18 @@ import javax.swing.JLabel;
 public abstract class Element{
 	
 	protected String nombre;
+	protected Map map;
 	
 	protected int x;
 	protected int y;
+	protected final int width= 52;
+	protected final int heigth=52;
 	
 	protected Image imagen;
 	protected JLabel etiqueta;
 	
-	public Element(String nom, int X, int Y){
+	public Element(String nom, int X, int Y, Map map){
+		this.map=map;
 		x=X;
 		y=Y;
 		nombre=nom;
@@ -33,5 +37,11 @@ public abstract class Element{
 	}
 	public Image getImagen(){
 		return imagen;
+	}
+	public int getWidth(){
+		return width;
+	}
+	public int getHeigth(){
+		return heigth;
 	}
 }

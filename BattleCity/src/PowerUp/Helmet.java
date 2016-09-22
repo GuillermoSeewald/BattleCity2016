@@ -1,8 +1,10 @@
 package PowerUp;
 
+import Mapa.*;
+
 public class Helmet extends PowerUp{
-	public Helmet(int x, int y, int posX, int posY){
-		super("Casco", x, y, posX, posY);
+	public Helmet(int x, int y, int posX, int posY, Map map){
+		super("Casco", x, y, posX, posY, map);
 	}
 	
 /*	public int kill(){
