@@ -90,8 +90,8 @@ public class Map extends JPanel implements ActionListener{
 		player.setPuntos(player.getPuntos()+enemies[x].getPuntos());
 		enemies[x]=null;
 	}
-	public void deleteObstacle(int x, int y){
-		obstacles[x][y]=null;
+	public void deleteObstacle(){
+		
 	}
 	public boolean insertEnemy(){
 		boolean insert= false;

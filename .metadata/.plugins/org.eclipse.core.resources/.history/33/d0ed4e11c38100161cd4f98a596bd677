@@ -91,7 +91,7 @@ public class Map extends JPanel implements ActionListener{
 		enemies[x]=null;
 	}
 	public void deleteObstacle(int x, int y){
-		obstacles[x][y]=null;
+		
 	}
 	public boolean insertEnemy(){
 		boolean insert= false;
