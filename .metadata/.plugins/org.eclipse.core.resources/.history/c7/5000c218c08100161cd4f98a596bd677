@@ -11,7 +11,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.*;
-import java.util.Random;
 
 public class Play extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -173,9 +172,6 @@ public class Play extends JFrame{
 	private class OyenteBoton implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			String s= e.getActionCommand();
-			Random r= new Random();
-			int x= r.nextInt(4);
-			int y= r.nextInt(13);
 			if((botones[0].getName()==s)||(botones[0].getText()==s)){
 				if(cantEnemyDead<etiquetasEnemigos.length){
 					if(map.insertEnemy()){
@@ -186,20 +182,12 @@ public class Play extends JFrame{
 			}
 			else{
 				if((botones[1].getName()==s)||(botones[1].getText()==s)){
-					boolean vacio=true;
-					Enemy[] ene= map.getEnemies();
-					for(int i=0;(i<ene.length)&&(vacio);i++){
-						if(ene[i]!=null)
-							vacio=false;
-					}
-					if(!vacio){
-						while(ene[x]==null){
-							x=r.nextInt(4);
-						}
-						map.deleteEnemy(x);
-					}
+					map.deleteEnemy();
 					etiquetaPuntos.setForeground(Color.GREEN);
 					etiquetaPuntos.setText("Puntos jugador: "+player.getPuntos());
+				}
+				else{
+					map.deleteObstacle();
 				}
 			}
 		}
