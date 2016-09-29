@@ -8,11 +8,10 @@ public class PowerTank extends Enemy{
 		puntos=300;
 	}
 	
-	public int kill(){
-		map.deleteEnemy(posEnEnemies);
-		return puntos;
+/*	public int kill(){
+		
 	}
-/*	public boolean collide(Jugador jug){
+	public boolean collide(Jugador jug){
 	
 	}
 	public boolean collide(Enemigo ene){

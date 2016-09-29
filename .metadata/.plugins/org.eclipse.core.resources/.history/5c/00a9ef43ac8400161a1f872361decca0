@@ -8,11 +8,10 @@ public class FastTank extends Enemy{
 		puntos=200;
 	}
 	
-	public int kill(){
-		map.deleteEnemy(posEnEnemies);
-		return puntos;		
+/*	public int kill(){
+		
 	}
-/*	public boolean collide(Player jug){
+	public boolean collide(Player jug){
 	
 	}
 	public boolean collide(Enemy ene){

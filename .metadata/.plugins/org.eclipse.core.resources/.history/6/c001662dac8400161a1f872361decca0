@@ -9,7 +9,6 @@ public class ArmoredTank extends Enemy{
 	}
 	
 	public int kill(){
-		map.deleteEnemy(posEnEnemies);
 		return puntos;
 	}
 /*	public boolean collide(Player jug){

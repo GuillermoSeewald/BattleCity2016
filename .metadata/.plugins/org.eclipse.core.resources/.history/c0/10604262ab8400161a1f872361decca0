@@ -77,15 +77,4 @@ public abstract class Character extends Element{
 	public int getPuntos(){
 		return puntos;
 	}
-	
-/*	public int kill(){
-		
-	}
-	public boolean collide(Jugador jug){
-	
-	}
-	public boolean collide(Enemigo ene){
-		
-	}
-	*/
 }
