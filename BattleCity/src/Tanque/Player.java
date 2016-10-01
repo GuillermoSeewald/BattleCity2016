@@ -6,27 +6,32 @@ import javax.swing.ImageIcon;
 
 public class Player extends Character{
 	
-	protected String direccion= "arriba";
 	protected String nom;
 	
 
-	protected int nivel, disparosSimultaneos;
+	protected int simultaneousShot, life;
 	
 	public Player(Map map){
-		super(3,12,1,"Jugador","arriba",208,624, map);
+		super(12,1,"Jugador","arriba",208,624, map);
 		nom= "Jugador";
-		nivel=1;
-		puntos=0;
-		disparosSimultaneos=1;
+		direction="arriba";
+		points=0;
+		life=3;
+		simultaneousShot=1;
+	}
+	public void incrementLife(){
+		life++;
+	}
+	public void decrementLife(){
+		if(life>0){
+			life--;
+		}
 	}
 	public void setMap(Map m){
 		this.map=m;
 	}
-	public void setNivel(int i){
-		nivel=i;
-	}
 	public void setDisparos(int d){
-		disparosSimultaneos=d;
+		simultaneousShot=d;
 	}
 	public void keyPressed(KeyEvent k){
 		int key= k.getKeyCode();
@@ -35,22 +40,22 @@ public class Player extends Character{
 		case KeyEvent.VK_UP :
 			dy = -1;
 			dx=0;
-			direccion="arriba";
+			direction="arriba";
 			break;
 		case KeyEvent.VK_DOWN :
 			dy = 1;
 			dx=0;
-			direccion="abajo";
+			direction="abajo";
 			break;
 		case KeyEvent.VK_LEFT :
 			dx = -1;
 			dy=0;
-			direccion="izquierda";
+			direction="izquierda";
 			break;
 		case KeyEvent.VK_RIGHT :
 			dx = 1;
 			dy=0;
-			direccion="derecha";
+			direction="derecha";
 			break;
 		}
 		if(movImagen==1){
@@ -59,7 +64,7 @@ public class Player extends Character{
 		else{
 			movImagen=1;
 		}
-		ImageIcon ima = new ImageIcon("Imagenes/"+nom+" "+direccion+"-mov"+movImagen+".png");
+		ImageIcon ima = new ImageIcon("Imagenes/"+nom+" "+direction+"-mov"+movImagen+".png");
 		setImagen(ima.getImage());
 	}
 	public void keyReleased(KeyEvent k){
@@ -80,11 +85,11 @@ public class Player extends Character{
 			break;
 		}
 	}
-	public int getNivel(){
-		return nivel;
+	public int getLifes(){
+		return life;
 	}
 	public int getDisparos(){
-		return disparosSimultaneos;
+		return simultaneousShot;
 	}
 	
 /*	public int kill(){

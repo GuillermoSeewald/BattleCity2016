@@ -4,13 +4,13 @@ import Mapa.*;
 
 public class PowerTank extends Enemy{
 	public PowerTank(int x, int y, Map map, int posE){
-		super(1,12,1,"Power tank","abajo", x, y, map, posE);
-		puntos=300;
+		super(12,1,"Power tank","abajo", x, y, map, posE);
+		points=300;
 	}
 	
 	public int kill(){
 		map.deleteEnemy(posEnEnemies);
-		return puntos;
+		return points;
 	}
 /*	public boolean collide(Jugador jug){
 	

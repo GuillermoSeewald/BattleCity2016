@@ -3,35 +3,31 @@ package Tanque;
 import Mapa.*;
 
 public abstract class Character extends Element{
-	protected int vida, velMovimiento, golpesQueResiste, movImagen,puntos;
-	protected String direccion;
-	protected boolean hayDisparo;
+	protected int speedMove, resistance, movImagen, points;
+	protected String direction;
+	protected boolean haveShot;
 	
 	protected int dx;
 	protected int dy;
 	
-	public Character(int v,int velM,int golpes,String nom,String dir, int x, int y, Map map){
-		super(nom+" "+dir+"-mov1", x, y,map);
-		vida=v;
-		velMovimiento=velM;
-		golpesQueResiste=golpes;
-		direccion=dir;
+	public Character(int speedM,int res,String n,String dir, int x, int y, Map map){
+		super(n+" "+dir+"-mov1", x, y,map);
+		speedMove=speedM;
+		resistance=res;
+		direction=dir;
 		movImagen=1;
 	}
 	
-	public void asignarVida(int v){
-		vida=v;
+	public void setSpeedMove(int s){
+		speedMove=s;
 	}
-	public void asignarVelocidadMovimientoo(int v){
-		velMovimiento=v;
+	public void setResistance(int r){
+		resistance=r;
 	}
-	public void asignarGolpes(int g){
-		golpesQueResiste=g;
+	public void setPoints(int p){
+		points=p;
 	}
-	public void setPuntos(int p){
-		puntos=p;
-	}
-	public void mover(){
+	public void move(){
 		if((x==0)&&(dx==(-1))){
 			x=0;
 		}
@@ -59,33 +55,19 @@ public abstract class Character extends Element{
 //		hayDisparo=true;
 //		new Disparo(direccion);
 //	}
-	public int getVidas(){
-		return vida;
+	public int getSpeedMove(){
+		return speedMove;
 	}
-	public int getVelMovimiento(){
-		return velMovimiento;
+	public int getResistance(){
+		return resistance;
 	}
-	public int getGolpes(){
-		return golpesQueResiste;
+	public String getDirection(){
+		return direction;
 	}
-	public String getDireccion(){
-		return direccion;
+	public boolean haveShot(){
+		return haveShot;
 	}
-	public boolean hayDisparo(){
-		return hayDisparo;
+	public int getPoints(){
+		return points;
 	}
-	public int getPuntos(){
-		return puntos;
-	}
-	
-/*	public int kill(){
-		
-	}
-	public boolean collide(Jugador jug){
-	
-	}
-	public boolean collide(Enemigo ene){
-		
-	}
-	*/
 }

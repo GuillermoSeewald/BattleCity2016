@@ -100,6 +100,7 @@ public class Play extends JFrame{
 		for(int i=0;i<botones.length;i++){
 			botones[i]=new JButton(s[i]);
 			botones[i].addActionListener(oyBot);
+			botones[i].setFocusable(false);
 			aux2.add(botones[i]);
 		}
 		
@@ -207,7 +208,7 @@ public class Play extends JFrame{
 						botones[1].setEnabled(false);
 					}
 					etiquetaPuntos.setForeground(Color.GREEN);
-					etiquetaPuntos.setText("Puntos jugador: "+player.getPuntos());
+					etiquetaPuntos.setText("Puntos jugador: "+player.getPoints());
 				}
 				else{
 					int cantObs=0;
@@ -229,9 +230,6 @@ public class Play extends JFrame{
 						botones[2].setEnabled(false);
 					}
 				}
-			}
-			for(int i=0;i<botones.length;i++){
-				botones[i].setFocusable(false);
 			}
 		}
 	}

@@ -4,13 +4,13 @@ import Mapa.*;
 
 public class FastTank extends Enemy{
 	public FastTank(int x, int y, Map map, int posE){
-		super(1,8,1,"Fast tank","abajo", x, y, map, posE);
-		puntos=200;
+		super(8,1,"Fast tank","abajo", x, y, map, posE);
+		points=200;
 	}
 	
 	public int kill(){
 		map.deleteEnemy(posEnEnemies);
-		return puntos;		
+		return points;		
 	}
 /*	public boolean collide(Player jug){
 	

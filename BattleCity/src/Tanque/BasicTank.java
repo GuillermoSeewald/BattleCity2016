@@ -4,13 +4,13 @@ import Mapa.*;
 
 public class BasicTank extends Enemy{
 	public BasicTank(int x, int y, Map map, int posE){
-		super(1,12,1,"Basic tank","abajo", x, y, map, posE);
-		puntos=100;
+		super(12,1,"Basic tank","abajo", x, y, map, posE);
+		points=100;
 	}
 	
 	public int kill(){
 		map.deleteEnemy(posEnEnemies);
-		return puntos;
+		return points;
 	}
 /*	public boolean collide(Player jug){
 	

@@ -39,7 +39,7 @@ public class Map extends JPanel implements ActionListener{
 		}
 		
 		player= jug;
-		timer= new Timer(player.getVelMovimiento(),this);
+		timer= new Timer(player.getSpeedMove(),this);
 		timer.start();
 		
 		setSize(677,707);
@@ -87,7 +87,7 @@ public class Map extends JPanel implements ActionListener{
 		}
 	}
 	public void deleteEnemy(int x){
-		player.setPuntos(player.getPuntos()+enemies[x].getPuntos());
+		player.setPoints(player.getPoints()+enemies[x].getPoints());
 		enemies[x]=null;
 	}
 	public void deleteObstacle(int x, int y){
@@ -178,7 +178,7 @@ public class Map extends JPanel implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		player.mover();
+		player.move();
 		repaint();
 	}
 }

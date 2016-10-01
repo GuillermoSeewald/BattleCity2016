@@ -5,6 +5,9 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Tanque.Enemy;
+import Tanque.Player;
+
 public abstract class Element{
 	
 	protected String nombre;
@@ -44,4 +47,8 @@ public abstract class Element{
 	public int getHeigth(){
 		return heigth;
 	}
+/*	public abstract int kill();
+	public abstract boolean collide(Player jug);
+	public abstract boolean collide(Enemy ene);
+	*/
 }
