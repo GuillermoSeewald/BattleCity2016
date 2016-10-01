@@ -1,0 +1,29 @@
+package Level;
+
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
+public class Level1 extends Level{
+	public Level1(){
+		images= new Image[2][4];
+		ImageIcon ima = new ImageIcon("Imagenes/Jugador arriba-mov1.png");
+		images[0][0]=ima.getImage();
+		ima=new ImageIcon("Imagenes/Jugador arriba-mov1.png");
+		images[1][0]=ima.getImage();
+		ima = new ImageIcon("Imagenes/Jugador arriba-mov1.png");
+		images[0][1]=ima.getImage();
+		ima = new ImageIcon("Imagenes/Jugador arriba-mov1.png");
+		images[1][1]=ima.getImage();
+		ima = new ImageIcon("Imagenes/Jugador arriba-mov1.png");
+		images[0][2]=ima.getImage();
+		ima = new ImageIcon("Imagenes/Jugador arriba-mov1.png");
+		images[1][2]=ima.getImage();
+		ima = new ImageIcon("Imagenes/Jugador arriba-mov1.png");
+		images[0][3]=ima.getImage();
+		ima = new ImageIcon("Imagenes/Jugador arriba-mov1.png");
+		images[1][3]=ima.getImage();
+	}
+	public int getSpeedShot(){
+		return speedShot;
+	}
+}

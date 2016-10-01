@@ -7,10 +7,11 @@ public class Timer extends PowerUp{
 		super("Timer", x, y, posX, posY, map);
 	}
 	
-/*	public int kill(){
-		
+	public int kill(){
+		map.deleteObstacle(posX, posY);
+		return 0;
 	}
-	public boolean collide(Player jug){
+/*	public boolean collide(Player jug){
 	
 	}
 	public boolean collide(Enemy ene){

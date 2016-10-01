@@ -5,6 +5,7 @@ import Obstaculo.*;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -125,6 +126,7 @@ public class Play extends JFrame{
 		aux3.setBackground(Color.BLACK);
 		aux.setLayout(new GridLayout(20,2));
 		aux.setBackground(Color.BLACK);
+		aux.setBorder(new LineBorder(Color.BLACK));
 		
 		aux.add(aux3);aux3=new JPanel();aux3.setBackground(Color.BLACK);
 		aux.add(aux3);aux3=new JPanel();aux3.setBackground(Color.BLACK);
@@ -202,13 +204,13 @@ public class Play extends JFrame{
 						while(ene[x]==null){
 							x=r.nextInt(4);
 						}
-						map.deleteEnemy(x);
+						player.setPoints(player.getPoints()+map.enemies[x].kill());
 					}
 					if(cantEnemyDead==20){
 						botones[1].setEnabled(false);
 					}
 					etiquetaPuntos.setForeground(Color.GREEN);
-					etiquetaPuntos.setText("Puntos jugador: "+player.getPoints());
+					etiquetaPuntos.setText("Puntos jugador: "+player.getPoints()+" "+cantEnemyDead);
 				}
 				else{
 					int cantObs=0;
@@ -220,11 +222,11 @@ public class Play extends JFrame{
 						}
 					}
 					if(cantObs>1){
-						while((obs[y][z]==null)||(obs[y][z]==obs[12][6])){
+						while(obs[y][z]==null){
 							y=r.nextInt(13);
 							z=r.nextInt(13);
 						}
-						map.deleteObstacle(y, z);
+						map.deleteObstacle(y, z);;
 					}
 					else{
 						botones[2].setEnabled(false);

@@ -1,0 +1,13 @@
+package Level;
+
+import java.awt.Image;
+
+public class Level4 extends Level{
+	public Level4(){
+		images= new Image[2][4];
+		buildImages();		
+	}
+	public int getSpeedShot(){
+		return speedShot;
+	}
+}

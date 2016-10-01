@@ -1,0 +1,113 @@
+package Tanque;
+
+import Mapa.*;
+import Level.*;
+import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
+
+public class Player extends Character{
+	
+	protected String nom;
+	protected Level level;
+	protected int simultaneousShots, life;
+	
+	public Player(Map map){
+		super(12,1,"Jugador","arriba",208,624, map);
+		nom= "Jugador";
+		direction="arriba";
+		points=0;
+		life=3;
+		simultaneousShots=1;
+	}
+	public void incrementLife(){
+		life++;
+	}
+	public void decrementLife(){
+		if(life>0){
+			life--;
+		}
+	}
+	public void setMap(Map m){
+		this.map=m;
+	}
+	public void setSimultaneousShots(int d){
+		simultaneousShots=d;
+	}
+	public void setLevel(Level l){
+		level=l;
+	}
+	public void keyPressed(KeyEvent k){
+		int key= k.getKeyCode();
+		int dir=0;
+		
+		switch (key){
+		case KeyEvent.VK_UP :
+			dy = -1;
+			dx=0;
+			direction="arriba";
+			dir=0;
+			break;
+		case KeyEvent.VK_DOWN :
+			dy = 1;
+			dx=0;
+			direction="abajo";
+			dir=2;
+			break;
+		case KeyEvent.VK_LEFT :
+			dx = -1;
+			dy=0;
+			direction="izquierda";
+			dir=1;
+			break;
+		case KeyEvent.VK_RIGHT :
+			dx = 1;
+			dy=0;
+			direction="derecha";
+			dir=3;
+			break;
+		}
+		if(movImage==1){
+			movImage=2;
+		}
+		else{
+			movImage=1;
+		}
+		ImageIcon ima = new ImageIcon("Imagenes/"+nom+" "+direction+"-mov"+movImage+".png");
+		setImagen(level.getImage(movImage,dir));
+	}
+	public void keyReleased(KeyEvent k){
+		int key= k.getKeyCode();
+		
+		switch (key){
+		case KeyEvent.VK_UP :
+			dy = 0;
+			break;
+		case KeyEvent.VK_DOWN :
+			dy = 0;
+			break;
+		case KeyEvent.VK_LEFT :
+			dx = 0;
+			break;
+		case KeyEvent.VK_RIGHT :
+			dx = 0;
+			break;
+		}
+	}
+	public int getLifes(){
+		return life;
+	}
+	public int getSimultaneousShots(){
+		return simultaneousShots;
+	}
+	public Level getLevel(){
+		return level;
+	}
+	
+/*	public int kill(){
+		
+	}
+	public boolean collide(Enemy ene){
+		
+	}
+	*/
+}

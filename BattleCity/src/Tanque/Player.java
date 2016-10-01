@@ -1,28 +1,26 @@
 package Tanque;
 
 import Mapa.*;
+import Level.*;
 import java.awt.event.KeyEvent;
-import javax.swing.ImageIcon;
 
 public class Player extends Character{
 	
-	protected String nom;
-	
-
-	protected int simultaneousShot, life;
+	protected Level level;
+	protected int simultaneousShots, life;
 	
 	public Player(Map map){
 		super(12,1,"Jugador","arriba",208,624, map);
-		nom= "Jugador";
-		direction="arriba";
 		points=0;
 		life=3;
-		simultaneousShot=1;
+		simultaneousShots=1;
+		level=new Level1();
+		setImage(level.getImage(0, 0));
 	}
-	public void incrementLife(){
+	public void incrementLifes(){
 		life++;
 	}
-	public void decrementLife(){
+	public void decrementLifes(){
 		if(life>0){
 			life--;
 		}
@@ -30,42 +28,45 @@ public class Player extends Character{
 	public void setMap(Map m){
 		this.map=m;
 	}
-	public void setDisparos(int d){
-		simultaneousShot=d;
+	public void setSimultaneousShots(int d){
+		simultaneousShots=d;
+	}
+	public void setLevel(Level l){
+		level=l;
 	}
 	public void keyPressed(KeyEvent k){
 		int key= k.getKeyCode();
+		int dir=0;
 		
 		switch (key){
 		case KeyEvent.VK_UP :
 			dy = -1;
 			dx=0;
-			direction="arriba";
+			dir=0;
 			break;
 		case KeyEvent.VK_DOWN :
 			dy = 1;
 			dx=0;
-			direction="abajo";
+			dir=2;
 			break;
 		case KeyEvent.VK_LEFT :
 			dx = -1;
 			dy=0;
-			direction="izquierda";
+			dir=1;
 			break;
 		case KeyEvent.VK_RIGHT :
 			dx = 1;
 			dy=0;
-			direction="derecha";
+			dir=3;
 			break;
 		}
-		if(movImagen==1){
-			movImagen=2;
+		if(movImage==0){
+			movImage=1;
 		}
 		else{
-			movImagen=1;
+			movImage=0;
 		}
-		ImageIcon ima = new ImageIcon("Imagenes/"+nom+" "+direction+"-mov"+movImagen+".png");
-		setImagen(ima.getImage());
+		setImage(level.getImage(movImage,dir));
 	}
 	public void keyReleased(KeyEvent k){
 		int key= k.getKeyCode();
@@ -88,14 +89,21 @@ public class Player extends Character{
 	public int getLifes(){
 		return life;
 	}
-	public int getDisparos(){
-		return simultaneousShot;
+	public int getSimultaneousShots(){
+		return simultaneousShots;
+	}
+	public Level getLevel(){
+		return level;
 	}
 	
-/*	public int kill(){
-		
+	public int kill(){
+		decrementLifes();
+		x=208;y=624;
+		level= new Level1();
+		setImage(level.getImage(0, 0));
+		return 0;
 	}
-	public boolean collide(Enemy ene){
+/*	public boolean collide(Enemy ene){
 		
 	}
 	*/

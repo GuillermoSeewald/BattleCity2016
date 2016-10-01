@@ -15,10 +15,10 @@ public class Shoot extends Element{
 	public String getDireccion(){
 		return direccion;
 	}
-/*	public int kill(){
-		
+	public int kill(){
+		return 0;
 	}
-	public boolean collide(Player jug){
+/*	public boolean collide(Player jug){
 		
 	}
 	public boolean collide(Enemy ene){
