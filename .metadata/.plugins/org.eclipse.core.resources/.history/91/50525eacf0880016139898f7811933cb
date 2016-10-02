@@ -60,14 +60,6 @@ public class Shot extends Element{
 			return 3;
 		}
 	}
-	public int getWidht(){
-		if((dx==-1)||(dx==1)){
-			return 4;
-		}
-		else{
-			return 3;
-		}
-	}
 	private void assignIncrementDir(String dir){
 		switch(dir){
 		case "arriba":

@@ -58,19 +58,19 @@ public abstract class Character extends Element{
 		switch(direction){
 		case "arriba":
 			ejeX=(this.x+(this.getWidth()/2));
-			ejeY=(this.y);
+			ejeY=(this.y+1);
 			break;
 		case "abajo":
 			ejeX=(this.x+(this.getWidth()/2));
-			ejeY=(this.y+this.getHeight());
+			ejeY=(this.y+this.getHeigth()+1);
 			break;
 		case "izquierda":
-			ejeX=(this.x);
-			ejeY=(this.y+(this.getHeight()/2));
+			ejeX=(this.x-1);
+			ejeY=(this.y+(this.getHeigth()/2));
 			break;
 		case "derecha":
-			ejeX=(this.x+this.getWidth());
-			ejeY=(this.y+(this.getHeight()/2));
+			ejeX=(this.x+this.getWidth()+1);
+			ejeY=(this.y+(this.getHeigth()/2));
 			break;
 		}
 		new Shot(direction, ejeX, ejeY, map, s);

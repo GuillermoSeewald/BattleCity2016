@@ -13,7 +13,7 @@ public abstract class Element{
 	protected int x;
 	protected int y;
 	protected final int width= 52;
-	protected final int height=52;
+	protected final int heigth=52;
 	
 	protected Image imagen;
 	protected JLabel etiqueta;

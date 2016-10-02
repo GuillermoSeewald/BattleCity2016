@@ -1,0 +1,27 @@
+package Tanque;
+
+import Mapa.*;
+
+public class Shot extends Element{
+	
+	protected int speed, dx, dy;
+	protected String direction;
+	
+	public Shot(String dir, int x, int y, Map map, int speed){
+		super("Disparo "+dir,x, y, map);
+		direction=dir;
+	}
+	public void move(){
+		switch(direction)
+	}
+	public int kill(){
+		return 0;
+	}
+/*	public boolean collide(Player jug){
+		
+	}
+	public boolean collide(Enemy ene){
+		
+	}
+	*/
+}

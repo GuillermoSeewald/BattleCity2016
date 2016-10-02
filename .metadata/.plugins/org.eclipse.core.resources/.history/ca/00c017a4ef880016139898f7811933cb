@@ -12,22 +12,22 @@ public class Shot extends Element{
 	}
 	public void move(){
 		if((x==0)&&(dx==(-1))){
-			kill();
+			x=0;
 		}
 		else{
 			if((x==625)&&(dx==1)){
-				kill();
+				x=625;
 			}
 			else{
 				x+=dx;
 			}
 		}
 		if((y==0)&&(dy==(-1))){
-			kill();
+			y=0;
 		}
 		else{
 			if((y==625)&&(dy==1)){
-				kill();
+				y=625;
 			}
 			else{
 				y+=dy;
@@ -35,7 +35,6 @@ public class Shot extends Element{
 		}		
 	}
 	public int kill(){
-		return 0;
 	}
 /*	public boolean collide(Player jug){
 		
@@ -44,30 +43,7 @@ public class Shot extends Element{
 		
 	}
 	*/
-	public int getWidth(){
-		if((dx==-1)||(dx==1)){
-			return 4;
-		}
-		else{
-			return 3;
-		}
-	}
-	public int getHeight(){
-		if((dx==-1)||(dx==1)){
-			return 4;
-		}
-		else{
-			return 3;
-		}
-	}
-	public int getWidht(){
-		if((dx==-1)||(dx==1)){
-			return 4;
-		}
-		else{
-			return 3;
-		}
-	}
+	
 	private void assignIncrementDir(String dir){
 		switch(dir){
 		case "arriba":
