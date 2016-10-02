@@ -86,6 +86,9 @@ public class Map extends JPanel implements ActionListener{
 			enemies[i]=null;
 		}
 	}
+	public void setElement(Element e){
+		
+	}
 	public void deleteEnemy(int x){
 		player.setPoints(player.getPoints()+enemies[x].getPoints());
 		enemies[x]=null;

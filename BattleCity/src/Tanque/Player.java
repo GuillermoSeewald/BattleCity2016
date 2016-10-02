@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 public class Player extends Character{
 	
 	protected Level level;
+	protected boolean vulnerability;
 	protected int simultaneousShots, life;
 	
 	public Player(Map map){
@@ -15,6 +16,7 @@ public class Player extends Character{
 		life=3;
 		simultaneousShots=1;
 		level=new Level1();
+		vulnerability=false;
 		setImage(level.getImage(0, 0));
 	}
 	public void incrementLifes(){
@@ -34,30 +36,26 @@ public class Player extends Character{
 	public void setLevel(Level l){
 		level=l;
 	}
+	public void attack(){
+		super.attack(level.getSpeedShot());
+	}
 	public void keyPressed(KeyEvent k){
 		int key= k.getKeyCode();
 		int dir=0;
+		boolean movimiento=false;
 		
 		switch (key){
 		case KeyEvent.VK_UP :
-			dy = -1;
-			dx=0;
-			dir=0;
+			dy = -1;dx=0;dir=0;direction="arriba";movimiento=true;
 			break;
 		case KeyEvent.VK_DOWN :
-			dy = 1;
-			dx=0;
-			dir=2;
+			dy = 1;dx=0;dir=2;direction="abajo";movimiento=true;
 			break;
 		case KeyEvent.VK_LEFT :
-			dx = -1;
-			dy=0;
-			dir=1;
+			dx = -1;dy=0;dir=1;direction="izquierda";movimiento=true;
 			break;
 		case KeyEvent.VK_RIGHT :
-			dx = 1;
-			dy=0;
-			dir=3;
+			dx = 1;dy=0;dir=3;direction="derecha";movimiento=true;
 			break;
 		}
 		if(movImage==0){
@@ -66,7 +64,9 @@ public class Player extends Character{
 		else{
 			movImage=0;
 		}
-		setImage(level.getImage(movImage,dir));
+		if(movimiento){
+			setImage(level.getImage(movImage,dir));
+		}
 	}
 	public void keyReleased(KeyEvent k){
 		int key= k.getKeyCode();
@@ -95,7 +95,9 @@ public class Player extends Character{
 	public Level getLevel(){
 		return level;
 	}
-	
+	public boolean isVulnerable(){
+		return vulnerability;
+	}
 	public int kill(){
 		decrementLifes();
 		x=208;y=624;

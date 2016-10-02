@@ -5,7 +5,6 @@ import Mapa.*;
 public abstract class Character extends Element{
 	protected int speedMove, resistance, movImage, points;
 	protected String direction;
-	protected boolean haveShot;
 	
 	protected int dx;
 	protected int dy;
@@ -51,10 +50,31 @@ public abstract class Character extends Element{
 			}
 		}
 	}
-//	public void disparar(){
-//		hayDisparo=true;
-//		new Disparo(direccion);
-//	}
+	public abstract void attack();
+	
+	public void attack(int s){
+		int ejeX=0;
+		int ejeY=0;
+		switch(direction){
+		case "arriba":
+			ejeX=(this.x+(this.getWidth()/2));
+			ejeY=(this.y+1);
+			break;
+		case "abajo":
+			ejeX=(this.x+(this.getWidth()/2));
+			ejeY=(this.y+this.getHeigth()+1);
+			break;
+		case "izquierda":
+			ejeX=(this.x-1);
+			ejeY=(this.y+(this.getHeigth()/2));
+			break;
+		case "derecha":
+			ejeX=(this.x+this.getWidth()+1);
+			ejeY=(this.y+(this.getHeigth()/2));
+			break;
+		}
+		new Shot(direction, ejeX, ejeY, map, s);
+	}
 	public int getSpeedMove(){
 		return speedMove;
 	}
@@ -63,9 +83,6 @@ public abstract class Character extends Element{
 	}
 	public String getDirection(){
 		return direction;
-	}
-	public boolean haveShot(){
-		return haveShot;
 	}
 	public int getPoints(){
 		return points;

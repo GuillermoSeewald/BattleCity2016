@@ -7,7 +7,9 @@ public class FastTank extends Enemy{
 		super(8,1,"Fast tank","abajo", x, y, map, posE);
 		points=200;
 	}
-	
+	public void attack(){
+		super.attack(9);
+	}	
 	public int kill(){
 		map.deleteEnemy(posEnEnemies);
 		return points;		

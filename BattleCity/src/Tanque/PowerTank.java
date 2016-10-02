@@ -7,7 +7,9 @@ public class PowerTank extends Enemy{
 		super(12,1,"Power tank","abajo", x, y, map, posE);
 		points=300;
 	}
-	
+	public void attack(){
+		super.attack(8);
+	}	
 	public int kill(){
 		map.deleteEnemy(posEnEnemies);
 		return points;

@@ -7,7 +7,9 @@ public class BasicTank extends Enemy{
 		super(12,1,"Basic tank","abajo", x, y, map, posE);
 		points=100;
 	}
-	
+	public void attack(){
+		super.attack(10);
+	}	
 	public int kill(){
 		map.deleteEnemy(posEnEnemies);
 		return points;
