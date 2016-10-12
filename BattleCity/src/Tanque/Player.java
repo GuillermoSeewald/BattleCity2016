@@ -2,6 +2,7 @@ package Tanque;
 
 import Mapa.*;
 import Level.*;
+import Shot.*;
 import java.awt.event.KeyEvent;
 
 public class Player extends Character{
@@ -37,7 +38,8 @@ public class Player extends Character{
 		level=l;
 	}
 	public void attack(){
-		super.attack(level.getSpeedShot());
+		int[] pos=super.generatePosShot();
+		new ShotPlayer(direction,pos[0],pos[1],map,level.getSpeedShot(),this);
 	}
 	public void keyPressed(KeyEvent k){
 		int key= k.getKeyCode();
@@ -98,14 +100,23 @@ public class Player extends Character{
 	public boolean isVulnerable(){
 		return vulnerability;
 	}
-	public int kill(){
+	protected int kill(){
 		decrementLifes();
 		x=208;y=624;
 		level= new Level1();
 		setImage(level.getImage(0, 0));
 		return 0;
 	}
-/*	public boolean collide(Enemy ene){
+	public int kill(Player pla){
+		return 0;
+	}
+	public int kill(Enemy ene){
+		return 0;
+	}
+/*	public boolean collide(Player pla){
+		
+	}
+	public boolean collide(Enemy ene){
 		
 	}
 	*/

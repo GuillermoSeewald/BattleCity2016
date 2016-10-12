@@ -1,6 +1,8 @@
 package Obstaculo;
 
 import Mapa.*;
+import Tanque.Enemy;
+import Tanque.Player;
 
 public class SteelWall extends Wall{
 	
@@ -8,8 +10,14 @@ public class SteelWall extends Wall{
 		super("Acero", x, y, posX, posY, map);
 	}
 	
-	public int kill(){
+	protected int kill(){
 		map.deleteObstacle(posX, posY);
+		return 0;
+	}
+	public int kill(Player pla){
+		return 0;
+	}
+	public int kill(Enemy ene){
 		return 0;
 	}
 /*	public boolean collide(Player jug){

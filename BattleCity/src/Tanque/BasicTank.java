@@ -1,6 +1,7 @@
 package Tanque;
 
 import Mapa.*;
+import Shot.ShotEnemy;
 
 public class BasicTank extends Enemy{
 	public BasicTank(int x, int y, Map map, int posE){
@@ -8,11 +9,18 @@ public class BasicTank extends Enemy{
 		points=100;
 	}
 	public void attack(){
-		super.attack(10);
+		int[] pos=super.generatePosShot();
+		new ShotEnemy(direction,pos[0],pos[1],map,10,this);
 	}	
-	public int kill(){
+	protected int kill(){
 		map.deleteEnemy(posEnEnemies);
 		return points;
+	}
+	public int kill(Player pla){
+		return 0;
+	}
+	public int kill(Enemy ene){
+		return 0;
 	}
 /*	public boolean collide(Player jug){
 	

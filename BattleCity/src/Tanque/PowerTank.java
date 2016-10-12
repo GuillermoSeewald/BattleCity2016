@@ -1,6 +1,7 @@
 package Tanque;
 
 import Mapa.*;
+import Shot.*;
 
 public class PowerTank extends Enemy{
 	public PowerTank(int x, int y, Map map, int posE){
@@ -8,11 +9,18 @@ public class PowerTank extends Enemy{
 		points=300;
 	}
 	public void attack(){
-		super.attack(8);
+		int[] pos=super.generatePosShot();
+		new ShotEnemy(direction,pos[0],pos[1],map,8,this);
 	}	
-	public int kill(){
+	protected int kill(){
 		map.deleteEnemy(posEnEnemies);
 		return points;
+	}
+	public int kill(Player pla){
+		return 0;
+	}
+	public int kill(Enemy ene){
+		return 0;
 	}
 /*	public boolean collide(Jugador jug){
 	

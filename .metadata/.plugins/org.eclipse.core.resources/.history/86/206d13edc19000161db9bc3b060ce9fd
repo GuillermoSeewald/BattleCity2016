@@ -1,0 +1,17 @@
+package Shot;
+
+public class ShotPlayer {
+
+	
+	
+	
+	
+
+/*	public boolean collide(Player jug){
+		
+	}
+	public boolean collide(Enemy ene){
+		
+	}
+	*/
+}

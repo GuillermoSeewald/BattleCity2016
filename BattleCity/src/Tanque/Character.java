@@ -52,7 +52,7 @@ public abstract class Character extends Element{
 	}
 	public abstract void attack();
 	
-	public void attack(int s){
+	public int[] generatePosShot(){
 		int ejeX=0;
 		int ejeY=0;
 		switch(direction){
@@ -73,7 +73,10 @@ public abstract class Character extends Element{
 			ejeY=(this.y+(this.getHeight()/2));
 			break;
 		}
-		new Shot(direction, ejeX, ejeY, map, s);
+		int[] retorno=new int[2];
+		retorno[0]=ejeX;
+		retorno[1]=ejeY;
+		return retorno;
 	}
 	public int getSpeedMove(){
 		return speedMove;

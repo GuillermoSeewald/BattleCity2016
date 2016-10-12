@@ -1,5 +1,6 @@
 package Mapa;
 
+import Tanque.*;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -44,7 +45,9 @@ public abstract class Element{
 	public int getHeight(){
 		return height;
 	}
-	public abstract int kill();
+	protected abstract int kill();
+	public abstract int kill(Player pla);
+	public abstract int kill(Enemy ene);
 /*	public abstract boolean collide(Player jug);
 	public abstract boolean collide(Enemy ene);
 	*/

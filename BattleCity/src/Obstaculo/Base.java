@@ -2,6 +2,8 @@ package Obstaculo;
 
 import javax.swing.ImageIcon;
 import Mapa.*;
+import Tanque.Enemy;
+import Tanque.Player;
 
 public class Base extends Obstacle{
 	
@@ -15,9 +17,15 @@ public class Base extends Obstacle{
 	public boolean itsDestroyed(){
 		return destroyed;
 	}
-	public int kill(){
+	protected int kill(){
 		setImage(new ImageIcon("Imagenes/Bandera2.png").getImage());
 		destroyed=true;
+		return 0;
+	}
+	public int kill(Player pla){
+		return 0;
+	}
+	public int kill(Enemy ene){
 		return 0;
 	}
 /*	public boolean collide(Player jug){
