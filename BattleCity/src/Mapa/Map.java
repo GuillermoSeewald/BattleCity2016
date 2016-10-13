@@ -2,6 +2,7 @@ package Mapa;
 
 import Obstaculo.*;
 import Tanque.*;
+import Shot.*;
 import java.util.Random;
 import javax.swing.*;
 
@@ -21,6 +22,7 @@ public class Map extends JPanel implements ActionListener{
 	protected Timer timer;
 	protected Obstacle[][] obstacles;
 	protected Enemy[] enemies;
+	protected Shot[] shots;
 	protected int cantEnemy;
 	protected Play game;
 	
@@ -31,6 +33,7 @@ public class Map extends JPanel implements ActionListener{
 		
 		game=p;
 		enemies= new Enemy[4];
+		shots= new Shot[7];
 		obstacles=new Obstacle[13][13];
 		try{
 			cargarMapa(mapa);
@@ -86,17 +89,19 @@ public class Map extends JPanel implements ActionListener{
 			enemies[i]=null;
 		}
 	}
-	public void setElement(Element e){
-		
+	public void deleteShot(int x){
+		shots[x]=null;
 	}
 	public void deleteEnemy(int x){
 		player.setPoints(player.getPoints()+enemies[x].getPoints());
+		enemies[x].terminate();
 		enemies[x]=null;
 	}
 	public void deleteObstacle(int x, int y){
 		obstacles[x][y]=null;
 	}
 	public boolean insertEnemy(){
+		Thread t;
 		boolean insert= false;
 		int posicion=0;
 		Random r= new Random();
@@ -107,16 +112,28 @@ public class Map extends JPanel implements ActionListener{
 					insert=true;
 					switch(x){
 					case 0:
-						enemies[i]= new ArmoredTank(posicion,0,this, i);
+						ArmoredTank a= new ArmoredTank(posicion,0,this, i);
+						t= new Thread(a);
+						t.start();
+						enemies[i]= a;
 						break;
 					case 1:
-						enemies[i]= new FastTank(posicion, 0, this, i);
+						FastTank f= new FastTank(posicion, 0, this, i);
+						t= new Thread(f);
+						t.start();
+						enemies[i]=f;
 						break;
 					case 2:
-						enemies[i]= new PowerTank(posicion, 0, this, i);
+						PowerTank p= new PowerTank(posicion, 0, this, i);
+						t= new Thread(p);
+						t.start();
+						enemies[i]=p;
 						break;
 					case 3:
-						enemies[i]= new BasicTank(posicion, 0, this, i);
+						BasicTank b= new BasicTank(posicion, 0, this, i);
+						t= new Thread(b);
+						t.start();
+						enemies[i]= b;
 						break;
 					}
 				}
@@ -128,17 +145,145 @@ public class Map extends JPanel implements ActionListener{
 		}
 		return insert;
 	}
+	public int insertShot(Shot s){
+		int retorno=0;
+		boolean insert=false;
+		while((!insert)&&(retorno<shots.length)){
+			if(shots[retorno]==null){
+				shots[retorno]=s;
+				insert=true;
+			}
+			else{
+				retorno++;
+			}
+		}
+		return retorno;
+	}
 	public Enemy[] getEnemies(){
 		return enemies;
 	}
 	public Obstacle[][] getMap(){
 		return obstacles;
 	}
-	public Obstacle getObstacle(int x, int y){
-		return obstacles[x][y];
+	public Obstacle[] getObstacle(int x, int y){
+		Obstacle obs[]= new Obstacle[2];
+		int aux=51;
+		int posX[]= new int[2];
+		boolean foundX=false;
+		for(int i=0;(i<(obstacles.length-1))&&(!foundX);i++){
+			if(aux==x){
+				foundX=true;
+				posX[0]=i;
+			}
+			else{
+				if((aux+1)==x){
+					foundX=true;
+					posX[0]=i+1;
+				}
+				else{
+					aux+=52;
+				}
+			}
+		}
+		aux=0;
+		boolean foundY=false;
+		int posY[]= new int[2];int j=0;
+		if(foundX){
+			while((!foundY)&&(j<obstacles.length)&&(aux<52*11)){
+				if((y>=aux)&&(y<(aux+52))){
+					foundY=true;
+					obs[0]=obstacles[j][posX[0]];
+					obs[1]=null;
+				}
+				else{
+					if((y>=aux)&&(y<aux+104)){
+						if(aux+156<=52*11){
+							if((y>=aux+52)&&(y<aux+156)){
+								posY[0]=j+1;posY[1]=j+2;foundY=true;
+							}
+							else{
+								posY[0]=j;posY[1]=j+1;foundX=true;
+							}
+						}
+						else{
+							posY[0]=j;posY[1]=j+1;foundY=true;
+						}
+						obs[0]=obstacles[posY[0]][posX[0]];
+						obs[1]=obstacles[posY[1]][posX[0]];
+					}
+					else{
+						aux+=52;
+						j++;
+					}
+				}
+			}
+		}
+		else{
+			aux=51;
+			posY= new int[2];
+			for(int i=0;(i<obstacles.length-1)&&(!foundY);i++){
+				if(aux==y){
+					foundY=true;
+					posY[0]=i;
+				}
+				else{
+					if((aux+1)==y){
+						foundY=true;
+						posY[0]=i+1;
+					}
+					else{
+						aux+=52;
+					}
+				}
+			}
+		}
+		aux=0;
+		foundX=false;
+		posX= new int[2];
+		j=0;
+		if(foundY){
+			while((!foundX)&&(j<obstacles.length)&&(aux<52*11)){
+				if((x>=aux)&&(x<(aux+52))){
+					foundX=true;
+					obs[0]=obstacles[posY[0]][j];
+					obs[1]=null;
+				}
+				else{
+					if((x>=aux)&&(x<aux+104)){
+						if(aux+156<=52*11){
+							if((x>=aux+52)&&(x<aux+156)){
+								posX[0]=j+1;
+								posY[1]=j+2;
+								foundX=true;
+							}
+							else{
+								posX[0]=j;
+								posX[1]=j+1;
+								foundX=true;
+							}
+						}
+						else{
+							posX[0]=j;
+							posX[1]=j+1;
+							foundX=true;
+						}
+						obs[0]=obstacles[posY[0]][posX[0]];
+						obs[1]=obstacles[posY[0]][posX[1]];
+					}
+					else{
+						aux+=52;
+						j++;
+					}
+				}
+			}
+		}
+		return obs;
 	}
 	public Play getPlay(){
 		return game;
+	}
+	public Shot[] getShots(){
+		return shots;
 	}
 	
 	
@@ -158,6 +303,11 @@ public class Map extends JPanel implements ActionListener{
 		super.paint(grafica);
 		Graphics2D g= (Graphics2D) grafica;
 		g.drawImage(player.getImagen(), player.getX(), player.getY(), null);
+		for(int n=0;n<shots.length;n++){
+			if(shots[n]!=null){
+				g.drawImage(shots[n].getImagen(),shots[n].getX(),shots[n].getY(),null);
+			}
+		}
 		for(int j=0;j<enemies.length;j++){
 			if(enemies[j]!=null){
 				g.drawImage(enemies[j].getImagen(), enemies[j].getX(), enemies[j].getY(), null);

@@ -12,13 +12,13 @@ public class BrickWall extends Wall{
 	
 	protected int kill(){
 		map.deleteObstacle(posX, posY);
-		return 0;
+		return 1;
 	}
 	public int kill(Player pla){
-		return 0;
+		return kill();
 	}
 	public int kill(Enemy ene){
-		return 0;
+		return kill();
 	}
 /*	public boolean collide(Player jug){
 	

@@ -1,6 +1,7 @@
 package Tanque;
 
 import Mapa.*;
+import Obstaculo.Obstacle;
 
 public abstract class Character extends Element{
 	protected int speedMove, resistance, movImage, points;
@@ -27,27 +28,51 @@ public abstract class Character extends Element{
 		points=p;
 	}
 	public void move(){
-		if((x==0)&&(dx==(-1))){
+		if((x+dx)<0){
 			x=0;
 		}
 		else{
-			if((x==625)&&(dx==1)){
+			if((x+dx)>625){
 				x=625;
 			}
 			else{
 				x+=dx;
 			}
+/*				Obstacle obs[]= new Obstacle[2];
+				if(dx==-1){
+					obs=map.getObstacle(x-1, y);
+				}
+				else
+					if(dx==1){
+						obs=map.getObstacle(x+getWidth(), y);
+					}
+				if((obs[0]==null)&&(obs[1]==null)){
+					x+=dx;
+				}
+			}*/
 		}
-		if((y==0)&&(dy==(-1))){
+		if((y+dy)<0){
 			y=0;
 		}
 		else{
-			if((y==625)&&(dy==1)){
+			if((y+dy)>625){
 				y=625;
 			}
 			else{
 				y+=dy;
 			}
+/*				Obstacle obs[]= new Obstacle[2];
+				if(dy==-1){
+					obs=map.getObstacle(x, y-1);
+				}
+				else
+					if(dy==1){
+						obs=map.getObstacle(x, y+getHeight());
+					}
+				if((obs[0]==null)&&(obs[1]==null)){
+					y+=dy;
+				}
+			}*/
 		}
 	}
 	public abstract void attack();

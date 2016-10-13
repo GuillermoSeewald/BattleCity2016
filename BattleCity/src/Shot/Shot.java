@@ -2,38 +2,45 @@ package Shot;
 
 import Mapa.Element;
 import Mapa.Map;
+import Obstaculo.*;
 
 public abstract class Shot extends Element{
 	
-	protected int speed, dx, dy;
+	protected int speed, dx, dy, posInShots;
 	
 	public Shot(String dir, int x, int y, Map map, int speed){
 		super("Disparo "+dir,x, y, map);
+		this.speed=speed;
 		assignIncrementDir(dir);
 	}
-	public void move(){
-		if((x==0)&&(dx==(-1))){
-			kill();
+	public void addPosInShots(int x){
+		posInShots=x;
+	}
+	public boolean move(){
+		boolean mov=true;
+		Obstacle obs[]= new Obstacle[2];
+		if(((x+dx)<0)||((x+dx)>677)){
+			mov=false;
 		}
 		else{
-			if((x==625)&&(dx==1)){
-				kill();
+			if(dx==-1){
+				obs=map.getObstacle(x-1, y);
 			}
-			else{
+			else
+				if(dx==1){
+					obs=map.getObstacle(x+getWidth(), y);
+				}
+			if((obs[0]==null)&&(obs[1]==null)){
 				x+=dx;
 			}
 		}
-		if((y==0)&&(dy==(-1))){
-			kill();
+		if(((y+dy)<0)||((y+dy)>677)){
+			mov=false;
 		}
 		else{
-			if((y==625)&&(dy==1)){
-				kill();
-			}
-			else{
-				y+=dy;
-			}
-		}	
+			y+=dy;
+		}
+		return mov;
 	}
 	public int getWidth(){
 		if((dx==-1)||(dx==1)){

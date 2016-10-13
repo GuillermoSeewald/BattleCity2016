@@ -20,6 +20,7 @@ public class Base extends Obstacle{
 	protected int kill(){
 		setImage(new ImageIcon("Imagenes/Bandera2.png").getImage());
 		destroyed=true;
+		map.deleteObstacle(posX, posY);
 		return 0;
 	}
 	public int kill(Player pla){

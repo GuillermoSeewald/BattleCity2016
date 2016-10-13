@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 public class Level1 extends Level{
 	public Level1(){
 		images= new Image[2][4];
+		speedShot=10;
 		buildImages();
 	}
 	public int getSpeedShot(){

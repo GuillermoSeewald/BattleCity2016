@@ -1,0 +1,54 @@
+package Mapa;
+
+import Tanque.*;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+public abstract class Element{
+	
+	protected String nombre;
+	protected Map map;
+	
+	protected int x;
+	protected int y;
+	protected final int width= 51;
+	protected final int height=51;
+	
+	protected Image imagen;
+	protected JLabel etiqueta;
+	
+	public Element(String nom, int X, int Y, Map map){
+		this.map=map;
+		x=X;
+		y=Y;
+		nombre=nom;
+		imagen=new ImageIcon("Imagenes/"+nombre+".png").getImage();
+		
+	}
+	public void setImage(Image ima){
+		imagen= ima;
+	}
+	public int getX(){
+		return x;
+	}
+	public int getY(){
+		return y;
+	}
+	public Image getImagen(){
+		return imagen;
+	}
+	public int getWidth(){
+		return width;
+	}
+	public int getHeight(){
+		return height;
+	}
+	protected abstract int kill();
+	public abstract int kill(Player pla);
+	public abstract int kill(Enemy ene);
+/*	public abstract boolean collide(Player jug);
+	public abstract boolean collide(Enemy ene);
+	*/
+}

@@ -37,7 +37,7 @@ public class Play extends JFrame{
 		armarPanelDetalles();
 		
 		setTitle("Battle City");
-		setSize(map.getWidth()+panelDetalles.getWidth(),map.getHeight());
+		setSize(map.getWidth()+panelDetalles.getWidth()+100,map.getHeight());
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setResizable(false);
@@ -111,6 +111,7 @@ public class Play extends JFrame{
 		createAuxiliarPanel(aux);
 		
 		etiquetaPuntos= new JLabel();
+		etiquetaPuntos.setText("Puntos: "+player.getPoints());
 		
 		panelDetalles.add(aux2, BorderLayout.NORTH);
 		panelDetalles.add(aux, BorderLayout.CENTER);
@@ -210,7 +211,7 @@ public class Play extends JFrame{
 						botones[1].setEnabled(false);
 					}
 					etiquetaPuntos.setForeground(Color.GREEN);
-					etiquetaPuntos.setText("Puntos jugador: "+player.getPoints()+" "+cantEnemyDead);
+					etiquetaPuntos.setText("Puntos: "+player.getPoints());
 				}
 				else{
 					int cantObs=0;

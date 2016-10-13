@@ -25,7 +25,6 @@ public abstract class Element{
 		y=Y;
 		nombre=nom;
 		imagen=new ImageIcon("Imagenes/"+nombre+".png").getImage();
-		
 	}
 	public void setImage(Image ima){
 		imagen= ima;
