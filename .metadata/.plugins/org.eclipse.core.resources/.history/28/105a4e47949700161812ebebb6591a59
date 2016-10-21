@@ -1,0 +1,29 @@
+package Logic.PowerUp;
+
+import Logic.Mapa.*;
+import Logic.Tanque.Enemy;
+import Logic.Tanque.Player;
+
+public class Timer extends PowerUp{
+	public Timer(int x, int y, int posX, int posY, Map map){
+		super("Timer", x, y, posX, posY, map);
+	}
+	
+	protected int kill(){
+		map.deleteObstacle(posX, posY);
+		return 0;
+	}
+	public int kill(Player pla){
+		return 0;
+	}
+	public int kill(Enemy ene){
+		return 0;
+	}
+/*	public boolean collide(Player pla){
+	
+	}
+	public boolean collide(Enemy ene){
+		
+	}
+	*/
+}

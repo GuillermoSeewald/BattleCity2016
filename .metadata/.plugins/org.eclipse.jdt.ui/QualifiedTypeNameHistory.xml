@@ -19,6 +19,9 @@
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="javax.swing.border.LineBorder"/>
 <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
-<fullyQualifiedTypeName name="java.awt.Image"/>
 <fullyQualifiedTypeName name="Obstaculo.Obstacle"/>
+<fullyQualifiedTypeName name="Tanque.Player"/>
+<fullyQualifiedTypeName name="Tanque.Enemy"/>
+<fullyQualifiedTypeName name="java.awt.Image"/>
+<fullyQualifiedTypeName name="Graphic.Map.GraphicElement"/>
 </qualifiedTypeNameHistroy>

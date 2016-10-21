@@ -1,0 +1,15 @@
+package Obstaculo;
+
+import Mapa.*;
+import Tanque.Enemy;
+import Tanque.Player;
+
+public abstract class Obstacle extends Element{
+	
+	public Obstacle(String n, int x, int y, int posx, int posy, Map map){
+		super(n,x,y,map, posx, posy);
+	}
+
+	public abstract boolean collide(Player pla);
+	public abstract boolean collide(Enemy ene);
+}

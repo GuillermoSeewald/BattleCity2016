@@ -1,0 +1,12 @@
+package Graphic.Shot;
+
+public class GraphicShot extends GraphicElement{
+	protected int dx;
+	protected int dy;
+	
+	public GraphicShot(int x, int y, String n){
+		super(x,y,n);
+		dx=0;
+		dy=0;
+	}
+}

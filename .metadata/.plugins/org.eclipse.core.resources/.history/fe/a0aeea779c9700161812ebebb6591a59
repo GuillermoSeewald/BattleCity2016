@@ -1,0 +1,28 @@
+package Logic.Obstacle;
+
+import Logic.Map.*;
+import Logic.Tank.Enemy;
+import Logic.Tank.Player;
+
+public class Tree extends Obstacle{
+	
+	public Tree(int x, int y, int posX, int posY, Map map){
+		super("Arbol",x ,y, posX, posY, map);
+	}
+	
+	protected int kill(){
+		return 0;
+	}
+	public int kill(Player pla){
+		return kill();
+	}
+	public int kill(Enemy ene){
+		return kill();
+	}
+	public boolean collide(Player pla){
+		return false;
+	}
+	public boolean collide(Enemy ene){
+		return false;
+	}
+}
