@@ -89,7 +89,7 @@ public class Map{
 	public boolean insertEnemy(){
 		Thread t;
 		boolean insert= false;
-		int posicion=3;
+		int posicion=2;
 		Random r= new Random();
 		int x= r.nextInt(4);
 		if(game.getCantEnemyDead()<20){
@@ -98,25 +98,25 @@ public class Map{
 					insert=true;
 					switch(x){
 					case 0:
-						ArmoredTank a= new ArmoredTank(posicion,0,this, i,i*4,0);
+						ArmoredTank a= new ArmoredTank(posicion,0,this, i,i*4,3);
 						t= new Thread(a);
 						t.start();
 						enemies[i]= a;
 						break;
 					case 1:
-						FastTank f= new FastTank(posicion, 0, this, i,i*4,0);
+						FastTank f= new FastTank(posicion, 0, this, i,i*4,3);
 						t= new Thread(f);
 						t.start();
 						enemies[i]=f;
 						break;
 					case 2:
-						PowerTank p= new PowerTank(posicion, 0, this, i,i*4,0);
+						PowerTank p= new PowerTank(posicion, 0, this, i,i*4,3);
 						t= new Thread(p);
 						t.start();
 						enemies[i]=p;
 						break;
 					case 3:
-						BasicTank b= new BasicTank(posicion, 0, this, i,i*4,0);
+						BasicTank b= new BasicTank(posicion, 0, this, i,i*4,3);
 						t= new Thread(b);
 						t.start();
 						enemies[i]= b;
@@ -130,7 +130,6 @@ public class Map{
 			
 		}
 		return insert;
-		
 	}
 	public Enemy[] getEnemies(){
 		return enemies;

@@ -26,7 +26,7 @@ public class GraphicMap extends JPanel{
 		setBackground(Color.BLACK);
 		setFocusable(true);
 		addKeyListener(new Teclado());
-		setSize(676,707);
+		setSize(600,707);
 		this.setBorder(new LineBorder(Color.WHITE));
 	}
 	public int insertShot(Shot s){

@@ -19,7 +19,7 @@ public class Frame_GraphicPlay extends JFrame{
 		setTitle("Battle City");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
-		setSize(m.getGraphicMap().getWidth()+information.getWidth(),m.getGraphicMap().getHeight());
+		setSize(m.getGraphicMap().getWidth()+information.getWidth()+100,m.getGraphicMap().getHeight());
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setResizable(false);

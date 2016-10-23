@@ -29,8 +29,8 @@ public abstract class Character extends Element{
 				g.changeX(0);
 			}
 			else{
-				if((g.getX()+g.getDX()+g.getHeight())>676){
-					g.changeX(676-g.getHeight());
+				if((g.getX()+g.getDX()+34)>676){
+					g.changeX(642);
 					}
 				else{
 					Obstacle obs1= map.getObstacle(auxX, posY);
@@ -51,8 +51,8 @@ public abstract class Character extends Element{
 				g.changeY(0);
 				}
 			else{
-				if((g.getY()+g.getDY()+g.getHeight())>676){
-					g.changeY(676-g.getHeight());
+				if((g.getY()+g.getDY()+34)>676){
+					g.changeY(642);
 					}
 				else{
 					Obstacle obs1= map.getObstacle(posX, auxY);

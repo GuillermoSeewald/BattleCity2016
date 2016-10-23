@@ -31,7 +31,7 @@ public class InformationPanel extends JPanel{
 	}
 	
 	private void designInformationPanel(){
-		this.setSize(300,707);
+		this.setSize(200,707);
 		this.setBackground(Color.BLACK);
 		this.setLayout(new BorderLayout());
 

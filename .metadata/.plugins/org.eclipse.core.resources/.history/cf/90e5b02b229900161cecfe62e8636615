@@ -24,12 +24,21 @@ public class ArmoredTank extends Enemy implements Runnable{
 	}
 	public void run(){
 		while(execute){
+			Random r= new Random();
+			int x= r.nextInt(4);
+			int i=0;
 			move();
-			super.move(graphic);
-			graphic.changeImage();
-			try {
-				Thread.sleep(speedMove);
-			}catch (InterruptedException e){
+			while(x>0){
+				while(i<13){
+					super.move(graphic);
+					graphic.changeImage();
+					i++;
+					try {
+						Thread.sleep(speedMove);
+					}catch (InterruptedException e){
+					}
+				}
+				x--;
 			}
 		}
 	}
@@ -50,28 +59,27 @@ public class ArmoredTank extends Enemy implements Runnable{
 		}
 	}
 	public void move(){
-//		Random r= new Random();
-//		int m= r.nextInt(12);
-//		
-//		switch (m){
-//		case 0|1|2: //Muevo hacia arriba
-//			graphic.changeDY(-4);graphic.changeDX(0);
-//			graphic.setDirection("arriba");
-//			break;
-//		case 3|4|5: //Muevo hacia la izquierda
-//			graphic.changeDX(-4);graphic.changeDY(0);
-//			graphic.setDirection("izquierda");
-//			break;
-//		case 6|7|8: //Muevo hacia abajo
-//			graphic.changeDY(4);graphic.changeDX(0);
-//			graphic.setDirection("abajo");
-//			break;
-//		case 9|10|11: //Muevo hacia la derecha
-//			graphic.changeDX(4);graphic.changeDY(0);
-//			graphic.setDirection("derecha");
-//			break;
-//		}
-		graphic.changeDY(4);graphic.changeDX(0);graphic.setDirection("abajo");
+		Random r= new Random();
+		int m= r.nextInt(12);
+		
+		switch (m){
+		case 0|1|2: //Muevo hacia arriba
+			graphic.changeDY(-4);graphic.changeDX(0);
+			graphic.setDirection("arriba");
+			break;
+		case 3|4|5: //Muevo hacia la izquierda
+			graphic.changeDX(-4);graphic.changeDY(0);
+			graphic.setDirection("izquierda");
+			break;
+		case 6|7|8: //Muevo hacia abajo
+			graphic.changeDY(4);graphic.changeDX(0);
+			graphic.setDirection("abajo");
+			break;
+		case 9|10|11: //Muevo hacia la derecha
+			graphic.changeDX(4);graphic.changeDY(0);
+			graphic.setDirection("derecha");
+			break;
+		}
 	}
 	protected int kill(){
 		map.deleteEnemy(posInEnemies);

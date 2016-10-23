@@ -10,7 +10,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 
 public class GraphicMap extends JPanel{
@@ -27,7 +26,6 @@ public class GraphicMap extends JPanel{
 		setFocusable(true);
 		addKeyListener(new Teclado());
 		setSize(676,707);
-		this.setBorder(new LineBorder(Color.WHITE));
 	}
 	public int insertShot(Shot s){
 		int retorno=0;

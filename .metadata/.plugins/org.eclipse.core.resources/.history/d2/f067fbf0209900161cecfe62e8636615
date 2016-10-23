@@ -89,7 +89,7 @@ public class Map{
 	public boolean insertEnemy(){
 		Thread t;
 		boolean insert= false;
-		int posicion=3;
+		int posicion=0;
 		Random r= new Random();
 		int x= r.nextInt(4);
 		if(game.getCantEnemyDead()<20){
@@ -124,7 +124,7 @@ public class Map{
 					}
 				}
 				else{
-					posicion+=(52*4);
+					posicion+=(enemies[i].getGraphic().getWidth()*4);
 				}
 			}
 			
