@@ -31,7 +31,7 @@ public class ShotPlayer extends Shot implements Runnable{
 	
 	protected int kill(){
 		player.setSimultaneousShots(player.getSimultaneousShots()+1);
-		map.deleteShot(posInShots);
+		map.getGraphicMap().deleteShot(graphic.getPosInShots());
 		return 1;
 	}
 	public int kill(Player pla){

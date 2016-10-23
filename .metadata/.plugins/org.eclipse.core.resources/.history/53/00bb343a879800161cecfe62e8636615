@@ -1,0 +1,99 @@
+package Logic.Map;
+
+import Logic.Tank.*;
+import Logic.Obstacle.*;
+import Graphic.Map.*;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.*;
+import java.util.Random;
+
+public class Play extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	protected Map map;
+	protected InformationPanel information;
+	protected Player player;
+	protected int cantEnemyDead;
+	protected JPanel panelDetalles;
+	protected JButton[] botones;
+	protected JLabel[] etiquetasEnemigos;
+	protected JLabel etiquetaPuntos;
+	
+	public Play(String m){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLayout(new BorderLayout());
+		
+		player= new Player(null,4,12);
+		map= new Map(m, this, player);
+		player.setMap(map);
+		Thread tp= new Thread(player);
+		tp.start();
+		cantEnemyDead=0;
+		information= new InformationPanel(this);
+		
+		setTitle("Battle City");
+		setSize(map.getWidth()+panelDetalles.getWidth()+100,map.getHeight());
+		setVisible(true);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		
+		
+		add(map, BorderLayout.CENTER);
+		add(panelDetalles, BorderLayout.EAST);
+	}
+	public void setPlayer(){
+	}
+	public void incrementEnemyDead(){
+		cantEnemyDead++;
+	}
+	public void createEnemy(){
+	}
+	public Player getPlayer(){
+		return player;
+	}
+	public int getCantEnemyDead(){
+		return cantEnemyDead;
+	}
+	public Map getMap(){
+		return map;
+	}
+	public JLabel getEtiquetaPuntos(){
+		return etiquetaPuntos;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

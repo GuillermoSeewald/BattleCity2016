@@ -32,7 +32,7 @@ public class ShotEnemy extends Shot implements Runnable{
 
 	protected int kill(){
 		enemy.enableShot();
-		map.deleteShot(posInShots);
+		map.getGraphicMap().deleteShot(graphic.getPosInShots());
 		return 0;
 	}
 	public int kill(Player pla){

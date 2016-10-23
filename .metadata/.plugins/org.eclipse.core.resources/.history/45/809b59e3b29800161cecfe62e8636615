@@ -1,0 +1,15 @@
+package Logic.Level;
+
+import Logic.Tank.*;
+import java.awt.Image;
+
+public abstract class Level{
+	
+	protected int speedShot;
+	
+	public int getSpeedShot(){
+		return speedShot;
+	}
+	public abstract Level getNextLevel(Player pla);
+
+}

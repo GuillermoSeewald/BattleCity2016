@@ -2,50 +2,40 @@ package Logic.Map;
 
 import Logic.Obstacle.*;
 import Logic.Tank.*;
-import Logic.Shot.*;
-import java.util.Random;
-import javax.swing.*;
+import Graphic.Map.GraphicMap;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.event.*;
+import java.util.Random;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Map extends JPanel{
-	private static final long serialVersionUID = 1L;
+public class Map{
 	
 	protected Player player;
-	protected Timer timer;
 	protected Obstacle[][] obstacles;
 	protected Enemy[] enemies;
-	protected Shot[] shots;
 	protected int cantEnemy;
 	protected Play game;
+	protected GraphicMap graphicMap;
 	
-	public Map(String mapa, Play p, Player jug){
-		setBackground(Color.BLACK);
-		setFocusable(true);
-		addKeyListener(new Teclado());
+	public Map(String mapa, Play p, Player pla){
 		
 		game=p;
 		enemies= new Enemy[4];
-		shots= new Shot[7];
 		obstacles=new Obstacle[13][13];
 		try{
-			cargarMapa(mapa);
+			loadMap(mapa);
 		}catch(FileNotFoundException e){
 		}catch(IOException e){
 		}
 		
-		player= jug;
-		setSize(676,715);
+		player= pla;
+		
+		graphicMap= new GraphicMap(this);
 	}
 	
-	public void cargarMapa(String map) throws IOException, FileNotFoundException{
+	public void loadMap(String map) throws IOException, FileNotFoundException{
 		String cadena;
 		char[] c;
 		int fila=0;
@@ -86,19 +76,15 @@ public class Map extends JPanel{
 			enemies[i]=null;
 		}
 	}
-	public void deleteShot(int x){
-		shots[x]=null;
-		repaint();
-	}
 	public void deleteEnemy(int x){
 		player.setPoints(player.getPoints()+enemies[x].getPoints());
 		enemies[x].terminate();
 		enemies[x]=null;
-		repaint();
+		graphicMap.repaint();
 	}
 	public void deleteObstacle(int x, int y){
 		obstacles[y][x]=null;
-		repaint();
+		graphicMap.repaint();
 	}
 	public boolean insertEnemy(){
 		Thread t;
@@ -145,20 +131,6 @@ public class Map extends JPanel{
 		}
 		return insert;
 	}
-	public int insertShot(Shot s){
-		int retorno=0;
-		boolean insert=false;
-		while((!insert)&&(retorno<shots.length)){
-			if(shots[retorno]==null){
-				shots[retorno]=s;
-				insert=true;
-			}
-			else{
-				retorno++;
-			}
-		}
-		return retorno;
-	}
 	public Enemy[] getEnemies(){
 		return enemies;
 	}
@@ -174,52 +146,7 @@ public class Map extends JPanel{
 	public Play getPlay(){
 		return game;
 	}
-	public Shot[] getShots(){
-		return shots;
-	}
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public void paint(Graphics grafica){
-		super.paint(grafica);
-		Graphics2D g= (Graphics2D) grafica;
-		g.drawImage(player.getGraphic().getImagen(), player.getGraphic().getX(), player.getGraphic().getY(), null);
-		for(int n=0;n<shots.length;n++){
-			if(shots[n]!=null){
-				g.drawImage(shots[n].getGraphic().getImagen(),shots[n].getGraphic().getX(),shots[n].getGraphic().getY(),null);
-			}
-		}
-		for(int j=0;j<enemies.length;j++){
-			if(enemies[j]!=null){
-				g.drawImage(enemies[j].getGraphic().getImagen(), enemies[j].getGraphic().getX(), enemies[j].getGraphic().getY(), null);
-			}
-		}
-		for(int i=0;i<obstacles.length;i++){
-			for(int j=0;j<obstacles.length;j++){
-				if(obstacles[i][j]!=null){
-					g.drawImage(obstacles[i][j].getGraphic().getImagen(), obstacles[i][j].getGraphic().getX(), obstacles[i][j].getGraphic().getY(), null);
-				}
-			}
-		}
-	}
-	private class Teclado extends KeyAdapter{
-		public void keyReleased(KeyEvent e){
-			player.keyReleased(e);
-		}
-		public void keyPressed(KeyEvent e){
-			player.keyPressed(e);
-			repaint();
-		}
+	public GraphicMap getGraphicMap(){
+		return graphicMap;
 	}
 }

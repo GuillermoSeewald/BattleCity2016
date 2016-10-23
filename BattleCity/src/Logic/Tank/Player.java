@@ -3,7 +3,6 @@ package Logic.Tank;
 import Logic.Map.*;
 import Logic.Level.*;
 import Logic.Shot.*;
-import Graphic.Map.GraphicElement;
 import Graphic.Tank.*;
 import java.awt.event.KeyEvent;
 
@@ -16,8 +15,8 @@ public class Player extends Character implements Runnable{
 	private volatile boolean execute;
 	
 	public Player(Map map, int posx, int posy){
-		super(40,1,"arriba", map,posx,posy);
-		graphic= new GraphicPlayer(208,624,"Jugador arriba-mov1-level1");
+		super(40,1, map,posx,posy);
+		graphic= new GraphicPlayer(208,624,"Jugador arriba-mov1-level1","arriba");
 		points=0;
 		life=3;
 		simultaneousShots=1;
@@ -26,7 +25,7 @@ public class Player extends Character implements Runnable{
 		execute=true;
 		graphic.changeWidth(38);
 		graphic.changeHeight(34);
-		graphic.setImage(level.getImage(0, 0));
+		graphic.setImage(level.getGraphic().getImage(0, 0));
 	}
 	public void terminate(){
 		execute=false;
@@ -40,7 +39,7 @@ public class Player extends Character implements Runnable{
 			}
 		}
 	}
-	public GraphicElement getGraphic(){
+	public GraphicPlayer getGraphic(){
 		return graphic;
 	}
 	public void incrementLifes(){
@@ -67,7 +66,7 @@ public class Player extends Character implements Runnable{
 			int aux=52;
 			int shotPosX=0;
 			int shotPosY=0;
-			if((direction=="arriba")||(direction=="abajo")){
+			if((graphic.getDirection()=="arriba")||(graphic.getDirection()=="abajo")){
 				while(pos[0]<aux){
 					aux+=52;
 					shotPosX++;
@@ -81,10 +80,10 @@ public class Player extends Character implements Runnable{
 				}
 				shotPosX=posX;
 			}
-			ShotPlayer s=new ShotPlayer(direction,pos[0],pos[1],map,level.getSpeedShot(),this,posX,posY);
+			ShotPlayer s=new ShotPlayer(graphic.getDirection(),pos[0],pos[1],map,level.getSpeedShot(),this,posX,posY);
 			t= new Thread(s);
 			t.start();
-			s.addPosInShots(map.insertShot(s));
+			s.getGraphic().addPosInShots(map.getGraphicMap().insertShot(s));
 			simultaneousShots--;
 		}
 	}
@@ -95,29 +94,29 @@ public class Player extends Character implements Runnable{
 		
 		switch (key){
 		case KeyEvent.VK_UP :
-			dy = -3;dx=0;dir=0;direction="arriba";movimiento=true;
+			graphic.changeDY(-3);graphic.changeDX(0);dir=0;graphic.setDirection("arriba");;movimiento=true;
 			break;
 		case KeyEvent.VK_DOWN :
-			dy = 3;dx=0;dir=2;direction="abajo";movimiento=true;
+			graphic.changeDY(3);graphic.changeDX(0);dir=2;graphic.setDirection("abajo");;movimiento=true;
 			break;
 		case KeyEvent.VK_LEFT :
-			dx = -3;dy=0;dir=1;direction="izquierda";movimiento=true;
+			graphic.changeDX(-3);graphic.changeDY(0);dir=1;graphic.setDirection("izquierda");;movimiento=true;
 			break;
 		case KeyEvent.VK_RIGHT :
-			dx = 3;dy=0;dir=3;direction="derecha";movimiento=true;
+			graphic.changeDX(3);graphic.changeDY(0);dir=3;graphic.setDirection("derecha");;movimiento=true;
 			break;
 		case KeyEvent.VK_F :
 			attack();
 			break;
 		}
-		if(movImage==0){
-			movImage=1;
+		if(graphic.getMoveImage()==0){
+			graphic.setMoveImage(1);
 		}
 		else{
-			movImage=0;
+			graphic.setMoveImage(0);
 		}
 		if(movimiento){
-			graphic.setImage(level.getImage(movImage,dir));
+			graphic.setImage(level.getGraphic().getImage(graphic.getMoveImage(),dir));
 		}
 	}
 	public void keyReleased(KeyEvent k){
@@ -125,16 +124,16 @@ public class Player extends Character implements Runnable{
 		
 		switch (key){
 		case KeyEvent.VK_UP :
-			dy = 0;
+			graphic.changeDY(0);
 			break;
 		case KeyEvent.VK_DOWN :
-			dy = 0;
+			graphic.changeDY(0);
 			break;
 		case KeyEvent.VK_LEFT :
-			dx = 0;
+			graphic.changeDX(0);
 			break;
 		case KeyEvent.VK_RIGHT :
-			dx = 0;
+			graphic.changeDX(0);
 			break;
 		}
 	}
@@ -154,7 +153,7 @@ public class Player extends Character implements Runnable{
 		decrementLifes();
 		graphic.changeX(208);graphic.changeHeight(624);
 		level= new Level1();
-		graphic.setImage(level.getImage(0, 0));
+		graphic.setImage(level.getGraphic().getImage(0, 0));
 		return 0;
 	}
 	public int kill(Player pla){

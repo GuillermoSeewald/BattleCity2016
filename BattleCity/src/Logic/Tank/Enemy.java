@@ -8,8 +8,8 @@ public abstract class Enemy extends Character{
 	protected boolean haveShot;
 	
 	
-	public Enemy(int speedMov,int res,String dir, Map map, int posE, int posx, int posy){
-		super(speedMov,res,dir,map,posx,posy);
+	public Enemy(int speedMov,int res, Map map, int posE, int posx, int posy){
+		super(speedMov,res,map,posx,posy);
 		posInEnemies=posE;
 	}
 	public abstract void terminate();

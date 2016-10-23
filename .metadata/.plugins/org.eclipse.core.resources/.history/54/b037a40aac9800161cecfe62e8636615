@@ -1,0 +1,18 @@
+package Graphic.Shot;
+
+import Graphic.GraphicElementWithMovement.*;
+
+public class GraphicShot extends GraphicElementWithMovement{
+	
+	protected int posInShots;
+	
+	public GraphicShot(int x, int y, String n, String dir){
+		super(x,y,n,dir);
+	}
+	public int getPosInShots(){
+		return posInShots;
+	}
+	public void addPosInShots(int x){
+		posInShots=x;
+	}
+}

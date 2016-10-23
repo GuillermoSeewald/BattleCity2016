@@ -1,0 +1,10 @@
+package Graphic.Shot;
+
+import Graphic.GraphicElementWithMovement.*;
+
+public class GraphicShot extends GraphicElementWithMovement{
+	
+	public GraphicShot(int x, int y, String n, String dir){
+		super(x,y,n);
+	}
+}

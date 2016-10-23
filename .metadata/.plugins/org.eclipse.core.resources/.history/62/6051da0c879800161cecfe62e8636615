@@ -1,0 +1,179 @@
+package Graphic.Map;
+
+import Logic.Map.*;
+import Logic.Obstacle.Obstacle;
+import Logic.Tank.Enemy;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+
+public class InformationPanel extends JPanel{
+	private static final long serialVersionUID = 1L;
+	private Play play;
+	protected JButton[] botones;
+	protected JLabel[] etiquetasEnemigos;
+	protected JLabel etiquetaPuntos;
+	
+	public InformationPanel(Play p){
+		play=p;
+		etiquetaPuntos=new JLabel();
+		designInformationPanel();
+	}
+	
+	private void designInformationPanel(){
+		this.setSize(200,707);
+		this.setBackground(Color.BLACK);
+		this.setLayout(new BorderLayout());
+
+		JPanel aux2= new JPanel();aux2.setLayout(new GridLayout(3,1));
+		botones= new JButton[3];
+		OyenteBoton oyBot= new OyenteBoton();
+		String[] s={"Set Enemy", "Delete Enemy", "Delete obstacle"};
+		for(int i=0;i<botones.length;i++){
+			botones[i]=new JButton(s[i]);
+			botones[i].addActionListener(oyBot);
+			botones[i].setFocusable(false);
+			aux2.add(botones[i]);
+		}
+		
+		JPanel aux= new JPanel();
+		etiquetasEnemigos= new JLabel[20];
+		
+		createAuxiliarPanel(aux);
+		
+		etiquetaPuntos.setText("Puntos: "+play.getPlayer().getPoints());
+		
+		this.add(aux2, BorderLayout.NORTH);
+		this.add(aux, BorderLayout.CENTER);
+		this.add(etiquetaPuntos, BorderLayout.SOUTH);
+	}
+	
+	
+	
+	private void createAuxiliarPanel(JPanel aux){
+
+		JPanel aux2= new JPanel();
+		JPanel aux3= new JPanel();
+		aux3.setBackground(Color.BLACK);
+		aux.setLayout(new GridLayout(20,2));
+		aux.setBackground(Color.BLACK);
+		aux.setBorder(new LineBorder(Color.BLACK));
+		
+		aux.add(aux3);aux3=new JPanel();aux3.setBackground(Color.BLACK);
+		aux.add(aux3);aux3=new JPanel();aux3.setBackground(Color.BLACK);
+		aux.add(aux3);aux3=new JPanel();aux3.setBackground(Color.BLACK);
+		aux.add(aux3);
+		int variable=0;
+		for(int i=0;i<etiquetasEnemigos.length;i++){
+			aux2= new JPanel();
+			aux2.setLayout(new GridLayout(1,2));
+			aux3=new JPanel();
+			aux3.setBackground(Color.BLACK);
+			aux2.add(aux3);
+			aux3=new JPanel();
+			etiquetasEnemigos[i]= new JLabel();
+			etiquetasEnemigos[i].setIcon(new ImageIcon("Imagenes/EnemyToCreate.png"));
+			if(variable==0){
+				aux3.setBackground(Color.RED);
+			}
+			else{
+				aux3.setBackground(Color.PINK);
+			}
+			aux3.add(etiquetasEnemigos[i]);
+			aux2.add(aux3);
+			aux.add(aux2);
+			i++;
+			aux2=new JPanel();
+			aux2.setLayout(new GridLayout(1,2));
+			aux3=new JPanel();
+			etiquetasEnemigos[i]= new JLabel();
+			etiquetasEnemigos[i].setIcon(new ImageIcon("Imagenes/EnemyToCreate.png"));
+			if(variable==0){
+				aux3.setBackground(Color.PINK);
+				variable=1;
+			}
+			else{
+				aux3.setBackground(Color.RED);
+				variable=0;
+			}
+			aux3.add(etiquetasEnemigos[i]);
+			aux2.add(aux3);
+			aux3= new JPanel();
+			aux3.setBackground(Color.BLACK);
+			aux2.add(aux3);
+			aux.add(aux2);			
+		}
+	}
+	
+	private class OyenteBoton implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			String s= e.getActionCommand();
+			Random r= new Random();
+			int x= r.nextInt(4);
+			int y= r.nextInt(13);
+			int z= r.nextInt(13);
+			if((botones[0].getName()==s)||(botones[0].getText()==s)){
+				if(play.getCantEnemyDead()<etiquetasEnemigos.length){
+					if(play.getMap().insertEnemy()){
+						etiquetasEnemigos[etiquetasEnemigos.length-play.getCantEnemyDead()-1].setIcon(null);
+						play.incrementEnemyDead();
+						}
+				}
+				else{
+					botones[0].setEnabled(false);
+				}
+			}
+			else{
+				if((botones[1].getName()==s)||(botones[1].getText()==s)){
+					boolean vacio=true;
+					Enemy[] ene= play.getMap().getEnemies();
+					for(int i=0;(i<ene.length)&&(vacio);i++){
+						if(ene[i]!=null)
+							vacio=false;
+					}
+					if(!vacio){
+						while(ene[x]==null){
+							x=r.nextInt(4);
+						}
+						play.getPlayer().setPoints(play.getPlayer().getPoints()+play.getMap().getEnemies()[x].kill(play.getPlayer());
+					}
+					if(play.getCantEnemyDead()==20){
+						botones[1].setEnabled(false);
+					}
+					etiquetaPuntos.setForeground(Color.GREEN);
+					etiquetaPuntos.setText("Puntos: "+play.getPlayer().getPoints());
+				}
+				else{
+					int cantObs=0;
+					Obstacle[][] obs= play.getMap().getMap();
+					for(int i=0;(i<obs[0].length);i++){
+						for(int j=0;(j<obs.length);j++){
+							if(obs[i][j]!=null)
+								cantObs++;
+						}
+					}
+					if(cantObs>1){
+						while(obs[y][z]==null){
+							y=r.nextInt(13);
+							z=r.nextInt(13);
+						}
+						play.getMap().deleteObstacle(y, z);;
+					}
+					else{
+						botones[2].setEnabled(false);
+					}
+				}
+			}
+		}
+	}
+}

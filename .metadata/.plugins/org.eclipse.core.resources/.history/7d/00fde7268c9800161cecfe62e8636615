@@ -1,0 +1,15 @@
+package Graphic.Map;
+
+import Logic.Map.Map;
+import javax.swing.JPanel;
+
+
+public class GraphicMap extends JPanel{
+	private static final long serialVersionUID = 1L;
+	
+	protected Map map;
+	
+	public GraphicMap(Map m){
+		map=m;
+	}
+}

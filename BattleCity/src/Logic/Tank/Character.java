@@ -5,18 +5,12 @@ import Logic.Obstacle.*;
 import Graphic.Tank.*;
 
 public abstract class Character extends Element{
-	protected int speedMove, resistance, movImage, points;
-	protected String direction;
+	protected int speedMove, resistance, points;
 	
-	protected int dx;
-	protected int dy;
-	
-	public Character(int speedM,int res, String dir, Map map, int posx, int posy){
+	public Character(int speedM,int res, Map map, int posx, int posy){
 		super(map, posx, posy);
 		speedMove=speedM;
 		resistance=res;
-		direction=dir;
-		movImage=0;
 	}
 	
 	public void setSpeedMove(int s){
@@ -29,13 +23,13 @@ public abstract class Character extends Element{
 		points=p;
 	}
 	public void move(GraphicCharacter g){
-		if(dx!=0){
-			int auxX= getNewPos(g.getX()+dx);
-			if((g.getX()+dx)<0){
+		if(g.getDX()!=0){
+			int auxX= getNewPos(g.getX()+g.getDX(),g);
+			if((g.getX()+g.getDX())<0){
 				g.changeX(0);
 			}
 			else{
-				if((g.getX()+dx+34)>676){
+				if((g.getX()+g.getDX()+34)>676){
 					g.changeX(642);
 					}
 				else{
@@ -45,19 +39,19 @@ public abstract class Character extends Element{
 						obs2=map.getObstacle(posX, posY+1);
 					}
 					if((obs1==null)&&(obs2==null)){
-						g.changeX(g.getX()+dx);
+						g.changeX(g.getX()+g.getDX());
 						posX=auxX;
 					}
 				}
 			}
 		}
-		if(dy!=0){
-			int auxY= getNewPos(g.getY()+dy);
-			if((g.getY()+dy)<0){
+		if(g.getDY()!=0){
+			int auxY= getNewPos(g.getY()+g.getDY(),g);
+			if((g.getY()+g.getDY())<0){
 				g.changeY(0);
 				}
 			else{
-				if((g.getY()+dy+34)>676){
+				if((g.getY()+g.getDY()+34)>676){
 					g.changeY(642);
 					}
 				else{
@@ -67,21 +61,20 @@ public abstract class Character extends Element{
 						obs2=map.getObstacle(posX+1, posY);
 					}
 					if((obs1==null)&&(obs2==null)){
-						g.changeY(g.getY()+dy);
+						g.changeY(g.getY()+g.getDY());
 						posY=auxY;
 					}
 				}
 			}
 		}
-		map.getPlay().getEtiquetaPuntos().setText("x: "+posX+" /y: "+posY);
-		map.repaint();
+		map.getGraphicMap().repaint();
 	}
 	public abstract void attack();
 	
 	public int[] generatePosShot(GraphicCharacter g){
 		int ejeX=0;
 		int ejeY=0;
-		switch(direction){
+		switch(g.getDirection()){
 		case "arriba":
 			ejeX=(g.getX()+(g.getHeight()/2));
 			ejeY=(g.getY());
@@ -110,9 +103,6 @@ public abstract class Character extends Element{
 	public int getResistance(){
 		return resistance;
 	}
-	public String getDirection(){
-		return direction;
-	}
 	public int getPoints(){
 		return points;
 	}
@@ -131,7 +121,7 @@ public abstract class Character extends Element{
 		}
 		return twoCell;
 	}
-	private int getNewPos(int newPosGraph){
+	private int getNewPos(int newPosGraph, GraphicCharacter g){
 		int newPos=0;
 		int aux1=0;
 		int aux2=52;
@@ -143,7 +133,7 @@ public abstract class Character extends Element{
 			else{
 				if((newPosGraph<aux2)&&((newPosGraph+34)>=aux2)){
 					found=true;
-					if((direction=="abajo")||(direction=="derecha")){
+					if((g.getDirection()=="abajo")||(g.getDirection()=="derecha")){
 						newPos++;
 					}
 				}

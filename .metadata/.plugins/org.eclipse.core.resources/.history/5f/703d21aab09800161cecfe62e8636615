@@ -1,0 +1,19 @@
+package Logic.Level;
+
+import Logic.Tank.*;
+import java.awt.Image;
+
+public abstract class Level{
+	
+	protected int speedShot;
+	protected Player player;
+	protected Image[][] images;
+	
+	public int getSpeedShot(){
+		return speedShot;
+	}
+
+	public Image getImage(int x, int y){
+		return images[x][y];
+	}
+}

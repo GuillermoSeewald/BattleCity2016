@@ -1,14 +1,16 @@
 package Logic.Level;
 
-import java.awt.Image;
+import Graphic.Level.GraphicLevel;
+import Logic.Tank.*;
 
 public abstract class Level{
-	protected int speedShot;
-	protected Image[][] images;
 	
-	public abstract int getSpeedShot();
-
-	public Image getImage(int x, int y){
-		return images[x][y];
+	protected int speedShot;
+	
+	public int getSpeedShot(){
+		return speedShot;
 	}
+	public abstract Level getNextLevel(Player pla);
+	public abstract GraphicLevel getGraphic();
+
 }

@@ -1,26 +1,26 @@
 package Logic.Level;
 
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
+import Graphic.Level.GraphicLevel4;
+import Logic.Tank.Player;
 
 public class Level4 extends Level{
-	public Level4(){
-		images= new Image[2][4];
-		buildImages();		
+	
+	protected GraphicLevel4 graphic;
+	
+	public Level4(Player pla){
+		speedShot=3;
+		pla.setSimultaneousShots(3);
+		pla.setSpeedMove(40);
+		pla.setResistance(4);
+		graphic= new GraphicLevel4();
 	}
 	public int getSpeedShot(){
 		return speedShot;
 	}
-	
-	private void buildImages(){
-		images[0][0]=new ImageIcon("Imagenes/Jugador arriba-mov1-level4.png").getImage();		
-		images[1][0]=new ImageIcon("Imagenes/Jugador arriba-mov2-level4.png").getImage();
-		images[0][1]=new ImageIcon("Imagenes/Jugador izquierda-mov1-level4.png").getImage();
-		images[1][1]=new ImageIcon("Imagenes/Jugador izquierda-mov2-level4.png").getImage();
-		images[0][2]=new ImageIcon("Imagenes/Jugador abajo-mov1-level4.png").getImage();
-		images[1][2]=new ImageIcon("Imagenes/Jugador abajo-mov2-level4.png").getImage();
-		images[0][3]=new ImageIcon("Imagenes/Jugador derecha-mov1-level4.png").getImage();
-		images[1][3]=new ImageIcon("Imagenes/Jugador derecha-mov2-level4.png").getImage();
+	public Level getNextLevel(Player pla){
+		return new Level4(pla);
+	}
+	public GraphicLevel4 getGraphic(){
+		return graphic;
 	}
 }

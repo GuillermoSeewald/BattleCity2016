@@ -7,8 +7,8 @@ public class GraphicArmoredTank extends GraphicCharacter{
 	
 	protected Image[][] images;
 	
-	public GraphicArmoredTank(int x, int y, String n){
-		super(x,y,n);
+	public GraphicArmoredTank(int x, int y, String n, String dir){
+		super(x,y,n,dir);
 		images= new Image[2][4];
 		buildImages();
 	}
@@ -24,5 +24,29 @@ public class GraphicArmoredTank extends GraphicCharacter{
 		images[1][2]=new ImageIcon("Imagenes/Armored tank abajo-mov2.png").getImage();
 		images[0][3]=new ImageIcon("Imagenes/Armored tank derecha-mov1.png").getImage();
 		images[1][3]=new ImageIcon("Imagenes/Armored tank derecha-mov2.png").getImage();
+	}
+	public void changeImage(){
+		int dir=2;
+		switch (direction){
+		case "arriba":
+			dir=0;
+			break;
+		case "abajo":
+			dir=2;
+			break;
+		case "izquierda":
+			dir=1;
+			break;
+		case "derecha":
+			dir=3;
+			break;
+		}
+		if(moveImage==0){
+			moveImage=1;;
+		}
+		else{
+			moveImage=0;
+		}
+		setImage(getImageInArray(moveImage,dir));
 	}
 }

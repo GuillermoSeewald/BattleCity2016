@@ -8,8 +8,8 @@ public class GraphicPowerTank extends GraphicCharacter{
 	
 	protected Image[][] images;
 	
-	public GraphicPowerTank(int x, int y, String n){
-		super(x,y,n);
+	public GraphicPowerTank(int x, int y, String n, String dir){
+		super(x,y,n,dir);
 		images= new Image[2][4];
 		buildImages();
 	}
