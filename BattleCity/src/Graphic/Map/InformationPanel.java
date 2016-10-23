@@ -21,12 +21,12 @@ public class InformationPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private Play play;
 	protected JButton[] botones;
-	protected JLabel[] etiquetasEnemigos;
-	protected JLabel etiquetaPuntos;
+	protected JLabel[] labelEnemies;
+	protected JLabel labelPoints;
 	
 	public InformationPanel(Play p){
 		play=p;
-		etiquetaPuntos=new JLabel();
+		labelPoints=new JLabel();
 		designInformationPanel();
 	}
 	
@@ -47,15 +47,15 @@ public class InformationPanel extends JPanel{
 		}
 		
 		JPanel aux= new JPanel();
-		etiquetasEnemigos= new JLabel[20];
+		labelEnemies= new JLabel[20];
 		
 		createAuxiliarPanel(aux);
 		
-		etiquetaPuntos.setText("Puntos: "+play.getPlayer().getPoints());
+		labelPoints.setText("Puntos: "+play.getPlayer().getPoints());
 		
 		this.add(aux2, BorderLayout.NORTH);
 		this.add(aux, BorderLayout.CENTER);
-		this.add(etiquetaPuntos, BorderLayout.SOUTH);
+		this.add(labelPoints, BorderLayout.SOUTH);
 	}
 	
 	
@@ -74,30 +74,30 @@ public class InformationPanel extends JPanel{
 		aux.add(aux3);aux3=new JPanel();aux3.setBackground(Color.BLACK);
 		aux.add(aux3);
 		int variable=0;
-		for(int i=0;i<etiquetasEnemigos.length;i++){
+		for(int i=0;i<labelEnemies.length;i++){
 			aux2= new JPanel();
 			aux2.setLayout(new GridLayout(1,2));
 			aux3=new JPanel();
 			aux3.setBackground(Color.BLACK);
 			aux2.add(aux3);
 			aux3=new JPanel();
-			etiquetasEnemigos[i]= new JLabel();
-			etiquetasEnemigos[i].setIcon(new ImageIcon("Imagenes/EnemyToCreate.png"));
+			labelEnemies[i]= new JLabel();
+			labelEnemies[i].setIcon(new ImageIcon("Imagenes/EnemyToCreate.png"));
 			if(variable==0){
 				aux3.setBackground(Color.RED);
 			}
 			else{
 				aux3.setBackground(Color.PINK);
 			}
-			aux3.add(etiquetasEnemigos[i]);
+			aux3.add(labelEnemies[i]);
 			aux2.add(aux3);
 			aux.add(aux2);
 			i++;
 			aux2=new JPanel();
 			aux2.setLayout(new GridLayout(1,2));
 			aux3=new JPanel();
-			etiquetasEnemigos[i]= new JLabel();
-			etiquetasEnemigos[i].setIcon(new ImageIcon("Imagenes/EnemyToCreate.png"));
+			labelEnemies[i]= new JLabel();
+			labelEnemies[i].setIcon(new ImageIcon("Imagenes/EnemyToCreate.png"));
 			if(variable==0){
 				aux3.setBackground(Color.PINK);
 				variable=1;
@@ -106,7 +106,7 @@ public class InformationPanel extends JPanel{
 				aux3.setBackground(Color.RED);
 				variable=0;
 			}
-			aux3.add(etiquetasEnemigos[i]);
+			aux3.add(labelEnemies[i]);
 			aux2.add(aux3);
 			aux3= new JPanel();
 			aux3.setBackground(Color.BLACK);
@@ -123,9 +123,9 @@ public class InformationPanel extends JPanel{
 			int y= r.nextInt(13);
 			int z= r.nextInt(13);
 			if((botones[0].getName()==s)||(botones[0].getText()==s)){
-				if(play.getCantEnemyDead()<etiquetasEnemigos.length){
+				if(play.getCantEnemyDead()<labelEnemies.length){
 					if(play.getMap().insertEnemy()){
-						etiquetasEnemigos[etiquetasEnemigos.length-play.getCantEnemyDead()-1].setIcon(null);
+						labelEnemies[labelEnemies.length-play.getCantEnemyDead()-1].setIcon(null);
 						play.incrementEnemyDead();
 						}
 				}
@@ -151,8 +151,8 @@ public class InformationPanel extends JPanel{
 					if((play.getCantEnemyDead()==20)&&(vacio)){
 						botones[1].setEnabled(false);
 					}
-					etiquetaPuntos.setForeground(Color.GREEN);
-					etiquetaPuntos.setText("Puntos: "+play.getPlayer().getPoints());
+					labelPoints.setForeground(Color.GREEN);
+					labelPoints.setText("Puntos: "+play.getPlayer().getPoints());
 				}
 				else{
 					int cantObs=0;

@@ -1,0 +1,47 @@
+package Graphic.Tank;
+
+import Graphic.GraphicElementWithMovement.*;
+
+public class GraphicCharacter extends GraphicElementWithMovement{
+	
+	protected int moveImage;
+	
+	public GraphicCharacter(int x, int y, String n, String dir){
+		super(x,y,n,dir);
+		moveImage=0;
+	}
+	
+	public int getMoveImage(){
+		return moveImage;
+	}
+	public void setMoveImage(int x){
+		moveImage=x;
+	}
+	
+	public int[] generatePosShot(GraphicCharacter g){
+		int ejeX=0;
+		int ejeY=0;
+		switch(g.getDirection()){
+		case "arriba":
+			ejeX=(g.getX()+(g.getHeight()/2));
+			ejeY=(g.getY());
+			break;
+		case "abajo":
+			ejeX=(g.getX()+(g.getHeight()/2));
+			ejeY=(g.getY()+g.getHeight());
+			break;
+		case "izquierda":
+			ejeX=(g.getX());
+			ejeY=(g.getY()+(g.getHeight()/2));
+			break;
+		case "derecha":
+			ejeX=(g.getX()+g.getHeight());
+			ejeY=(g.getY()+(g.getHeight()/2));
+			break;
+		}
+		int[] retorno=new int[2];
+		retorno[0]=ejeX;
+		retorno[1]=ejeY;
+		return retorno;
+	}
+}

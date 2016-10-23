@@ -26,4 +26,28 @@ public class GraphicBasicTank extends GraphicCharacter{
 		images[0][3]=new ImageIcon("Imagenes/Basic tank derecha-mov1.png").getImage();
 		images[1][3]=new ImageIcon("Imagenes/Basic tank derecha-mov2.png").getImage();
 	}
+	public void changeImage(){
+		int dir=2;
+		switch (direction){
+		case "arriba":
+			dir=0;
+			break;
+		case "abajo":
+			dir=2;
+			break;
+		case "izquierda":
+			dir=1;
+			break;
+		case "derecha":
+			dir=3;
+			break;
+		}
+		if(moveImage==0){
+			moveImage=1;;
+		}
+		else{
+			moveImage=0;
+		}
+		setImage(getImageInArray(moveImage,dir));
+	}
 }

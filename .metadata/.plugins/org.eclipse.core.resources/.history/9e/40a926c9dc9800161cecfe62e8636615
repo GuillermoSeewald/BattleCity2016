@@ -1,0 +1,10 @@
+package Logic.Map;
+
+import Graphic.Map.Frame_GraphicPlay;
+
+public class Interfaz {
+
+	public static void main(String[] args) {
+		new Frame_GraphicPlay();
+	}
+}

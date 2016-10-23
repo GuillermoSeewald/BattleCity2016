@@ -13,7 +13,7 @@ public class ArmoredTank extends Enemy implements Runnable{
 	protected GraphicArmoredTank graphic;
 	
 	public ArmoredTank(int x, int y, Map map, int posE, int posx, int posy){
-		super(12,4, map, posE, posx, posy);
+		super(60,4, map, posE, posx, posy);
 		graphic= new GraphicArmoredTank(x,y,"Armored tank abajo-mov1","abajo");
 		points=400;
 		this.execute=true;
@@ -34,7 +34,7 @@ public class ArmoredTank extends Enemy implements Runnable{
 					graphic.changeImage();
 					i++;
 					try {
-						Thread.sleep(100);
+						Thread.sleep(speedMove);
 					}catch (InterruptedException e){
 					}
 				}
@@ -51,7 +51,7 @@ public class ArmoredTank extends Enemy implements Runnable{
 	public void attack(){
 		if(!haveShot){
 			Thread tShot;
-			int[] pos=super.generatePosShot(graphic);
+			int[] pos=graphic.generatePosShot();
 			ShotEnemy s= new ShotEnemy(graphic.getDirection(),pos[0],pos[1],map,9,this,posX,posY);
 			tShot= new Thread(s);
 			tShot.start();

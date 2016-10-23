@@ -11,7 +11,7 @@ public class Level3 extends Level{
 	public Level3(Player pla){
 		speedShot=4;
 		pla.setSimultaneousShots(2);
-		pla.setSpeedMove(40);
+		pla.setSpeedMove(55);
 		pla.setResistance(2);
 		graphic= new GraphicLevel3();
 	}

@@ -15,8 +15,8 @@ public class Player extends Character implements Runnable{
 	private volatile boolean execute;
 	
 	public Player(Map map, int posx, int posy){
-		super(40,1, map,posx,posy);
-		graphic= new GraphicPlayer(208,624,"Jugador arriba-mov1-level1","arriba");
+		super(55,1, map,posx,posy);
+		graphic= new GraphicPlayer(213,638,"Jugador arriba-mov1-level1","arriba");
 		points=0;
 		life=3;
 		simultaneousShots=1;
@@ -62,24 +62,7 @@ public class Player extends Character implements Runnable{
 	public void attack(){
 		if(simultaneousShots>0){
 			Thread t;
-			int[] pos=super.generatePosShot(graphic);
-			int aux=52;
-			int shotPosX=0;
-			int shotPosY=0;
-			if((graphic.getDirection()=="arriba")||(graphic.getDirection()=="abajo")){
-				while(pos[0]<aux){
-					aux+=52;
-					shotPosX++;
-				}
-				shotPosY=posY;
-			}
-			else{
-				while(pos[1]<aux){
-					aux+=52;
-					shotPosY++;
-				}
-				shotPosX=posX;
-			}
+			int[] pos=graphic.generatePosShot();
 			ShotPlayer s=new ShotPlayer(graphic.getDirection(),pos[0],pos[1],map,level.getSpeedShot(),this,posX,posY);
 			t= new Thread(s);
 			t.start();
@@ -151,7 +134,7 @@ public class Player extends Character implements Runnable{
 	}
 	protected int kill(){
 		decrementLifes();
-		graphic.changeX(208);graphic.changeHeight(624);
+		graphic.changeX(213);graphic.changeHeight(638);
 		level= new Level1();
 		graphic.setImage(level.getGraphic().getImage(0, 0));
 		return 0;

@@ -2,7 +2,7 @@ package Graphic.GraphicElementWithMovement;
 
 import Graphic.Map.*;
 
-public class GraphicElementWithMovement extends GraphicElement{
+public abstract class GraphicElementWithMovement extends GraphicElement{
 	protected int dx;
 	protected int dy;
 	protected String direction;

@@ -8,6 +8,8 @@ public class GraphicShot extends GraphicElementWithMovement{
 	
 	public GraphicShot(int x, int y, String n, String dir){
 		super(x,y,n,dir);
+		width=3;
+		height=4;
 		assignIncrementDir(dir);
 	}
 	public int getPosInShots(){
@@ -15,22 +17,6 @@ public class GraphicShot extends GraphicElementWithMovement{
 	}
 	public void addPosInShots(int x){
 		posInShots=x;
-	}
-	public int getWidth(){
-		if((direction=="izquierda")||(direction=="derecha")){
-			return 4;
-		}
-		else{
-			return 3;
-		}
-	}
-	public int getHeight(){
-		if((direction=="izquierda")||(direction=="derecha")){
-			return 3;
-		}
-		else{
-			return 4;
-		}
 	}
 	private void assignIncrementDir(String dir){
 		switch(dir){
