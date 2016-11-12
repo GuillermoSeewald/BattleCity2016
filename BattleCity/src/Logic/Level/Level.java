@@ -12,5 +12,4 @@ public abstract class Level{
 	}
 	public abstract Level getNextLevel(Player pla);
 	public abstract GraphicLevel getGraphic();
-
 }

@@ -1,0 +1,36 @@
+package Graphic.Animation;
+
+import Logic.Map.Map;
+
+public class PlayerExplosion extends Explosion implements Runnable{
+
+	private volatile boolean execute;
+	
+	public PlayerExplosion(int x, int y, Map map){
+		super(x,y,"Explosion 1", map);
+		posInAnimations=map.getGraphicMap().insertAnimation(this);
+		map.getPlay().getPlayer().setStop(true);
+		execute=true;
+	}
+	public void terminate(){
+		execute=false;
+	}
+	public void run(){
+		while(execute){
+			if(actualImage<images.length){
+				try {
+					Thread.sleep(300);
+				} catch(InterruptedException e){
+				}
+				image=images[actualImage];
+				actualImage++;
+			}
+			else{				
+				map.getGraphicMap().deleteAnimation(posInAnimations);
+				terminate();
+				Thread t= new Thread(new PlayerGeneration(map.getPlay().getPlayer().getPosX()*52,map.getPlay().getPlayer().getPosY()*52,map));
+				t.start();
+			}
+		}
+	}
+}

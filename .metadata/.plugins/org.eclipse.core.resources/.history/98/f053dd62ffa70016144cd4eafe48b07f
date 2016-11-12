@@ -1,0 +1,34 @@
+package Graphic.Animation;
+
+import Logic.Map.*;
+
+public class PlayerGeneration extends AnimationOfTanksGeneration implements Runnable{
+	
+	public PlayerGeneration(int x, int y, Map map){
+		super(x,y,"Generation 1",map);
+		posInAnimations=map.getGraphicMap().insertAnimation(this);
+	}	
+	public void run(){
+		try {
+			Thread.sleep(200);
+		} catch(InterruptedException e){
+		}
+		image=images[0];
+		try {
+			Thread.sleep(200);
+		} catch(InterruptedException e){
+		}
+		image=images[1];
+		try {
+			Thread.sleep(200);
+		} catch(InterruptedException e){
+		}
+		image=images[2];
+		try {
+			Thread.sleep(200);
+		} catch(InterruptedException e){
+		}
+		map.getPlay().getPlayer().getGraphic().relocate();
+		map.getPlay().getPlayer().getLevel().getGraphic().getImage(0, 0)
+	}
+}

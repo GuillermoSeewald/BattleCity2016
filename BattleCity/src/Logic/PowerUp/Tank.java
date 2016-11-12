@@ -4,9 +4,9 @@ import Logic.Map.*;
 import Logic.Tank.*;
 import Graphic.PowerUp.*;
 
-public class Tank extends PowerUp{
+public class Tank extends PowerUp implements Runnable{
 	
-	protected GraphicTank graphic;
+	private GraphicTank graphic;
 	
 	public Tank(int x, int y, int posX, int posY, Map map){
 		super(posX, posY, map);
@@ -14,6 +14,13 @@ public class Tank extends PowerUp{
 	}
 	public GraphicTank getGraphic(){
 		return graphic;
+	}
+	public void run(){
+		try {
+			Thread.sleep(20000);
+		} catch (InterruptedException e) {
+		}
+		kill();
 	}
 	
 	protected int kill(){
@@ -26,11 +33,13 @@ public class Tank extends PowerUp{
 	public int kill(Enemy ene){
 		return 0;
 	}
-/*	public boolean collide(Player pla){
-	
+	public boolean collide(Player pla){
+		pla.incrementLifes();
+		pla.setPoints(points);
+		kill();
+		return false;
 	}
 	public boolean collide(Enemy ene){
-		
+		return false;
 	}
-	*/
 }

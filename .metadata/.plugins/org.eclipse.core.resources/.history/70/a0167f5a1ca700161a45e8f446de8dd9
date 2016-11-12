@@ -1,0 +1,30 @@
+package Graphic.Animation;
+
+import Logic.Map.*;
+
+public class GameFinished extends Animation implements Runnable{
+	
+	protected Map map;
+	private volatile boolean execute;
+	
+	public GameFinished(int x, int y, String nom, Map map){
+		super(x,y,nom);
+		this.map=map;
+		map.getPlay().getPlayer().terminate();
+		map.getPlay().getPlayer().setSimultaneousShots(0);
+		execute=true;
+	}
+	
+	public void terminate(){
+		execute=false;
+	}
+	public void run(){
+		while(execute){
+			
+		}
+	}
+	
+	public void upload(){
+		
+	}
+}

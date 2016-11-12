@@ -1,0 +1,35 @@
+package Graphic.Tank;
+
+import Logic.Map.*;
+import Logic.Tank.*;
+import java.awt.Image;
+
+public abstract class GraphicEnemy extends GraphicCharacter{
+
+	protected Image[][] images;
+	
+	public GraphicEnemy(int x, int y, String n, String dir){
+		super(x,y,n,dir);
+		images= new Image[2][4];
+	}
+	public Enemy haveEnemyTank(Map map, int pos){
+		Enemy tank=null;
+		Enemy[] e= map.getEnemies();
+		int newX= X+dx;
+		int newY= Y+dy;
+		
+		for(int i=0;i<e.length;i++){
+			if((e[i]!=null)&&(i!=pos)){
+				int wE= e[i].getGraphic().getWidth();
+				int hE= e[i].getGraphic().getHeight();
+				int xE= e[i].getGraphic().getX();
+				int yE= e[i].getGraphic().getY();
+				
+				if((((newX>=xE)&&(newX<=(xE+wE)))||(((newX+width)>=xE)&&((newX+width)<=(xE+wE))))&&(((newY>=yE)&&(newY<=(yE+hE)))||(((newY+height)>=yE)&&((newY+height)<=(yE+hE))))){
+					tank=e[i];
+				}
+			}
+		}		
+		return tank;
+	}
+}

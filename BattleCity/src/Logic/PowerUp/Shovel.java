@@ -2,11 +2,12 @@ package Logic.PowerUp;
 
 import Logic.Map.*;
 import Logic.Tank.*;
+import Logic.Obstacle.*;
 import Graphic.PowerUp.*;
 
-public class Shovel extends PowerUp{
+public class Shovel extends PowerUp implements Runnable{
 	
-	protected GraphicShovel graphic;
+	private GraphicShovel graphic;
 	
 	public Shovel(int x, int y, int posX, int posY, Map map){
 		super(posX, posY, map);
@@ -14,6 +15,13 @@ public class Shovel extends PowerUp{
 	}
 	public GraphicShovel getGraphic(){
 		return graphic;
+	}
+	public void run(){
+		try {
+			Thread.sleep(20000);
+		} catch (InterruptedException e) {
+		}
+		kill();
 	}
 	
 	protected int kill(){
@@ -26,11 +34,14 @@ public class Shovel extends PowerUp{
 	public int kill(Enemy ene){
 		return 0;
 	}
-/*	public boolean collide(Player pla){
-	
+	public boolean collide(Player pla){
+		Thread t= new Thread(new BaseWall(map));
+		t.start();
+		pla.setPoints(points);
+		kill();
+		return false;
 	}
 	public boolean collide(Enemy ene){
-		
+		return false;
 	}
-	*/
 }

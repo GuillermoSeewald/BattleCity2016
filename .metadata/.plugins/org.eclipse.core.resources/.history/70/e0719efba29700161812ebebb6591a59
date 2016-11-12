@@ -1,7 +1,0 @@
-package Graphic.Tank;
-
-public class GraphicBasicTank extends GraphicCharacter{
-	public GraphicBasicTank(int x, int y, String n){
-		super(x,y,n);
-	}
-}

@@ -1,0 +1,16 @@
+package Graphic.Animation;
+
+import java.awt.Image;
+
+public class Explosion extends Animation{
+	
+	public Explosion(int x, int y, String nom){
+		super(x,y,nom);
+		images=new Image[5];
+		buildImages();
+	}
+	
+	public void buildImages(){
+		
+	}
+}

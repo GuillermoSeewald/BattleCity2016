@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="&#x0D;&#x0A;&#x09;public void &#x0D;&#x0A;&#x09;public void terminate(){&#x0D;&#x0A;&#x09;&#x09;this.execute=false;&#x0D;&#x0A;&#x09;}" key="selection"/>
+		<list key="findhistory">
+			<item value="&#x0D;&#x0A;&#x09;public void &#x0D;&#x0A;&#x09;public void terminate(){&#x0D;&#x0A;&#x09;&#x09;this.execute=false;&#x0D;&#x0A;&#x09;}"/>
+		</list>
+	</section>
+</section>

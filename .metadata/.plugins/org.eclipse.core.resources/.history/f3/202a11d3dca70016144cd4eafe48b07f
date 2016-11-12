@@ -1,0 +1,33 @@
+package Graphic.Animation;
+
+import Logic.Map.*;
+
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
+public class ForceFieldGraphic extends Animation implements Runnable{
+	
+	private volatile boolean execute;
+	
+	public ForceFieldGraphic(int x, int y, String nom, Map map){
+		super(x,y,nom, map);
+		images= new Image[2];
+		actualImage=0;
+		execute=true;
+	}
+	public void terminate(){
+		execute=false;
+	}
+	public void run(){
+		while(execute){
+			try {
+				Thread.sleep(50);
+			} catch(InterruptedException e){
+			}
+		}
+	}
+	public void buildImages(){
+		images[0]=new ImageIcon("Imagenes/Force field 1.png").getImage();
+		images[1]=new ImageIcon("Imagenes/Force field 2.png").getImage();
+	}
+}

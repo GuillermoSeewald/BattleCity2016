@@ -1,0 +1,21 @@
+package Graphic.Tank;
+
+import Logic.Map.*;
+import Logic.Tank.*;
+import java.awt.Image;
+
+public abstract class GraphicEnemy extends GraphicCharacter{
+
+	protected Image[][] images;
+	
+	public GraphicEnemy(int x, int y, String n, String dir){
+		super(x,y,n,dir);
+		images= new Image[2][4];
+	}
+	
+	public Enemy haveTank(Map map){
+		Enemy haveTank=null;
+		
+		return haveTank;
+	}
+}

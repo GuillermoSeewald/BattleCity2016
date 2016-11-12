@@ -3,14 +3,11 @@ package Graphic.Tank;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-public class GraphicArmoredTank extends GraphicCharacter{
-	
-	protected Image[][] images;
+public class GraphicArmoredTank extends GraphicEnemy{
 	
 	public GraphicArmoredTank(int x, int y, String n, String dir){
 		super(x,y,n,dir);
-		images= new Image[2][4];
-		width=40;
+		width=46;
 		height=46;
 		buildImages();
 	}

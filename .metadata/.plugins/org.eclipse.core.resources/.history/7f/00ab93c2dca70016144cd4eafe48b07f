@@ -1,0 +1,33 @@
+package Logic.PowerUp;
+
+import Logic.Tank.Player;
+import Logic.Map.*;
+import Graphic.Animation.*;
+
+public class ForceField implements Runnable{
+	
+	protected Player p;
+	protected ForceFieldGraphic graphic;
+	protected Map map;
+	
+	public ForceField(Player pla, Map map){
+		graphic= new ForceFieldGraphic(pla.getGraphic().getX(),pla.getGraphic().getY(),"Force field 1",map);
+		Thread t= new Thread(graphic);
+		t.start();
+		p=pla;
+		this.map=map;
+		graphic.setPosInAnimations(map.getGraphicMap().insertAnimation(graphic));
+		p.activateForceField(this);
+	}
+	public void run(){
+		try {
+			Thread.sleep(20000);
+		} catch (InterruptedException e){
+		}
+		map.getGraphicMap().deleteAnimation(graphic.getPosInAnimations());
+		p.desactivateForceField();
+	}
+	public ForceFieldGraphic getGraphic(){
+		return graphic;
+	}
+}

@@ -1,0 +1,12 @@
+package Graphic.Animation;
+
+import Logic.Map.*;
+
+public class PlayerGeneration extends AnimationOfTanksGeneration implements Runnable{
+	
+	public PlayerGeneration(int x, int y, Map map){
+		super(x,y,"Generation 1",map);
+		posInAnimations=map.getGraphicMap().insertAnimation(this);
+	}
+	
+}

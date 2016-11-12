@@ -1,0 +1,14 @@
+package Graphic.Animation;
+
+public class GameFinished extends Animation{
+	
+	protected String text;
+	
+	public GameFinished(String nom){
+		text=nom;
+	}
+	
+	public void buildImage(){
+		
+	}
+}

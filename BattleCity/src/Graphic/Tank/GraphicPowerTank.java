@@ -4,13 +4,13 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class GraphicPowerTank extends GraphicCharacter{
+public class GraphicPowerTank extends GraphicEnemy{
 	
-	protected Image[][] images;
 	
 	public GraphicPowerTank(int x, int y, String n, String dir){
 		super(x,y,n,dir);
-		images= new Image[2][4];
+		width=44;
+		height=44;
 		buildImages();
 	}
 	public Image getImageInArray(int x, int y){

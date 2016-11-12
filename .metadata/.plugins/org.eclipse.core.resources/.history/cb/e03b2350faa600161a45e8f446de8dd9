@@ -1,0 +1,49 @@
+package Logic.PowerUp;
+
+import Logic.Map.*;
+import Logic.Tank.*;
+import Graphic.PowerUp.*;
+
+public class Helmet extends PowerUp implements Runnable{
+	
+	protected GraphicHelmet graphic;
+	private volatile boolean execute;
+	
+	public Helmet(int x, int y, int posX, int posY, Map map){
+		super(posX, posY, map);
+		graphic= new GraphicHelmet(x,y,"Casco");
+	}
+	public void terminate(){
+		execute=false;
+	}
+	public void run(){
+		try {
+			Thread.sleep(15000);
+		} catch (InterruptedException e){
+		}
+		kill();
+	}
+	public GraphicHelmet getGraphic(){
+		return graphic;
+	}
+	
+	protected int kill(){
+		map.deleteObstacle(posX, posY);
+		return 0;
+	}
+	public int kill(Player pla){
+		return 0;
+	}
+	public int kill(Enemy ene){
+		return 0;
+	}
+	public boolean collide(Player pla){
+		pla.setPoints(pla.getPoints()+points);
+		new ForceField(pla,map);
+		kill();
+		return true;
+	}
+	public boolean collide(Enemy ene){
+		return false;
+	}
+}

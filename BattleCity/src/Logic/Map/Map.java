@@ -2,7 +2,9 @@ package Logic.Map;
 
 import Logic.Obstacle.*;
 import Logic.Tank.*;
+import Logic.PowerUp.*;
 import Graphic.Map.GraphicMap;
+import Graphic.Animation.*;
 
 import java.util.Random;
 import java.io.BufferedReader;
@@ -14,6 +16,7 @@ public class Map{
 	
 	protected Player player;
 	protected Obstacle[][] obstacles;
+	protected Base base;
 	protected Enemy[] enemies;
 	protected int cantEnemy;
 	protected Play game;
@@ -29,8 +32,16 @@ public class Map{
 		}catch(FileNotFoundException e){
 		}catch(IOException e){
 		}
+		Obstacle[] w= new Obstacle[5];
+		w[0]= obstacles[base.getPosY()-1][base.getPosX()-1];
+		w[1]= obstacles[base.getPosY()-1][base.getPosX()];
+		w[2]= obstacles[base.getPosY()-1][base.getPosX()+1];
+		w[3]= obstacles[base.getPosY()][base.getPosX()-1];
+		w[4]= obstacles[base.getPosY()][base.getPosX()+1];
+		base.setWall(w);
 		
 		player= pla;
+		
 		
 		graphicMap= new GraphicMap(this);
 	}
@@ -60,7 +71,8 @@ public class Map{
 					obstacles[fila][i]= new Tree(x,y,i,fila,this);
 					break;
 				case 'B':
-					obstacles[fila][i]= new Base(x,y,i,fila,this);
+					base= new Base(x,y,i,fila,this);
+					obstacles[fila][i]= base;
 					break;
 				}
 				x=x+52;
@@ -73,14 +85,85 @@ public class Map{
 	}
 	public void fullEnemyKill(){
 		for(int i=0;i<enemies.length;i++){
-			enemies[i]=null;
+			deleteEnemy(i);
+		}
+	}
+	public void setPowerUp(){
+		Random r= new Random();
+		int x= r.nextInt(obstacles[0].length);
+		int y= r.nextInt(obstacles.length);		
+		while(obstacles[y][x]!=null){
+			x= r.nextInt(obstacles[0].length);
+			y= r.nextInt(obstacles.length);
+		}		
+		int z= 3;
+		Thread t;
+		switch(z){
+		case 0:
+			Grenade p= new Grenade(x*52,y*52,x,y,this);
+			t= new Thread(p);
+			t.start();
+			obstacles[y][x]= p;
+			break;
+		case 1:
+			Helmet h= new Helmet(x*52,y*52,x,y,this);
+			t= new Thread(h);
+			t.start();
+			obstacles[y][x]= h;
+			break;
+		case 2:
+			Shovel s= new Shovel(x*52,y*52,x,y,this);
+			t= new Thread(s);
+			t.start();
+			obstacles[y][x]= s;
+			break;
+		case 3:
+			Star st= new Star(x*52,y*52,x,y,this);
+			t= new Thread(st);
+			t.start();
+			obstacles[y][x]= st;
+			break;
+		case 4:
+			Tank tn= new Tank(x*52,y*52,x,y,this);
+			t= new Thread(tn);t.start();
+			obstacles[y][x]= tn;
+			break;
+		case 5:
+			Timer tm= new Timer(x*52,y*52,x,y,this);
+			t= new Thread(tm);t.start();
+			obstacles[y][x]= tm;
+			break;
 		}
 	}
 	public void deleteEnemy(int x){
-		player.setPoints(player.getPoints()+enemies[x].getPoints());
-		enemies[x].terminate();
-		enemies[x]=null;
-		graphicMap.repaint();
+		if(enemies[x]!=null){
+			player.setPoints(enemies[x].getPoints());
+			game.getFrame().getInformationPanel().updatelabelPoints();
+			enemies[x].terminate();
+			enemies[x]=null;
+			graphicMap.repaint();
+			boolean empty=true;
+			for(int i=4;(i<enemies.length)&&(!empty);i++){
+				if(enemies[i]!=null){
+					empty=false;
+				}
+			}
+			if((game.getCantEnemyDead()==19)){
+				game.incrementEnemyDead();
+				Thread t= new Thread(new GameFinished(270,670,"Game over",this));
+				t.start();
+			}
+			else{
+				if(game.cantEnemyDead<16){
+					insertEnemy();
+					game.getFrame().getInformationPanel().deleteImageLabel();
+				}
+				game.incrementEnemyDead();
+			}
+			if(((game.getCantEnemyDead()%4)==0)&&(game.getCantEnemyDead()<20)){
+				setPowerUp();
+			}
+		}
 	}
 	public void deleteObstacle(int x, int y){
 		obstacles[y][x]=null;
@@ -132,6 +215,9 @@ public class Map{
 		return insert;
 		
 	}
+	public void setObstacle(Obstacle o, int posX, int posY){
+		obstacles[posY][posX]= o;
+	}
 	public Enemy[] getEnemies(){
 		return enemies;
 	}
@@ -149,5 +235,15 @@ public class Map{
 	}
 	public GraphicMap getGraphicMap(){
 		return graphicMap;
+	}
+	public Base getBase(){
+		return base;
+	}
+	public void gameOver(){
+		player.setSimultaneousShots(0);
+		Thread t= new Thread(new FreezerTanks(this,true));
+		t.start();
+		Thread s= new Thread(new GameFinished(270,670,"Game over",this));
+		s.start();
 	}
 }

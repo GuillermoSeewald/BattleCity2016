@@ -1,0 +1,18 @@
+package Logic.PowerUp;
+
+import Logic.Tank.Player;
+
+public class ForceField implements Runnable{
+	
+	protected Player p;
+	
+	public ForceField(Player pla){
+		p=pla;
+	}
+	public void run(){
+		try {
+			Thread.sleep(20000);
+		} catch (InterruptedException e){
+		}
+	}
+}

@@ -1,0 +1,12 @@
+package Graphic.Animation;
+
+import Logic.Map.*;
+
+public class EnemiesExplosion extends Explosion{
+	
+	private volatile boolean execute;
+	
+	public EnemiesExplosion(int x, int y, Map map, int posInEnemies){
+		super(x,y,"Explosion 1", map);
+	}
+}

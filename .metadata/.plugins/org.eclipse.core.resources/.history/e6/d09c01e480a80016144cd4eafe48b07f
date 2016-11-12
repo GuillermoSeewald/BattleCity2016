@@ -1,0 +1,34 @@
+package Logic.Level;
+
+import Graphic.Level.GraphicLevel;
+import Logic.Tank.*;
+
+public abstract class Level{
+	
+	protected int speedShot;
+	
+	public int getSpeedShot(){
+		return speedShot;
+	}
+	public abstract Level getNextLevel(Player pla);
+	public abstract GraphicLevel getGraphic();
+	public void changeImage(Player p, GraphicLevel g){
+		String d= p.getGraphic().getDirection();
+		if(d=="arriba"){
+			p.getGraphic().setImage(g.getImage(0, 0));
+		}
+		else{
+			if(d=="derecha"){
+				p.getGraphic().setImage(g.getImage(0, 2));
+			}
+			else{
+				if(d=="izquierda"){
+					p.getGraphic().setImage(g.getImage(0, 4));
+				}
+				else{
+					p.getGraphic().setImage(g.getImage(0, 6));
+				}
+			}
+		}
+	}
+}

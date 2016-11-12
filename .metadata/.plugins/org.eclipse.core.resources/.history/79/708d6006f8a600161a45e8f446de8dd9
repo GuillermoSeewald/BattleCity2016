@@ -1,0 +1,31 @@
+package Graphic.Tank;
+
+import Logic.Map.*;
+import Logic.Tank.*;
+
+public class GraphicPlayer extends GraphicCharacter{
+	public GraphicPlayer(int x,int y, String n, String dir){
+		super(x,y,n,dir);
+	}
+	
+	public Character haveTank(Map map){
+		Character tank=null;
+		Enemy[] e= map.getEnemies();
+		int newX= X+dx;
+		int newY= Y+dy;
+		
+		for(int i=0;i<e.length;i++){
+			if(e[i]!=null){
+				int wE= e[i].getGraphic().getWidth();
+				int hE= e[i].getGraphic().getHeight();
+				int xE= e[i].getGraphic().getX();
+				int yE= e[i].getGraphic().getY();
+				
+				if((((newX>=xE)&&(newX<=(xE+wE)))||(((newX+width)>=xE)&&((newX+width)<=(xE+wE))))&&(((newY>=yE)&&(newY<=(yE+hE)))||(((newY+height)>=yE)&&((newY+height)<=(yE+hE))))){
+					tank=e[i];
+				}
+			}
+		}		
+		return tank;
+	}
+}

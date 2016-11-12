@@ -10,24 +10,39 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
-
+import Graphic.Animation.*;
 
 public class GraphicMap extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	protected Map map;
 	protected Shot[] shots;
+	protected Animation[] animations;
 	
 	public GraphicMap(Map m){
 		map=m;
-		shots= new Shot[7];
+		shots= new Shot[30];
+		
+		animations= new Animation[40];
 		
 		setBackground(Color.BLACK);
 		setFocusable(true);
 		addKeyListener(new Teclado());
 		setSize(676,707);
-		this.setBorder(new LineBorder(Color.WHITE));
+	}
+	public int insertAnimation(Animation a){
+		int retorno=0;
+		boolean insert=false;
+		while((!insert)&&(retorno<animations.length)){
+			if(animations[retorno]==null){
+				animations[retorno]=a;
+				insert=true;
+			}
+			else{
+				retorno++;
+			}
+		}
+		return retorno;
 	}
 	public int insertShot(Shot s){
 		int retorno=0;
@@ -44,11 +59,20 @@ public class GraphicMap extends JPanel{
 		return retorno;
 	}
 	public void deleteShot(int x){
-		shots[x]=null;
+		if((x>=0)&&(x<shots.length)){
+			shots[x]=null;
+		}
+		repaint();
+	}
+	public void deleteAnimation(int x){
+		animations[x]=null;
 		repaint();
 	}
 	public Shot[] getShots(){
 		return shots;
+	}
+	public Animation[] getAnimations(){
+		return animations;
 	}
 	
 	
@@ -73,6 +97,11 @@ public class GraphicMap extends JPanel{
 				if(map.getMap()[i][j]!=null){
 					g.drawImage(map.getMap()[i][j].getGraphic().getImagen(), map.getMap()[i][j].getGraphic().getX(), map.getMap()[i][j].getGraphic().getY(), null);
 				}
+			}
+		}
+		for(int i=0;i<animations.length;i++){
+			if(animations[i]!=null){
+				g.drawImage(animations[i].getImagen(), animations[i].getX(), animations[i].getY(), null);
 			}
 		}
 	}

@@ -1,0 +1,73 @@
+package Logic.Shot;
+
+import Logic.Map.*;
+import Logic.Obstacle.*;
+import Logic.Tank.Player;
+import Graphic.Shot.*;
+
+public abstract class Shot extends Element{
+	
+	protected int speed;
+	
+	public Shot(Map map, int speed, int posx, int posy){
+		super(map, posx, posy);
+		this.speed=speed;
+	}
+	public int getSpeed(){
+		return speed;
+	}
+	public boolean move(GraphicShot graphic){
+		boolean mov=true;
+		Obstacle obs= null;
+		if(graphic.getDX()!=0){
+			int auxX= getNewPos(graphic.getX()+graphic.getDX());
+			if(((graphic.getX()+graphic.getDX())<0)||((graphic.getX()+graphic.getDX())>677)){
+				mov=false;
+			}
+			else{
+				obs=map.getObstacle(auxX, posY);
+				if(obs==null){
+					graphic.changeX(graphic.getX()+graphic.getDX());
+					posX=auxX;
+				}
+				else{
+					Player p=null;
+					int aux=obs.kill(p);
+					if(aux==1){
+						mov=false;
+					}
+					else{
+						graphic.changeX(graphic.getX()+graphic.getDX());
+						posX=auxX;
+					}
+				}
+			}
+		}
+		if(graphic.getDY()!=0){
+			int auxY= graphic.getNewPos(graphic.getY()+graphic.getDY());
+			if(((graphic.getY()+graphic.getDY())<0)||((graphic.getY()+graphic.getDY())>677)){
+				mov=false;
+			}
+			else{
+				obs= map.getObstacle(posX, auxY);
+				if(obs==null){
+					graphic.changeY(graphic.getY()+graphic.getDY());
+					posY=auxY;
+				}
+				else{
+					Player p=null;
+					int aux=obs.kill(p);
+					if(aux==1){
+						mov=false;
+					}
+					else{
+						graphic.changeY(graphic.getY()+graphic.getDY());
+						posY=auxY;
+					}
+				}
+			}
+		}
+		map.getGraphicMap().repaint();
+		return mov;
+	}
+}

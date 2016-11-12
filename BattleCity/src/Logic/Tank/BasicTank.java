@@ -21,31 +21,44 @@ public class BasicTank extends Enemy implements Runnable{
 	public GraphicBasicTank getGraphic(){
 		return graphic;
 	}
+	public void initialize(){
+		execute=true;
+	}
 	public void terminate(){
 		this.execute=false;
 	}
 	public void run(){
 		while(execute){
-			Random r= new Random();
-			int x= r.nextInt(4);
-			int i=0;
-			move();
-			while(x>0){
-				while(i<13){
-					super.move(graphic);
-					graphic.changeImage();
-					i++;
-					try {
-						Thread.sleep(speedMove);
-					}catch (InterruptedException e){
-					}
+			if(!stop){
+				if(!haveShot){
+					attack();
 				}
-				x--;
+				Random r= new Random();
+				int x= r.nextInt(4);
+				int i=0;
+				move();
+				boolean mov=true;
+				while((x>0)&&(mov)){
+					while((i<13)&&(mov)){
+						mov=super.move(graphic);
+						graphic.changeImage();
+						i++;
+						try {
+							Thread.sleep(speedMove);
+						}catch (InterruptedException e){
+						}
+					}
+					x--;
+				}
+			}
+			else{
+				try {
+					Thread.sleep(10000);
+				} catch(InterruptedException e){
+				}
+				stop=false;
 			}
 		}
-	}
-	public void enableShot(){
-		haveShot=false;
 	}
 	public void attack(){
 		if(!haveShot){
@@ -85,17 +98,15 @@ public class BasicTank extends Enemy implements Runnable{
 		return 1;
 	}
 	public int kill(Player pla){
-		kill();
-		return 1;
+		return kill();
 	}
 	public int kill(Enemy ene){
 		return 0;
 	}
-/*	public boolean collide(Player pla){
-	
+	public boolean collide(Player pla){
+		return true;
 	}
 	public boolean collide(Enemy ene){
-		
+		return true;
 	}
-	*/
 }

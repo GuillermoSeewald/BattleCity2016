@@ -1,0 +1,22 @@
+package Logic.Animation;
+
+import java.awt.Image;
+
+import Graphic.Map.GraphicElement;
+
+public abstract class Animation extends GraphicElement{
+	protected Image images[];
+	protected int posInAnimations;
+	protected int actualImage;
+	
+	public Animation(int x, int y, String nom){
+		super(x,y,nom);
+	}
+	public abstract void buildImages();
+	public void setPosInAnimations(int x){
+		posInAnimations=x;
+	}
+	public int getPosInAnimations(){
+		return posInAnimations;
+	}
+}

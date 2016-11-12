@@ -1,8 +1,0 @@
-package Logic.Map;
-
-public class Interfaz {
-
-	public static void main(String[] args) {
-		new Frame_GraphicPlay());
-	}
-}

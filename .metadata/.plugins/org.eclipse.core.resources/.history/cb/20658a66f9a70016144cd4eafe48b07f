@@ -1,0 +1,34 @@
+package Logic.Tank;
+
+import Logic.Map.*;
+
+public abstract class Character extends Element{
+	protected int speedMove, resistance, points;
+	
+	public Character(int speedM,int res, Map map, int posx, int posy){
+		super(map, posx, posy);
+		speedMove=speedM;
+		resistance=res;
+	}
+	
+	public void setSpeedMove(int s){
+		speedMove=s;
+	}
+	public void setResistance(int r){
+		resistance=r;
+	}
+	public void setPoints(int p){
+		points=p;
+	}
+	public abstract void attack();
+	
+	public int getSpeedMove(){
+		return speedMove;
+	}
+	public int getResistance(){
+		return resistance;
+	}
+	public int getPoints(){
+		return points;
+	}
+}

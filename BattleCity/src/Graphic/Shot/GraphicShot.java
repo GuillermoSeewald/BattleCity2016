@@ -1,8 +1,9 @@
 package Graphic.Shot;
 
+import Logic.Map.*;
 import Graphic.GraphicElementWithMovement.*;
 
-public class GraphicShot extends GraphicElementWithMovement{
+public abstract class GraphicShot extends GraphicElementWithMovement{
 	
 	protected int posInShots;
 	
@@ -33,5 +34,33 @@ public class GraphicShot extends GraphicElementWithMovement{
 			dx=1;dy=0;
 			break;
 		}
+	}
+	
+	//Calcula la ubicación logica en la cual se encontrará el disparo en el siguiente movimiento
+	//utilizando la posicion en pixeles
+	public int getNewPos(int newPosGraph, Map map){
+		int newPos=0;
+		int aux1=0;
+		int aux2=52;
+		boolean found=false;
+		for(int i=0;(i<map.getMap().length-1)&&(!found);i++){
+			if((newPosGraph>=aux1)&&((newPosGraph+4)<aux2)){
+				found=true;
+			}
+			else{
+				if((newPosGraph<aux2)&&((newPosGraph+4)>=aux2)){
+					found=true;
+					if((direction=="abajo")||(direction=="derecha")){
+						newPos++;
+					}
+				}
+				else{
+					aux1=aux2;
+					aux2+=52;
+					newPos++;
+					}
+			}
+		}
+		return newPos;
 	}
 }

@@ -1,0 +1,38 @@
+package Graphic.Animation;
+
+import Logic.Map.*;
+
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+public class Explosion extends Animation implements Runnable{
+	
+	private volatile boolean execute;
+	
+	public Explosion(int x, int y, String nom, Map map){
+		super(x,y,nom, map);
+		images=new Image[4];
+		actualImage=0;
+		execute=true;
+		buildImages();
+	}	
+	public void run(){
+		while(execute){
+			if(actualImage<images.length){
+				try {
+					Thread.sleep(200);
+				} catch(InterruptedException e){
+				}
+				image=images[actualImage];
+				actualImage++;
+			}
+		}
+	}
+	public void buildImages(){
+		images[0]=new ImageIcon("Imagenes/Explosion 2.png").getImage();
+		images[1]=new ImageIcon("Imagenes/Explosion 3.png").getImage();
+		images[2]=new ImageIcon("Imagenes/Explosion 4.png").getImage();
+		images[3]=new ImageIcon("Imagenes/Explosion 5.png").getImage();
+	}
+}

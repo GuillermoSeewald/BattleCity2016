@@ -3,6 +3,7 @@ package Logic.Map;
 public class Interfaz {
 
 	public static void main(String[] args) {
-		new Play("Mapas/Mapa 1.txt");
+		Play p = new Play("Mapas/Mapa 2.txt");
+		p.getFrame().setVisible(true);
 	}
 }

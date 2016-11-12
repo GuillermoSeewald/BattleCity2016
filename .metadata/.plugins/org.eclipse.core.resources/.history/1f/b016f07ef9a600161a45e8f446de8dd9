@@ -1,0 +1,80 @@
+package Logic.Tank;
+
+import Logic.Map.*;
+import Logic.Obstacle.Obstacle;
+import Graphic.Tank.*;
+
+public abstract class Enemy extends Character{
+	
+	protected int posInEnemies;
+	protected boolean haveShot;
+	
+	
+	public Enemy(int speedMov,int res, Map map, int posE, int posx, int posy){
+		super(speedMov,res,map,posx,posy);
+		posInEnemies=posE;
+	}
+	public abstract void terminate();
+	public abstract void initialize();
+	public abstract void enableShot();
+	public int getPosInEnemies(){
+		return posInEnemies;
+	}
+	public void move(GraphicEnemy graphic){
+		if(graphic.getDX()!=0){
+			int auxX= graphic.getNewPos(graphic.getX()+graphic.getDX(),graphic,map.getMap().length);
+			if((graphic.getX()+graphic.getDX())<0){
+				graphic.changeX(0);
+			}
+			else{
+				if((graphic.getX()+graphic.getDX()+graphic.getHeight())>676){
+					graphic.changeX(676-graphic.getHeight());
+					}
+				else{
+					Obstacle obs1= map.getObstacle(auxX, posY);
+					Obstacle obs2= null;
+					if(graphic.betweenTwoCell(graphic.getY(), map.getMap().length)){
+						obs2=map.getObstacle(posX, posY+1);
+					}
+					if((obs1==null)&&(obs2==null)){
+						Character c= graphic.haveEnemyTank(map);
+						if(!c.equals(this)){
+							if((c==null)||(!c.collide(this))){
+								graphic.changeX(graphic.getX()+graphic.getDX());
+								posX=auxX;
+							}
+						}
+					}
+				}
+			}
+		}
+		if(graphic.getDY()!=0){
+			int auxY= graphic.getNewPos(graphic.getY()+graphic.getDY(),graphic,map.getMap().length);
+			if((graphic.getY()+graphic.getDY())<0){
+				graphic.changeY(0);
+				}
+			else{
+				if((graphic.getY()+graphic.getDY()+graphic.getHeight())>676){
+					graphic.changeY(676-graphic.getHeight());
+					}
+				else{
+					Obstacle obs1= map.getObstacle(posX, auxY);
+					Obstacle obs2=null;
+					if(graphic.betweenTwoCell(graphic.getX(), map.getMap().length)){
+						obs2=map.getObstacle(posX+1, posY);
+					}
+					if((obs1==null)&&(obs2==null)){
+						Character c= graphic.haveEnemyTank(map);
+						if(c!=this){
+							if((c==null)||(!c.collide(this))){
+								graphic.changeY(graphic.getY()+graphic.getDY());
+								posY=auxY;
+							}
+						}
+					}
+				}
+			}
+		}
+		map.getGraphicMap().repaint();
+	}
+}

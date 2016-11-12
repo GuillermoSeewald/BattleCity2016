@@ -1,0 +1,13 @@
+package Graphic.Map;
+
+import javax.swing.JFrame;
+
+public class InitialFrame extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	public InitialFrame(){
+		setTitle("Battle city");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(900,600);
+	}
+}

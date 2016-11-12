@@ -1,0 +1,10 @@
+package Graphic.Animation;
+
+import Graphic.
+
+public class ForceFieldGraphic extends Animation{
+	
+	public ForceFieldGraphic(int x, int y, String nom){
+		super(x,y,nom);
+	}
+}

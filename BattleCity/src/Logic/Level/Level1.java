@@ -17,6 +17,7 @@ public class Level1 extends Level{
 		pla.setSpeedMove(55);
 		pla.setResistance(1);
 		graphic= new GraphicLevel1();
+//		graphic.changePlayerImage(pla);
 	}
 	public Level getNextLevel(Player pla){
 		return new Level2(pla);

@@ -1,0 +1,35 @@
+package Logic.PowerUp;
+
+import Logic.Map.Map;
+
+public class freezerEnemies implements Runnable{
+	
+	protected Map map;
+	protected boolean gameOver;
+	
+	public freezerEnemies(Map map, boolean g){
+		this.map=map;
+		gameOver=g;
+	}
+	public void run(){
+		if(gameOver){
+			map.getPlay().getPlayer().terminate();
+			try {
+				Thread.sleep(7000);
+			} catch(InterruptedException e){
+			}
+		}
+		else{
+			for(int i=0;i<map.getEnemies().length;i++){
+				map.getEnemies()[i].setStop(true);
+			}
+			try {
+				Thread.sleep(10000);
+			} catch(InterruptedException e){
+			}
+			for(int i=0;i<map.getEnemies().length;i++){
+				map.getEnemies()[i].setStop(false);
+			}
+		}
+	}
+}

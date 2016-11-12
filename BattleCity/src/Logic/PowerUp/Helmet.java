@@ -4,13 +4,20 @@ import Logic.Map.*;
 import Logic.Tank.*;
 import Graphic.PowerUp.*;
 
-public class Helmet extends PowerUp{
+public class Helmet extends PowerUp implements Runnable{
 	
 	protected GraphicHelmet graphic;
 	
 	public Helmet(int x, int y, int posX, int posY, Map map){
 		super(posX, posY, map);
-		graphic= new GraphicHelmet(x,y,"Casco");
+		graphic= new GraphicHelmet(x,y,"Escudo");
+	}
+	public void run(){
+		try {
+			Thread.sleep(20000);
+		} catch (InterruptedException e){
+		}
+		kill();
 	}
 	public GraphicHelmet getGraphic(){
 		return graphic;
@@ -26,11 +33,16 @@ public class Helmet extends PowerUp{
 	public int kill(Enemy ene){
 		return 0;
 	}
-/*	public boolean collide(Player pla){
-	
+	public boolean collide(Player pla){
+		pla.setPoints(points);
+		ForceField f= new ForceField(pla,map,15000);
+		Thread t= new Thread(f);
+		t.start();
+		pla.activateForceField(f);
+		kill();
+		return false;
 	}
 	public boolean collide(Enemy ene){
-		
+		return false;
 	}
-	*/
 }

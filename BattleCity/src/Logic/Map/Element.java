@@ -26,6 +26,6 @@ public abstract class Element{
 	protected abstract int kill();
 	public abstract int kill(Player pla);
 	public abstract int kill(Enemy ene);
-/*	public abstract boolean collide(Player jug);
-	public abstract boolean collide(Enemy ene);*/
+	public abstract boolean collide(Player jug);
+	public abstract boolean collide(Enemy ene);
 }

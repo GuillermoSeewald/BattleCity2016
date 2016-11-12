@@ -1,17 +1,24 @@
 package Logic.Shot;
 
 import Logic.Map.*;
+import Logic.Obstacle.Obstacle;
 import Logic.Tank.*;
+import Graphic.Shot.*;
 
 public class ShotPlayer extends Shot implements Runnable{
 	
 	Player player;
+	protected GraphicShotPlayer graphic;
 	private volatile boolean execute;
 	
 	public ShotPlayer(String dir, int x, int y, Map map, int speed, Player pla, int posx, int posy){
-		super(dir,x,y,map,speed,posx,posy);
+		super(map,speed,posx,posy);
 		player=pla;
+		graphic= new GraphicShotPlayer(x,y,"Disparo "+dir,dir);
 		this.execute=true;
+	}
+	public GraphicShotPlayer getGraphic(){
+		return graphic;
 	}
 	public void terminate(){
 		this.execute=false;
@@ -28,7 +35,73 @@ public class ShotPlayer extends Shot implements Runnable{
 			}
 		}
 	}
-	
+
+	public boolean move(){
+		boolean mov=true;
+		Obstacle obs= null;
+		if(graphic.getDX()!=0){
+			int auxX= graphic.getNewPos(graphic.getX()+graphic.getDX(),map);
+			if(((graphic.getX()+graphic.getDX())<0)||((graphic.getX()+graphic.getDX())>677)){
+				mov=false;
+			}
+			else{
+				obs=map.getObstacle(auxX, posY);
+				Enemy e= graphic.haveEnemyTank(map, -1);
+				if(e==null){
+					if(obs==null){
+						graphic.changeX(graphic.getX()+graphic.getDX());
+						posX=auxX;
+					}
+					else{
+						int aux=obs.kill(player);
+						if(aux==1){
+							mov=false;
+						}
+						else{
+							graphic.changeX(graphic.getX()+graphic.getDX());
+							posX=auxX;
+						}
+					}
+				}
+				else{
+					mov=false;
+					e.kill(player);
+				}
+			}
+		}
+		if(graphic.getDY()!=0){
+			int auxY= graphic.getNewPos(graphic.getY()+graphic.getDY(),map);
+			if(((graphic.getY()+graphic.getDY())<0)||((graphic.getY()+graphic.getDY())>677)){
+				mov=false;
+			}
+			else{
+				obs= map.getObstacle(posX, auxY);
+				Enemy e= graphic.haveEnemyTank(map, -1);
+				if(e==null){
+					if(obs==null){
+						graphic.changeY(graphic.getY()+graphic.getDY());
+						posY=auxY;
+					}
+					else{
+						int aux=obs.kill(player);
+						if(aux==1){
+							mov=false;
+						}
+						else{
+							graphic.changeY(graphic.getY()+graphic.getDY());
+							posY=auxY;
+						}
+					}
+				}
+				else{
+					e.kill(player);
+					mov=false;
+				}
+			}
+		}
+		map.getGraphicMap().repaint();
+		return mov;
+	}
 	protected int kill(){
 		player.setSimultaneousShots(player.getSimultaneousShots()+1);
 		map.getGraphicMap().deleteShot(graphic.getPosInShots());
@@ -40,11 +113,12 @@ public class ShotPlayer extends Shot implements Runnable{
 	public int kill(Enemy ene){
 		return 0;
 	}
-/*	public boolean collide(Player pla){
-		
+	public boolean collide(Player pla){
+		pla.kill(player);
+		return true;
 	}
 	public boolean collide(Enemy ene){
-		
+		ene.kill(player);
+		return true;
 	}
-	*/
 }

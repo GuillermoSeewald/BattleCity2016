@@ -1,0 +1,57 @@
+package Logic.Shot;
+
+import Logic.Map.*;
+import Logic.Tank.*;
+import Graphic.Shot.*;
+
+public class ShotPlayer extends Shot implements Runnable{
+	
+	Player player;
+	protected GraphicShotPlayer graphic;
+	private volatile boolean execute;
+	
+	public ShotPlayer(String dir, int x, int y, Map map, int speed, Player pla, int posx, int posy){
+		super(map,speed,posx,posy);
+		player=pla;
+		graphic= new GraphicShotPlayer(x,y,"Disparo "+dir,dir);
+		this.execute=true;
+	}
+	public GraphicShotPlayer getGraphic(){
+		return graphic;
+	}
+	public void terminate(){
+		this.execute=false;
+	}
+	public void run(){
+		while(execute){
+			if(!move(graphic)){
+				terminate();
+				kill();
+			}
+			try {
+				Thread.sleep(speed);
+			} catch (InterruptedException e){
+			}
+		}
+	}
+	
+	protected int kill(){
+		player.setSimultaneousShots(player.getSimultaneousShots()+1);
+		map.getGraphicMap().deleteShot(graphic.getPosInShots());
+		return 1;
+	}
+	public int kill(Player pla){
+		return 0;
+	}
+	public int kill(Enemy ene){
+		return 0;
+	}
+	public boolean collide(Player pla){
+		pla.kill(player);
+		return true;
+	}
+	public boolean collide(Enemy ene){
+		ene.kill(player);
+		return true;
+	}
+}

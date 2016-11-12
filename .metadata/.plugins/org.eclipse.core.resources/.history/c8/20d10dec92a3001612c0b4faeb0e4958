@@ -1,0 +1,9 @@
+package Graphic.Animation;
+
+public class ForceFieldGraphic extends GraphicElement{
+	
+	public ForceFieldGraphic(int x, int y, int nom){
+		super(x,y,nom);
+	}
+	
+}

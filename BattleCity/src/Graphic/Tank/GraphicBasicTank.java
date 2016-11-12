@@ -4,15 +4,12 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class GraphicBasicTank extends GraphicCharacter{
-	
-	protected Image[][] images;
+public class GraphicBasicTank extends GraphicEnemy{
 	
 	public GraphicBasicTank(int x, int y, String n, String dir){
 		super(x,y,n,dir);
-		images= new Image[2][4];
 		width=38;
-		height=34;
+		height=38;
 		buildImages();
 	}
 	public Image getImageInArray(int x, int y){
