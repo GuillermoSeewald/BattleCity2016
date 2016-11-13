@@ -1,0 +1,89 @@
+package Graphic.Map;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import java.awt.Font;
+
+public class InformationControlsFrame extends JFrame {
+	private static final long serialVersionUID = 1L;
+
+	private JButton goBack;
+	private JPanel panelButton, panelImage;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					InformationControlsFrame frame = new InformationControlsFrame();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public InformationControlsFrame() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		panelImage();
+		panelButton();
+		getContentPane().setLayout(new BorderLayout());
+		getContentPane().add(panelImage, BorderLayout.CENTER);
+		getContentPane().add(panelButton, BorderLayout.SOUTH);
+	}private void panelImage(){
+		panelImage= new JPanel();
+		panelImage.setBackground(Color.BLACK);
+		
+		JLabel etiqueta1= new JLabel();
+		etiqueta1.setIcon(new ImageIcon("Imagenes/Battle City.png"));
+		JLabel etiqueta2= new JLabel();
+		etiqueta2.setIcon(new ImageIcon("Imagenes/Controles.png"));
+		
+		panelImage.add(etiqueta1);
+		panelImage.add(etiqueta2);
+	}
+	private void panelButton(){
+		panelButton= new JPanel();
+		panelButton.setBackground(Color.BLACK);
+		panelButton.setLayout(new BorderLayout());
+		
+		OyenteGoBack oy= new OyenteGoBack();
+		goBack= new JButton("Volver al menu");
+		goBack.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		goBack.addActionListener(oy);
+		goBack.setFocusable(false);
+		
+		panelButton.add(goBack, BorderLayout.EAST);
+	}
+	private class OyenteGoBack implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			new InitialFrame().setVisible(true);
+			dispose();
+		}
+	}
+
+}

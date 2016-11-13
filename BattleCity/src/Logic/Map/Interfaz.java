@@ -1,9 +1,10 @@
 package Logic.Map;
 
+import Graphic.Frames.*;
+
 public class Interfaz {
 
 	public static void main(String[] args) {
-		Play p = new Play("Mapas/Mapa 2.txt");
-		p.getFrame().setVisible(true);
+		new InitialFrame().setVisible(true);
 	}
 }

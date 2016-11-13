@@ -1,0 +1,142 @@
+package Graphic.Map;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import Logic.Map.Play;
+import javax.swing.BoxLayout;
+import java.awt.CardLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import net.miginfocom.swing.MigLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
+
+import Graphic.Map.InitialFrame.OyenteControls;
+import Graphic.Map.InitialFrame.OyenteStart;
+
+import java.awt.FlowLayout;
+import java.awt.Insets;
+import javax.swing.SwingConstants;
+
+public class Initial extends JFrame {
+	private static final long serialVersionUID = 1L;
+
+	private JButton start, controls;
+	private JPanel panelImage, panelButton;
+	private JPanel contentPane;
+	private JLabel label;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Initial frame = new Initial();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Initial() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		panelImage();
+		panelButton();
+		getContentPane().setLayout(new GridLayout(2,1));
+		getContentPane().add(panelImage);
+		getContentPane().add(panelButton);
+		panelButton.add(start);
+		start= new JButton("Jugar");
+		start.addActionListener(oySta);
+		start.setFocusable(false);
+		start.setPreferredSize(new Dimension(100,50));
+		start.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		panelButton.add(controls);
+		controls= new JButton("Controles");
+		controls.addActionListener(oyCon);
+		controls.setFocusable(false);
+		controls.setPreferredSize(new Dimension(100,50));
+		controls.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+	}
+	
+	private void panelImage(){
+		panelImage= new JPanel();
+		panelImage.setBackground(Color.BLACK);
+		
+		JLabel etiqueta= new JLabel();
+		etiqueta.setIcon(new ImageIcon("Imagenes/Battle City.png"));
+		
+		panelImage.add(etiqueta);
+	}
+	private void panelButton(){
+		panelButton= new JPanel();
+		panelButton.setBackground(Color.BLACK);
+		
+		OyenteStart oySta= new OyenteStart();
+		start= new JButton("Jugar");
+		start.addActionListener(oySta);
+		start.setFocusable(false);
+		start.setPreferredSize(new Dimension(100,50));
+		start.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		
+		OyenteControls oyCon= new OyenteControls();
+		controls= new JButton("Controles");
+		controls.addActionListener(oyCon);
+		controls.setFocusable(false);
+		controls.setPreferredSize(new Dimension(100,50));
+		controls.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		
+		panelButton.add(start);
+		panelButton.add(controls);
+	}
+	
+	
+	private class OyenteStart implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			start.setFocusable(false);
+			controls.setFocusable(false);
+			new Play("Mapas/Mapa 1.txt");
+			dispose();
+		}
+	}
+	private class OyenteControls implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			start.setFocusable(false);
+			controls.setFocusable(false);
+			new InformationControls().setVisible(true);
+			dispose();
+		}
+	}
+
+}

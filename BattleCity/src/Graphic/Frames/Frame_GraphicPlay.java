@@ -1,0 +1,34 @@
+package Graphic.Frames;
+
+import Logic.Map.Map;
+import Logic.Map.Play;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+
+
+public class Frame_GraphicPlay extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	protected InformationPanel information;
+	
+	public Frame_GraphicPlay(Play p, Map m){
+		information= new InformationPanel(p);
+		
+		setTitle("Battle City");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLayout(new BorderLayout());
+		setSize(m.getGraphicMap().getWidth()+information.getWidth(),m.getGraphicMap().getHeight());
+		setVisible(true);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		
+		
+		add(m.getGraphicMap(), BorderLayout.CENTER);
+		add(information, BorderLayout.EAST);
+	}
+	public InformationPanel getInformationPanel(){
+		return information;
+	}
+}

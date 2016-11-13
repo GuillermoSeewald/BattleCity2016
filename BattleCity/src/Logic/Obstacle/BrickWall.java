@@ -10,11 +10,17 @@ public class BrickWall extends Wall{
 	
 	public BrickWall(int x, int y, int posX, int posY, Map map){
 		super(posX, posY, map);
+		resistance=4;
 		graphic= new GraphicBrickWall(x,y,"Ladrillo");
 	}
 	
 	protected int kill(){
-		map.deleteObstacle(posX, posY);
+		if(resistance==1){
+			map.deleteObstacle(posX, posY);
+		}
+		else{
+			resistance--;
+		}
 		return 1;
 	}
 	public GraphicBrickWall getGraphic(){

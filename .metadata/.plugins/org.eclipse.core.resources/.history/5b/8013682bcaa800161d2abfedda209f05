@@ -1,0 +1,64 @@
+package Graphic.Map;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+public class InformationControls extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	private JButton goBack;
+	private JPanel panelButton, panelImage;
+	
+	public InformationControls(){
+		setTitle("Battle city");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(900,700);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		
+		panelImage();
+		panelButton();
+		this.setLayout(new BorderLayout());
+		add(panelImage, BorderLayout.CENTER);
+		add(panelButton, BorderLayout.SOUTH);
+	}
+	private void panelImage(){
+		panelImage= new JPanel();
+		panelImage.setBackground(Color.BLACK);
+		
+		JLabel etiqueta1= new JLabel();
+		etiqueta1.setIcon(new ImageIcon("Imagenes/Battle City.png"));
+		JLabel etiqueta2= new JLabel();
+		etiqueta2.setIcon(new ImageIcon("Imagenes/Controles.png"));
+		
+		panelImage.add(etiqueta1);
+		panelImage.add(etiqueta2);
+	}
+	private void panelButton(){
+		panelButton= new JPanel();
+		panelButton.setBackground(Color.BLACK);
+		panelButton.setLayout(new BorderLayout());
+		
+		OyenteGoBack oy= new OyenteGoBack();
+		goBack= new JButton("Volver al menu");
+		goBack.addActionListener(oy);
+		goBack.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		goBack.setPreferredSize(new Dimension(100,50));
+		goBack.setFocusable(false);
+		
+		panelButton.add(goBack, BorderLayout.EAST);
+	}
+	private class OyenteGoBack implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			new InitialFrame().setVisible(true);
+			dispose();
+		}
+	}
+	
+}

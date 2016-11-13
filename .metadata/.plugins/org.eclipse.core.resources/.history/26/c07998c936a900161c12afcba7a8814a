@@ -1,0 +1,71 @@
+package Graphic.Map;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class InstructionPanel extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	private JPanel panelImage, panelButton;
+	private JButton[] buttons;
+	
+	public InstructionPanel(){
+		setTitle("Battle city");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(900,700);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		
+		panelImage();
+		panelButtons();
+		
+		JPanel contentPane= new JPanel();
+		contentPane.setLayout(new GridLayout(2,1));
+		contentPane.setBackground(Color.BLACK);
+		contentPane.add(panelImage);
+		contentPane.add(panelButton);
+		this.setContentPane(contentPane);
+	}
+	
+	private void panelImage(){
+		panelImage= new JPanel();
+		panelImage.setBackground(Color.BLACK);
+		
+		JLabel etiqueta= new JLabel();
+		etiqueta.setIcon(new ImageIcon("Imagenes/Battle City.png"));
+		
+		panelImage.add(etiqueta);
+	}
+	private void panelButtons(){
+		panelButton= new JPanel();
+		panelButton.setBackground(Color.BLACK);
+		panelButton.setLayout(new GridLayout(4,1));
+		
+		String[] names={"Controles","PowerUps", "Enemigos", "Jugador"};
+		buttons= new JButton[4];
+		OyenteBoton oyBot= new OyenteBoton();
+		for(int i=0;i<buttons.length;i++){
+			buttons[i]= new JButton(names[i]);
+			buttons[i].addActionListener(oyBot);
+			buttons[i].setFocusable(false);
+			panelButton.add(buttons[i]);
+		}
+	}
+	
+	private class OyenteBoton implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			String s= e.getActionCommand();
+			if((buttons[0].getName()==s)||(buttons[0].getText()==s)){
+				
+			}
+		}
+	}
+}

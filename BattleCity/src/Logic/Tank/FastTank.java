@@ -72,29 +72,34 @@ public class FastTank extends Enemy implements Runnable{
 	}
 	public void move(){
 		Random r= new Random();
-		int m= r.nextInt(12);
+		int m= r.nextInt(4);
 		
 		switch (m){
-		case 0|1|2: //Muevo hacia arriba
+		case 0: //Muevo hacia arriba
 			graphic.changeDY(-4);graphic.changeDX(0);
 			graphic.setDirection("arriba");
 			break;
-		case 3|4|5: //Muevo hacia la izquierda
+		case 1: //Muevo hacia la izquierda
 			graphic.changeDX(-4);graphic.changeDY(0);
 			graphic.setDirection("izquierda");
 			break;
-		case 6|7|8: //Muevo hacia abajo
+		case 2: //Muevo hacia abajo
 			graphic.changeDY(4);graphic.changeDX(0);
 			graphic.setDirection("abajo");
 			break;
-		case 9|10|11: //Muevo hacia la derecha
+		case 3: //Muevo hacia la derecha
 			graphic.changeDX(4);graphic.changeDY(0);
 			graphic.setDirection("derecha");
 			break;
 		}
 	}
 	protected int kill(){
-		map.deleteEnemy(posInEnemies);
+		if(resistance==1){
+			map.deleteEnemy(posInEnemies);
+		}
+		else{
+			resistance--;
+		}
 		return 1;
 	}
 	public int kill(Player pla){

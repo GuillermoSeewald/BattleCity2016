@@ -1,0 +1,51 @@
+package Graphic.Map;
+
+import javax.swing.*;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class InitialFrame extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	private JButton start;
+	private JPanel panel;
+	
+	public InitialFrame(){
+		setTitle("Battle city");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(900,600);
+		setVisible(true);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		
+		buildPanel();
+		setBackground(Color.BLACK);
+		this.setLayout(new BorderLayout());
+		this.add(panel, BorderLayout.CENTER);
+	}
+	
+	private void buildPanel(){
+		panel= new JPanel();
+		panel.setLayout(new BorderLayout());
+		
+		JLabel etiqueta= new JLabel();
+		etiqueta.setIcon(new ImageIcon("Imagenes/Battle City.png"));
+
+		OyenteBoton oyBot= new OyenteBoton();
+		start= new JButton("Play");
+		start.addActionListener(oyBot);
+		start.setFocusable(true);
+		
+		panel.add(etiqueta, BorderLayout.CENTER);
+		panel.add(start, BorderLayout.SOUTH);
+	}
+	
+	
+	private class OyenteBoton implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			dispose();
+		}
+	}
+}

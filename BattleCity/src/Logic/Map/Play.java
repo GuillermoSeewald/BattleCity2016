@@ -1,8 +1,8 @@
 package Logic.Map;
 
 import Logic.Tank.*;
-import Graphic.Map.*;
 import Graphic.Animation.*;
+import Graphic.Frames.*;
 
 public class Play {
 	

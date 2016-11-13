@@ -25,9 +25,11 @@ public class Base extends Obstacle{
 		return destroyed;
 	}
 	protected int kill(){
-		graphic.setImage(new ImageIcon("Imagenes/Bandera2.png").getImage());
-		destroyed=true;
-		map.gameOver();
+		if(!map.getWin()){
+			graphic.setImage(new ImageIcon("Imagenes/Bandera2.png").getImage());
+			destroyed=true;
+			map.gameOver();
+		}
 		return 1;
 	}
 	public void setObstacleInWall(Obstacle o, int pos){

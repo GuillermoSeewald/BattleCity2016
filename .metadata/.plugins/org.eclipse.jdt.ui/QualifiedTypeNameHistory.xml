@@ -8,9 +8,7 @@
 <fullyQualifiedTypeName name="java.io.FileReader"/>
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="javax.swing.Icon"/>
-<fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="java.awt.GridBagConstraints"/>
-<fullyQualifiedTypeName name="java.awt.BorderLayout"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="javax.swing.JLabel"/>
 <fullyQualifiedTypeName name="java.awt.GridLayout"/>
@@ -18,10 +16,8 @@
 <fullyQualifiedTypeName name="Obstaculo.Obstacle"/>
 <fullyQualifiedTypeName name="Tanque.Player"/>
 <fullyQualifiedTypeName name="Tanque.Enemy"/>
-<fullyQualifiedTypeName name="java.awt.Image"/>
 <fullyQualifiedTypeName name="Graphic.Map.GraphicElement"/>
 <fullyQualifiedTypeName name="Logic.Map.Play"/>
-<fullyQualifiedTypeName name="javax.swing.JPanel"/>
 <fullyQualifiedTypeName name="Graphic.Map.GraphicMap"/>
 <fullyQualifiedTypeName name="Graphic.Level.GraphicLevel1"/>
 <fullyQualifiedTypeName name="Graphic.Level.GraphicLevel2"/>
@@ -36,4 +32,10 @@
 <fullyQualifiedTypeName name="Logic.Map.Map"/>
 <fullyQualifiedTypeName name="Logic.Tank.Player"/>
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="java.awt.Image"/>
+<fullyQualifiedTypeName name="javax.swing.JButton"/>
+<fullyQualifiedTypeName name="javax.swing.JPanel"/>
+<fullyQualifiedTypeName name="java.awt.BorderLayout"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="java.awt.FlowLayout"/>
 </qualifiedTypeNameHistroy>

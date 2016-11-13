@@ -1,9 +1,6 @@
 package Logic.Shot;
 
 import Logic.Map.*;
-import Logic.Obstacle.*;
-import Logic.Tank.Player;
-import Graphic.Shot.*;
 
 public abstract class Shot extends Element{
 	

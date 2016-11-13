@@ -1,0 +1,18 @@
+package Graphic.Map;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class InformationControls extends Frame{
+	private static final long serialVersionUID = 1L;
+
+	public InformationControls(){
+		setTitle("Battle city");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(900,600);
+		setVisible(true);
+		setLocationRelativeTo(null);
+		setResizable(false);
+	}
+	
+}

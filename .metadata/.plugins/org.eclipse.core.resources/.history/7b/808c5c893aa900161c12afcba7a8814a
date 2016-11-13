@@ -1,0 +1,102 @@
+package Graphic.Frames;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+
+public class InstructionPanel extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	private JPanel panelImage, secondPanel;
+	private JButton[] buttons;
+	
+	public InstructionPanel(){
+		setTitle("Battle city");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(900,700);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		
+		panelImage();
+		panelButtons();
+		
+		this.setBackground(Color.BLACK);
+		setLayout(new GridLayout(2,1));
+		this.add(panelImage);
+		this.add(secondPanel);
+	}
+	
+	private void panelImage(){
+		panelImage= new JPanel();
+		panelImage.setBackground(Color.BLACK);
+		
+		JLabel etiqueta= new JLabel();
+		etiqueta.setIcon(new ImageIcon("Imagenes/Battle City.png"));
+		
+		panelImage.add(etiqueta);
+	}
+	private void panelButtons(){
+		secondPanel= new JPanel();
+		secondPanel.setBackground(Color.BLACK);
+		secondPanel.setLayout(new GridLayout(7,3));
+		
+		String[] names={"Controles","PowerUps", "Enemigos", "Jugador"};
+		buttons= new JButton[4];
+		OyenteBoton oyBot= new OyenteBoton();
+		for(int x=0;x<4;x++){
+			JPanel p= new JPanel();
+			p.setBackground(Color.BLACK);
+			secondPanel.add(p);
+		}
+		for(int i=0;i<buttons.length;i++){
+			buttons[i]= new JButton(names[i]);
+			buttons[i].addActionListener(oyBot);
+			buttons[i].setFocusable(false);
+			secondPanel.add(buttons[i]);
+			buttons[i].setPreferredSize(new Dimension(60,50));
+			buttons[i].setFont(new Font("Times New Roman", Font.BOLD, 14));
+			buttons[i].setBorder(new LineBorder(Color.BLACK));
+			for(int x=0;x<2;x++){
+				JPanel p= new JPanel();
+				p.setBackground(Color.BLACK);
+				secondPanel.add(p);
+			}
+		}
+	}
+	private void panelPowerUps(){
+		secondPanel= new JPanel();
+		secondPanel.setBackground(Color.BLACK);
+		
+		JLabel image= new JLabel();
+		image.setIcon(new ImageIcon("Imagenes/Información PowerUps"));
+		
+		secondPanel.add(image);
+		secondPanel.setVisible(true);
+	}
+	
+	private class OyenteBoton implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			String s= e.getActionCommand();
+			if((buttons[0].getName()==s)||(buttons[0].getText()==s)){
+				new InformationControls().setVisible(true);
+				dispose();
+			}
+			else{
+				if((buttons[1].getName()==s)||(buttons[1].getText()==s)){
+					secondPanel.setVisible(false);
+					panelPowerUps();
+				}
+			}
+		}
+	}
+}

@@ -157,7 +157,7 @@ public class Player extends Character implements Runnable{
 		return level;
 	}
 	protected int kill(){
-		if(forceField==null){
+		if((forceField==null)&&(!map.getWin())){
 			level= new Level1();
 			if(resistance==1){
 				posX=4;

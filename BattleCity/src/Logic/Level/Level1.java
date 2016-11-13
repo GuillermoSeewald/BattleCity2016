@@ -10,6 +10,7 @@ public class Level1 extends Level{
 	public Level1(){
 		speedShot=5;
 		graphic= new GraphicLevel1();
+		killSteel=false;
 	}
 	public Level1(Player pla){
 		speedShot=5;
@@ -17,7 +18,7 @@ public class Level1 extends Level{
 		pla.setSpeedMove(55);
 		pla.setResistance(1);
 		graphic= new GraphicLevel1();
-//		graphic.changePlayerImage(pla);
+		killSteel=false;
 	}
 	public Level getNextLevel(Player pla){
 		return new Level2(pla);

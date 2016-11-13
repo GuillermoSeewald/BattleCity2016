@@ -1,0 +1,116 @@
+package Graphic.Frames;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+
+public class InstructionPanel extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	private JPanel panelImage, panelButtons;
+	private JButton[] buttons;
+	
+	public InstructionPanel(){
+		setTitle("Battle city");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(900,700);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		
+		panelImage();
+		panelButtons();
+		
+		setLayout(new GridLayout(2,1));
+		this.add(panelImage);
+		this.add(panelButtons);
+	}
+	
+	private void panelImage(){
+		panelImage= new JPanel();
+		panelImage.setBackground(Color.BLACK);
+		
+		JLabel etiqueta= new JLabel();
+		etiqueta.setIcon(new ImageIcon("Imagenes/Battle City.png"));
+		
+		panelImage.add(etiqueta);
+	}
+	private void panelButtons(){
+		panelButtons= new JPanel();
+		panelButtons.setBackground(Color.BLACK);
+		panelButtons.setLayout(new GridLayout(2,1));
+		
+		JPanel auxiliar= new JPanel();
+		auxiliar.setBackground(Color.BLACK);
+		auxiliar.setLayout(new GridLayout(7,3));
+		
+		String[] names={"Controles","PowerUps", "Enemigos", "Jugador", "Obstáculos", "Menu Principal"};
+		buttons= new JButton[6];
+		OyenteBoton oyBot= new OyenteBoton();
+		JLabel etiqueta= new JLabel();
+		etiqueta.setIcon(new ImageIcon("Imagenes/Información juego.png"));
+		for(int x=0;x<1;x++){
+			JPanel p= new JPanel();
+			p.setBackground(Color.BLACK);
+			auxiliar.add(p);
+		}
+		for(int i=0;i<buttons.length;i++){
+			buttons[i]= new JButton(names[i]);
+			buttons[i].addActionListener(oyBot);
+			buttons[i].setFocusable(false);
+			auxiliar.add(buttons[i]);
+			buttons[i].setPreferredSize(new Dimension(100,70));
+			buttons[i].setFont(new Font("Times New Roman", Font.BOLD, 14));
+			buttons[i].setBorder(new LineBorder(Color.BLACK));
+			for(int x=0;x<2;x++){
+				JPanel p= new JPanel();
+				p.setBackground(Color.BLACK);
+				auxiliar.add(p);
+			}
+		}
+		panelButtons.add(auxiliar);
+		panelButtons.add(etiqueta);
+	}
+	
+	private class OyenteBoton implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			String s= e.getActionCommand();
+			if((buttons[0].getName()==s)||(buttons[0].getText()==s)){
+				new InformationButtons("Controles").setVisible(true);
+			}
+			else{
+				if((buttons[1].getName()==s)||(buttons[1].getText()==s)){
+					new InformationButtons("Información de PowerUps").setVisible(true);
+				}
+				else{
+					if((buttons[2].getName()==s)||(buttons[2].getText()==s)){
+						new InformationButtons("Información de enemigos").setVisible(true);
+					}
+					else{
+						if((buttons[3].getName()==s)||(buttons[3].getText()==s)){
+							new InformationButtons("Información de jugador").setVisible(true);
+						}
+						else{
+							if((buttons[4].getName()==s)||(buttons[4].getText()==s)){
+								new InformationButtons("Información de obstáculos").setVisible(true);
+							}
+							else{
+								new InitialFrame().setVisible(true);
+							}
+						}
+					}
+				}
+			}
+			dispose();
+		}
+	}
+}

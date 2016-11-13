@@ -1,0 +1,56 @@
+package Graphic.Map;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+public class InformationControls extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	private JButton goBack;
+	private JPanel panelButton, panelImage;
+	
+	public InformationControls(){
+		setTitle("Battle city");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(900,600);
+		setVisible(true);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		
+		panelImage();
+		panelButton();
+		this.setLayout(null);
+		add(panelImage);
+		add(panelButton);
+	}
+	private void panelImage(){
+		panelImage= new JPanel();
+		panelImage.setBackground(Color.BLACK);
+		
+		JLabel etiqueta= new JLabel();
+		etiqueta.setIcon(new ImageIcon("Imagenes/Controles.png"));
+		
+		panelImage.add(etiqueta);
+	}
+	private void panelButton(){
+		panelButton= new JPanel();
+		panelButton.setBackground(Color.BLACK);
+		
+		OyenteGoBack oy= new OyenteGoBack();
+		goBack= new JButton("Volver al menu");
+		goBack.addActionListener(oy);
+		goBack.setFocusable(true);
+		
+		panelButton.add(goBack);		
+	}
+	private class OyenteGoBack implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			goBack.setFocusable(false);
+		}
+	}
+	
+}

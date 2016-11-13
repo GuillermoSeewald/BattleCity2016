@@ -1,0 +1,85 @@
+package Graphic.Map;
+
+import Logic.Map.Play;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+public class InitialFrame extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	private JButton start, controls;
+	private JPanel panelImage, panelButton;
+	
+	public InitialFrame(){
+		setTitle("Battle city");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(900,700);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		
+		panelImage();
+		panelButton();
+		this.setLayout(new GridLayout(2,1));
+		this.add(panelImage);
+		this.add(panelButton);
+	}
+	
+	private void panelImage(){
+		panelImage= new JPanel();
+		panelImage.setBackground(Color.BLACK);
+		
+		JLabel etiqueta= new JLabel();
+		etiqueta.setIcon(new ImageIcon("Imagenes/Battle City.png"));
+		
+		panelImage.add(etiqueta);
+	}
+	private void panelButton(){
+		panelButton= new JPanel();
+		panelButton.setBackground(Color.BLACK);
+		panelButton.setLayout(new GridLayout(3,6));
+		
+		OyenteStart oySta= new OyenteStart();
+		start= new JButton("Jugar");
+		start.addActionListener(oySta);
+		start.setFocusable(false);
+		start.setPreferredSize(new Dimension(100,50));
+		start.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		
+		OyenteControls oyCon= new OyenteControls();
+		controls= new JButton("Controles");
+		controls.addActionListener(oyCon);
+		controls.setFocusable(false);
+		controls.setPreferredSize(new Dimension(100,50));
+		controls.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		
+		panelButton.add(start);
+		for(int i=0;i<14;i++){
+			JPanel p= new JPanel();
+			p.setBackground(Color.BLACK);
+			panelButton.add(p);
+		}
+		panelButton.add(controls);
+	}
+	
+	
+	private class OyenteStart implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			start.setFocusable(false);
+			controls.setFocusable(false);
+			new Play("Mapas/Mapa 1.txt");
+			dispose();
+		}
+	}
+	private class OyenteControls implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			start.setFocusable(false);
+			controls.setFocusable(false);
+			new InformationControls().setVisible(true);
+			dispose();
+		}
+	}
+}

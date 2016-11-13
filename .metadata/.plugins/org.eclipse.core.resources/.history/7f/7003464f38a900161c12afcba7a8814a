@@ -1,0 +1,74 @@
+package Graphic.Map;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import Graphic.Map.InstructionPanel.OyenteBoton;
+
+public class asd extends JFrame {
+
+	private JPanel contentPane, panelButton;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					asd frame = new asd();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public asd() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		panelButtons();
+		this.add(panelButton);
+	}
+	private void panelButtons(){
+		panelButton= new JPanel();
+		panelButton.setBackground(Color.BLACK);
+		panelButton.setLayout(new GridLayout(7,3));
+		JButton[] buttons;
+		
+		String[] names={"Controles","PowerUps", "Enemigos", "Jugador"};
+		buttons= new JButton[4];
+		for(int i=0;i<buttons.length;i++){
+			buttons[i]= new JButton(names[i]);
+			buttons[i].setFocusable(false);
+			for(int x=0;x<5;x++){
+				JPanel p= new JPanel();
+				p.setBackground(Color.BLACK);
+				panelButton.add(p);
+			}
+			panelButton.add(buttons[i]);
+			for(int x=0;x<3;x++){
+				JPanel p= new JPanel();
+				p.setBackground(Color.BLACK);
+				panelButton.add(p);
+			}
+		}
+	}
+
+}

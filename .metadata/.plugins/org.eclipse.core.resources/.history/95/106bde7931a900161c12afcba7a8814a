@@ -1,0 +1,7 @@
+package Graphic.Map;
+
+import javax.swing.JFrame;
+
+public class InstructionPanel extends JFrame{
+	
+}

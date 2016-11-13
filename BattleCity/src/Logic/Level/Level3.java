@@ -14,7 +14,7 @@ public class Level3 extends Level{
 		pla.setSpeedMove(55);
 		pla.setResistance(2);
 		graphic= new GraphicLevel3();
-//		graphic.changePlayerImage(pla);
+		killSteel=false;
 	}
 	public int getSpeedShot(){
 		return speedShot;
