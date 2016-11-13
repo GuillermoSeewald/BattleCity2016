@@ -5,7 +5,6 @@ import Logic.Tank.*;
 import Logic.PowerUp.*;
 import Graphic.Map.GraphicMap;
 import Graphic.Animation.*;
-import Graphic.Frames.*;
 
 import java.util.Random;
 import java.io.BufferedReader;
@@ -186,7 +185,7 @@ public class Map{
 		int x= r.nextInt(4);
 		boolean collide=false;
 		boolean havePlace=false;
-		int posInsert=0;
+//		int posInsert=0;
 		if(game.getCantEnemyDead()<20){
 			for(int i=0;(i<enemies.length)&&(!insert);i++){
 				if(enemies[i]==null){
@@ -223,7 +222,7 @@ public class Map{
 					}
 					if(!collide){
 						insert=true;
-						posInsert=i;
+//						posInsert=i;
 					}
 					else{
 						enemies[i].terminate();
@@ -235,14 +234,14 @@ public class Map{
 				}
 				if((i==enemies.length-1)&&(havePlace)){
 					i=0;
-					posicion=0;
+					posicion=3;
 				}
 			}
 			
 		}
 //		if(insert){
 //			enemies[posInsert].setStop(true);
-//			Thread a= new Thread(new EnemiesGeneration(posicion,0,this));
+//			Thread a= new Thread(new EnemiesGeneration(enemies[posInsert].getGraphic().getX(),enemies[posInsert].getGraphic().getY(),this));
 //			a.start();
 //		}
 		return insert;

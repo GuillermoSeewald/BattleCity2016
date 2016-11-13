@@ -15,6 +15,8 @@ public class Level3 extends Level{
 		pla.setResistance(2);
 		graphic= new GraphicLevel3();
 		killSteel=false;
+		pla.getGraphic().changeHeight(40);
+		pla.getGraphic().changeWidth(40);
 	}
 	public int getSpeedShot(){
 		return speedShot;

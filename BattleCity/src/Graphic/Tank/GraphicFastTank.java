@@ -9,8 +9,8 @@ public class GraphicFastTank extends GraphicEnemy{
 	
 	public GraphicFastTank(int x, int y, String n, String dir){
 		super(x,y,n,dir);
-		width=44;
-		height=44;
+		width=40;
+		height=40;
 		buildImages();
 	}
 	public Image getImageInArray(int x, int y){

@@ -1,6 +1,7 @@
 package Graphic.Animation;
 
 import Logic.Map.*;
+import Graphic.Frames.*;
 
 public class GameFinished extends Animation implements Runnable{
 	
@@ -26,6 +27,8 @@ public class GameFinished extends Animation implements Runnable{
 				}
 				map.getGraphicMap().deleteAnimation(posInAnimations);
 				terminate();
+				new InitialFrame().setVisible(true);
+				map.getPlay().getFrame().dispose();
 			}
 			try {
 				Thread.sleep(50);

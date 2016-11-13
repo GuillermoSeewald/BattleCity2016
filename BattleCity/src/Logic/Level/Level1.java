@@ -19,6 +19,8 @@ public class Level1 extends Level{
 		pla.setResistance(1);
 		graphic= new GraphicLevel1();
 		killSteel=false;
+		pla.getGraphic().changeHeight(40);
+		pla.getGraphic().changeWidth(40);
 	}
 	public Level getNextLevel(Player pla){
 		return new Level2(pla);

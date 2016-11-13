@@ -8,8 +8,8 @@ public class GraphicBasicTank extends GraphicEnemy{
 	
 	public GraphicBasicTank(int x, int y, String n, String dir){
 		super(x,y,n,dir);
-		width=38;
-		height=38;
+		width=40;
+		height=40;
 		buildImages();
 	}
 	public Image getImageInArray(int x, int y){

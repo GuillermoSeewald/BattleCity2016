@@ -98,6 +98,10 @@ public class ArmoredTank extends Enemy implements Runnable{
 	}
 	protected int kill(){
 		if(resistance==1){
+			stop=true;
+//			Thread t= new Thread(new EnemiesExplosion(graphic.getX(),graphic.getY(),map));
+//			t.start();
+			terminate();
 			map.deleteEnemy(posInEnemies);
 		}
 		else{
@@ -109,7 +113,7 @@ public class ArmoredTank extends Enemy implements Runnable{
 		return kill();
 	}
 	public int kill(Enemy ene){
-		return 0;
+		return 1;
 	}
 	public boolean collide(Player pla){
 		return true;

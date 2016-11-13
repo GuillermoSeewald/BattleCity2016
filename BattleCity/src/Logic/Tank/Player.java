@@ -127,7 +127,7 @@ public class Player extends Character implements Runnable{
 		else{
 			graphic.setMoveImage(0);
 		}
-		if(movimiento){
+		if((movimiento)&&(!stop)){
 			graphic.setImage(level.getGraphic().getImage(graphic.getMoveImage(),dir));
 		}
 	}
@@ -160,13 +160,14 @@ public class Player extends Character implements Runnable{
 	}
 	protected int kill(){
 		if((forceField==null)&&(!map.getWin())){
-			level= new Level1();
 			if(resistance==1){
+				level= new Level1();
 				posX=4;
 				posY=12;
 				Thread t= new Thread(new PlayerExplosion(graphic.getX(),graphic.getY(),map));
 				t.start();
-				if(life>=1){
+				graphic.setImage(null);
+				if(life>1){
 					decrementLifes();
 				}
 				else{

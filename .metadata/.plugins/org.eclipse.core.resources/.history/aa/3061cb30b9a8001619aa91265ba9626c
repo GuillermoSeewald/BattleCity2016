@@ -1,9 +1,0 @@
-package Graphic.Map;
-
-import javax.swing.*;
-import java.awt.*;
-
-public class InformationControls extends Frame{
-	
-	
-}

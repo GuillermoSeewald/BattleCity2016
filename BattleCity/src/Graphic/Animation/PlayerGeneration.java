@@ -13,7 +13,6 @@ public class PlayerGeneration extends AnimationOfTanksGeneration implements Runn
 		execute=true;
 		map.getPlay().getPlayer().setStop(true);
 		map.getPlay().getPlayer().getGraphic().relocate();
-		map.getPlay().getPlayer().getGraphic().setImage(map.getPlay().getPlayer().getLevel().getGraphic().getImage(0, 0));
 	}
 	public void terminate(){
 		execute=false;
@@ -33,6 +32,7 @@ public class PlayerGeneration extends AnimationOfTanksGeneration implements Runn
 				Thread t= new Thread(f);
 				t.start();
 				map.getPlay().getPlayer().activateForceField(f);
+				map.getPlay().getPlayer().getGraphic().setImage(map.getPlay().getPlayer().getLevel().getGraphic().getImage(0, 0));
 				map.getGraphicMap().deleteAnimation(posInAnimations);
 				terminate();
 			}

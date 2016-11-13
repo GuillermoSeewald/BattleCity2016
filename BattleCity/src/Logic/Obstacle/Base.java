@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 
 public class Base extends Obstacle{
 	
-	protected boolean destroyed;
 	protected GraphicBase graphic;
 	protected Obstacle[] wall;
 	protected Base startBase;
@@ -15,19 +14,14 @@ public class Base extends Obstacle{
 	public Base(int x, int y, int posX, int posY, Map map){
 		super(posX, posY, map);
 		graphic= new GraphicBase(x,y,"Bandera1");
-		destroyed=false;
 		wall= new Wall[5];
 	}
 	public void setWall(Obstacle[] w){
 		wall=w;
-	}	
-	public boolean itsDestroyed(){
-		return destroyed;
 	}
 	protected int kill(){
 		if(!map.getWin()){
 			graphic.setImage(new ImageIcon("Imagenes/Bandera2.png").getImage());
-			destroyed=true;
 			map.gameOver();
 		}
 		return 1;

@@ -5,13 +5,11 @@ import Logic.Map.*;
 public class EnemiesExplosion extends Explosion implements Runnable{
 	
 	private volatile boolean execute;
-	protected int posToDelete;
 	
-	public EnemiesExplosion(int x, int y, Map map, int posInEnemies){
+	public EnemiesExplosion(int x, int y, Map map){
 		super(x,y,"Explosion 1", map);
 		posInAnimations=map.getGraphicMap().insertAnimation(this);
 		execute=true;
-		posToDelete=posInEnemies;
 	}
 	public void terminate(){
 		execute=false;
@@ -26,8 +24,7 @@ public class EnemiesExplosion extends Explosion implements Runnable{
 				image=images[actualImage];
 				actualImage++;
 			}
-			else{
-				map.deleteEnemy(posToDelete);				
+			else{			
 				map.getGraphicMap().deleteAnimation(posInAnimations);
 				terminate();
 			}

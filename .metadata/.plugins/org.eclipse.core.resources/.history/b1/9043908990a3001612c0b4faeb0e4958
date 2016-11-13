@@ -1,7 +1,0 @@
-package Logic.PowerUp;
-
-import Logic.Map.Element;
-
-public class ForceField extends Element implements {
-	
-}
