@@ -64,7 +64,9 @@ public class BasicTank extends Enemy implements Runnable{
 		if(!haveShot){
 			Thread tShot;
 			int[] pos=graphic.generatePosShot();
-			ShotEnemy s= new ShotEnemy(graphic.getDirection(),pos[0],pos[1],map,9,this,posX,posY);
+			int xShot= pos[0]/52;
+			int yShot= pos[1]/52;
+			ShotEnemy s= new ShotEnemy(graphic.getDirection(),pos[0],pos[1],map,9,this,xShot,yShot);
 			tShot= new Thread(s);
 			tShot.start();
 			s.getGraphic().addPosInShots(map.getGraphicMap().insertShot(s));

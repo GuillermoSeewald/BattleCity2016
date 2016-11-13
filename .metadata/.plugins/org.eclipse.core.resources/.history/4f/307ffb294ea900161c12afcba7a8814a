@@ -90,9 +90,7 @@ public class Player extends Character implements Runnable{
 		if(simultaneousShots>0){
 			Thread t;
 			int[] pos=graphic.generatePosShot();
-			int xShot= pos[0]/52;
-			int yShot= pos[1]/52;
-			ShotPlayer s=new ShotPlayer(graphic.getDirection(),pos[0],pos[1],map,level.getSpeedShot(),this,xShot,yShot);
+			ShotPlayer s=new ShotPlayer(graphic.getDirection(),pos[0],pos[1],map,level.getSpeedShot(),this,posX,posY);
 			t= new Thread(s);
 			t.start();
 			s.getGraphic().addPosInShots(map.getGraphicMap().insertShot(s));
