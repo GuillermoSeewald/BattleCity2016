@@ -19,6 +19,9 @@ public class ArmoredTank extends Enemy implements Runnable{
 		this.execute=true;
 		haveShot=false;
 	}
+	public void initialize(){
+		execute=true;
+	}
 	public void terminate(){
 		this.execute=false;
 	}

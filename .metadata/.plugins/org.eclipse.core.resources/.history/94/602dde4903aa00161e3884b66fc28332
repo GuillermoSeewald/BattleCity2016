@@ -17,9 +17,7 @@ public class FreezerTanks implements Runnable{
 		}
 		else{
 			for(int i=0;i<map.getEnemies().length;i++){
-				if(map.getEnemies()[i]!=null){
-					map.getEnemies()[i].setStop(true);
-				}
+				map.getEnemies()[i].setStop(true);
 			}
 		}
 	}

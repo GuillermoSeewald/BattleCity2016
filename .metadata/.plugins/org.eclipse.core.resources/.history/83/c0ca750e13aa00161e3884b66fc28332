@@ -16,6 +16,7 @@ public abstract class Enemy extends Character{
 		posInEnemies=posE;
 	}
 	public abstract void terminate();
+	public abstract void initialize();
 	public void enableShot(){
 		haveShot=false;
 	}

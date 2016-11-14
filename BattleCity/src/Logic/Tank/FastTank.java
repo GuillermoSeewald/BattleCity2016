@@ -21,9 +21,6 @@ public class FastTank extends Enemy implements Runnable{
 	public GraphicFastTank getGraphic(){
 		return graphic;
 	}
-	public void initialize(){
-		this.execute=true;
-	}
 	public void terminate(){
 		this.execute=false;
 	}
@@ -56,7 +53,6 @@ public class FastTank extends Enemy implements Runnable{
 					Thread.sleep(10000);
 				} catch(InterruptedException e){
 				}
-				stop=false;
 			}
 		}
 	}
@@ -97,7 +93,6 @@ public class FastTank extends Enemy implements Runnable{
 	}
 	protected int kill(){
 		if(resistance==1){
-			stop=true;
 //			Thread t= new Thread(new EnemiesExplosion(graphic.getX(),graphic.getY(),map));
 //			t.start();
 			terminate();

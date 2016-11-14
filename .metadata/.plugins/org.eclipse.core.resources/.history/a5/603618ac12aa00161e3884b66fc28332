@@ -19,6 +19,9 @@ public class ArmoredTank extends Enemy implements Runnable{
 		this.execute=true;
 		haveShot=false;
 	}
+	public void initialize(){
+		execute=true;
+	}
 	public void terminate(){
 		this.execute=false;
 	}
@@ -94,6 +97,7 @@ public class ArmoredTank extends Enemy implements Runnable{
 	}
 	protected int kill(){
 		if(resistance==1){
+			stop=true;
 //			Thread t= new Thread(new EnemiesExplosion(graphic.getX(),graphic.getY(),map));
 //			t.start();
 			terminate();

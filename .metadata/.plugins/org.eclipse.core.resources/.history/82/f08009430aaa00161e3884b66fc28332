@@ -81,7 +81,8 @@ public class InitialFrame extends JFrame{
 		public void actionPerformed(ActionEvent e){
 			start.setFocusable(false);
 			information.setFocusable(false);
-			new Play("Mapas/Mapa 2.txt");
+			Play p= new Play("Mapas/Mapa 2.txt");
+			p.getFrame().setVisible(true);
 			dispose();
 		}
 	}

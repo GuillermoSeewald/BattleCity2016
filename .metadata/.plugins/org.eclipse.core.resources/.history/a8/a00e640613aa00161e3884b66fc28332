@@ -6,18 +6,23 @@ import Graphic.Tank.*;
 
 import java.util.Random;
 
-public class ArmoredTank extends Enemy implements Runnable{
+public class FastTank extends Enemy implements Runnable{
 	
 	private volatile boolean execute;
+	protected GraphicFastTank graphic;
 	
-	protected GraphicArmoredTank graphic;
-	
-	public ArmoredTank(int x, int y, Map map, int posE, int posx, int posy){
-		super(60,4, map, posE, posx, posy);
-		graphic= new GraphicArmoredTank(x,y,"Armored tank abajo-mov1","abajo");
-		points=400;
+	public FastTank(int x, int y, Map map, int posE, int posx, int posy){
+		super(35,1, map, posE, posx, posy);
+		points=200;
+		graphic= new GraphicFastTank(x,y,"Fast tank abajo-mov1","abajo");
 		this.execute=true;
 		haveShot=false;
+	}
+	public GraphicFastTank getGraphic(){
+		return graphic;
+	}
+	public void initialize(){
+		this.execute=true;
 	}
 	public void terminate(){
 		this.execute=false;
@@ -53,9 +58,6 @@ public class ArmoredTank extends Enemy implements Runnable{
 				}
 			}
 		}
-	}
-	public GraphicArmoredTank getGraphic(){
-		return graphic;
 	}
 	public void attack(){
 		if(!haveShot){

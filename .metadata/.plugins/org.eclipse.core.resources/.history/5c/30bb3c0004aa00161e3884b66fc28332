@@ -13,9 +13,11 @@ public abstract class Enemy extends Character{
 	
 	public Enemy(int speedMov,int res, Map map, int posE, int posx, int posy){
 		super(speedMov,res,map,posx,posy);
+		stop=false;
 		posInEnemies=posE;
 	}
 	public abstract void terminate();
+	public abstract void initialize();
 	public void enableShot(){
 		haveShot=false;
 	}

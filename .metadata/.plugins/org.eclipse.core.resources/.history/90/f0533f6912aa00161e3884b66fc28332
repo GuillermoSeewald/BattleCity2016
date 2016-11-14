@@ -21,6 +21,10 @@ public class FreezerTanks implements Runnable{
 					map.getEnemies()[i].setStop(true);
 				}
 			}
+			try {
+				Thread.sleep(10000);
+			} catch(InterruptedException e){
+			}
 		}
 	}
 }

@@ -2,6 +2,8 @@ package Graphic.Level;
 
 import java.awt.Image;
 
+import Logic.Tank.Player;
+
 public abstract class GraphicLevel{
 
 	protected Image[][] images;

@@ -18,9 +18,6 @@ public class PowerTank extends Enemy implements Runnable{
 		this.execute=true;
 		haveShot=false;
 	}
-	public void initialize(){
-		execute=true;
-	}
 	public void terminate(){
 		this.execute=false;
 	}
@@ -53,7 +50,6 @@ public class PowerTank extends Enemy implements Runnable{
 					Thread.sleep(10000);
 				} catch(InterruptedException e){
 				}
-				stop=false;
 			}
 		}
 	}
@@ -97,7 +93,6 @@ public class PowerTank extends Enemy implements Runnable{
 	}
 	protected int kill(){
 		if(resistance==1){
-			stop=true;
 //			Thread t= new Thread(new EnemiesExplosion(graphic.getX(),graphic.getY(),map));
 //			t.start();
 			terminate();

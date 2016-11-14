@@ -1,23 +1,25 @@
 package Logic.Tank;
 
 import Logic.Map.*;
-import Logic.Shot.ShotEnemy;
+import Logic.Shot.*;
 import Graphic.Tank.*;
 
 import java.util.Random;
 
-public class ArmoredTank extends Enemy implements Runnable{
+public class PowerTank extends Enemy implements Runnable{
 	
 	private volatile boolean execute;
+	protected GraphicPowerTank graphic;
 	
-	protected GraphicArmoredTank graphic;
-	
-	public ArmoredTank(int x, int y, Map map, int posE, int posx, int posy){
-		super(60,4, map, posE, posx, posy);
-		graphic= new GraphicArmoredTank(x,y,"Armored tank abajo-mov1","abajo");
-		points=400;
+	public PowerTank(int x, int y, Map map, int posE, int posx, int posy){
+		super(55,1, map, posE, posx, posy);
+		graphic= new GraphicPowerTank(x,y,"Power tank abajo-mov1","abajo");
+		points=300;
 		this.execute=true;
 		haveShot=false;
+	}
+	public void initialize(){
+		execute=true;
 	}
 	public void terminate(){
 		this.execute=false;
@@ -51,11 +53,9 @@ public class ArmoredTank extends Enemy implements Runnable{
 					Thread.sleep(10000);
 				} catch(InterruptedException e){
 				}
+				stop=false;
 			}
 		}
-	}
-	public GraphicArmoredTank getGraphic(){
-		return graphic;
 	}
 	public void attack(){
 		if(!haveShot){
@@ -92,8 +92,12 @@ public class ArmoredTank extends Enemy implements Runnable{
 			break;
 		}
 	}
+	public GraphicPowerTank getGraphic(){
+		return graphic;
+	}
 	protected int kill(){
 		if(resistance==1){
+			stop=true;
 //			Thread t= new Thread(new EnemiesExplosion(graphic.getX(),graphic.getY(),map));
 //			t.start();
 			terminate();

@@ -20,6 +20,8 @@ public class Map{
 	protected Enemy[] enemies;
 	protected int cantEnemy;
 	protected Play game;
+	protected boolean gameOver;
+	protected boolean win;
 	protected GraphicMap graphicMap;
 	
 	public Map(String mapa, Play p, Player pla){
@@ -27,6 +29,8 @@ public class Map{
 		game=p;
 		enemies= new Enemy[4];
 		obstacles=new Obstacle[13][13];
+		gameOver=false;
+		win=false;
 		try{
 			loadMap(mapa);
 		}catch(FileNotFoundException e){
@@ -96,7 +100,7 @@ public class Map{
 			x= r.nextInt(obstacles[0].length);
 			y= r.nextInt(obstacles.length);
 		}		
-		int z= 3;
+		int z= 5;
 		Thread t;
 		switch(z){
 		case 0:
@@ -148,14 +152,18 @@ public class Map{
 					empty=false;
 				}
 			}
-			if((game.getCantEnemyDead()>=20)){
-				Thread t= new Thread(new GameFinished(270,670,"Game over",this));
+			if((game.getCantEnemyDead()==19)){
+				game.incrementEnemyDead();
+				win=true;
+				Thread t= new Thread(new GameFinished(180,670,"Congratulations, you won",this));
 				t.start();
 			}
 			else{
-				insertEnemy();
+				if(game.cantEnemyDead<16){
+					insertEnemy();
+					game.getFrame().getInformationPanel().deleteImageLabel();
+				}
 				game.incrementEnemyDead();
-				game.getFrame().getInformationPanel().deleteImageLabel();
 			}
 			if(((game.getCantEnemyDead()%4)==0)&&(game.getCantEnemyDead()<20)){
 				setPowerUp();
@@ -166,49 +174,76 @@ public class Map{
 		obstacles[y][x]=null;
 		graphicMap.repaint();
 	}
+	public boolean getWin(){
+		return win;
+	}
 	public boolean insertEnemy(){
 		Thread t;
 		boolean insert= false;
 		int posicion=3;
 		Random r= new Random();
 		int x= r.nextInt(4);
+		boolean collide=false;
+		boolean havePlace=false;
+//		int posInsert=0;
 		if(game.getCantEnemyDead()<20){
 			for(int i=0;(i<enemies.length)&&(!insert);i++){
 				if(enemies[i]==null){
-					insert=true;
+					havePlace=true;
 					switch(x){
 					case 0:
 						ArmoredTank a= new ArmoredTank(posicion,0,this, i,i*4,0);
 						t= new Thread(a);
 						t.start();
 						enemies[i]= a;
+						collide= (a.getGraphic().haveEnemyTank(this, i)!=null)||(a.getGraphic().havePlayerTank(this)!=null);
 						break;
 					case 1:
 						FastTank f= new FastTank(posicion, 0, this, i,i*4,0);
 						t= new Thread(f);
 						t.start();
 						enemies[i]=f;
+						collide= (f.getGraphic().haveEnemyTank(this, i)!=null)||(f.getGraphic().havePlayerTank(this)!=null);
 						break;
 					case 2:
 						PowerTank p= new PowerTank(posicion, 0, this, i,i*4,0);
 						t= new Thread(p);
 						t.start();
 						enemies[i]=p;
+						collide= (p.getGraphic().haveEnemyTank(this, i)!=null)||(p.getGraphic().havePlayerTank(this)!=null);
 						break;
 					case 3:
 						BasicTank b= new BasicTank(posicion, 0, this, i,i*4,0);
 						t= new Thread(b);
 						t.start();
 						enemies[i]= b;
+						collide= (b.getGraphic().haveEnemyTank(this, i)!=null)||(b.getGraphic().havePlayerTank(this)!=null);
 						break;
+					}
+					if(!collide){
+						insert=true;
+//						posInsert=i;
+					}
+					else{
+						enemies[i].terminate();
+						enemies[i]=null;
 					}
 				}
 				else{
 					posicion+=(52*4);
 				}
+				if((i==enemies.length-1)&&(havePlace)){
+					i=0;
+					posicion=3;
+				}
 			}
 			
 		}
+//		if(insert){
+//			enemies[posInsert].setStop(true);
+//			Thread a= new Thread(new EnemiesGeneration(enemies[posInsert].getGraphic().getX(),enemies[posInsert].getGraphic().getY(),this));
+//			a.start();
+//		}
 		return insert;
 		
 	}
@@ -237,10 +272,13 @@ public class Map{
 		return base;
 	}
 	public void gameOver(){
-		player.setSimultaneousShots(0);
-		Thread t= new Thread(new FreezerTanks(this,true));
-		t.start();
-		Thread s= new Thread(new GameFinished(270,670,"Game over",this));
-		s.start();
+		if(!gameOver){
+			player.setSimultaneousShots(0);
+			Thread t= new Thread(new FreezerTanks(this,true));
+			t.start();
+			Thread s= new Thread(new GameFinished(270,670,"Game over",this));
+			s.start();
+			gameOver=true;
+		}
 	}
 }

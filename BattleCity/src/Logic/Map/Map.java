@@ -100,7 +100,7 @@ public class Map{
 			x= r.nextInt(obstacles[0].length);
 			y= r.nextInt(obstacles.length);
 		}		
-		int z= r.nextInt(6);
+		int z= r.nextInt(5);
 		Thread t;
 		switch(z){
 		case 0:
@@ -155,7 +155,7 @@ public class Map{
 			if((game.getCantEnemyDead()==19)){
 				game.incrementEnemyDead();
 				win=true;
-				Thread t= new Thread(new GameFinished(200,670,"Congratulations, you won",this));
+				Thread t= new Thread(new GameFinished(180,670,"Congratulations, you won",this));
 				t.start();
 			}
 			else{
