@@ -55,11 +55,11 @@
 		</section>
 	</section>
 	<section name="FatJarPackageWizard">
-		<item value="C:\Users\Guille\Desktop\Uni\Tecnología de Programación\Proyecto\Repositorio\BattleCity2016" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
+		<item value="C:\Users\Guille\Desktop\Uni\Tecnología de Programación\Proyecto\Repositorio\BattleCity2016.xml" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
 		<item value="Interfaz (1) - BattleCity" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
 		<item value="BattleCity\Battle City.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
 		<item value="false" key="FatJarPackageWizardPage.ANTSCRIPT_SAVE"/>
-		<item value="2" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
+		<item value="1" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
 			<item value="BattleCity\Battle City.jar"/>
 			<item value="BattleCity/Battle City.jar"/>
