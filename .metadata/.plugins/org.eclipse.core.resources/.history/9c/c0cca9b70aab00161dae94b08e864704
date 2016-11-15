@@ -2,26 +2,25 @@ package Logic.PowerUp;
 
 import Logic.Map.*;
 import Logic.Tank.*;
-import Logic.Level.*;
 import Graphic.PowerUp.*;
 
-public class Star extends PowerUp implements Runnable{
+public class Helmet extends PowerUp implements Runnable{
 	
-	private GraphicStar graphic;
+	protected GraphicHelmet graphic;
 	
-	public Star(int x, int y, int posX, int posY, Map map){
+	public Helmet(int x, int y, int posX, int posY, Map map){
 		super(posX, posY, map);
-		graphic= new GraphicStar(x,y,"Estrella");
-	}
-	public GraphicStar getGraphic(){
-		return graphic;
+		graphic= new GraphicHelmet(x,y,"Escudo");
 	}
 	public void run(){
 		try {
 			Thread.sleep(20000);
-		} catch (InterruptedException e) {
+		} catch (InterruptedException e){
 		}
 		kill();
+	}
+	public GraphicHelmet getGraphic(){
+		return graphic;
 	}
 	
 	protected int kill(){
@@ -35,10 +34,11 @@ public class Star extends PowerUp implements Runnable{
 		return 0;
 	}
 	public boolean collide(Player pla){
-		Level l= pla.getLevel();
-		pla.setLevel(l.getNextLevel(pla));
 		pla.setPoints(points);
-		map.getPlay().getFrame().getInformationPanel().updatelabelPoints();
+		ForceField f= new ForceField(pla,map,15000);
+		Thread t= new Thread(f);
+		t.start();
+		pla.activateForceField(f);
 		kill();
 		return false;
 	}

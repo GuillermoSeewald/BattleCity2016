@@ -38,6 +38,7 @@ public class Shovel extends PowerUp implements Runnable{
 		Thread t= new Thread(new BaseWall(map));
 		t.start();
 		pla.setPoints(points);
+		map.getPlay().getFrame().getInformationPanel().updatelabelPoints();
 		kill();
 		return false;
 	}

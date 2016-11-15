@@ -100,7 +100,7 @@ public class Map{
 			x= r.nextInt(obstacles[0].length);
 			y= r.nextInt(obstacles.length);
 		}		
-		int z= r.nextInt(6);
+		int z= r.nextInt(5);
 		Thread t;
 		switch(z){
 		case 0:

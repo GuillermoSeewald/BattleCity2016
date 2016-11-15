@@ -37,6 +37,7 @@ public class Timer extends PowerUp implements Runnable{
 		Thread t= new Thread(new FreezerTanks(map, false));
 		t.start();
 		pla.setPoints(points);
+		map.getPlay().getFrame().getInformationPanel().updatelabelPoints();
 		kill();
 		return false;
 	}

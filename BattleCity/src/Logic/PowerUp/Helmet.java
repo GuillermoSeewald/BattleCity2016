@@ -35,6 +35,7 @@ public class Helmet extends PowerUp implements Runnable{
 	}
 	public boolean collide(Player pla){
 		pla.setPoints(points);
+		map.getPlay().getFrame().getInformationPanel().updatelabelPoints();
 		ForceField f= new ForceField(pla,map,15000);
 		Thread t= new Thread(f);
 		t.start();

@@ -50,9 +50,10 @@ public class FastTank extends Enemy implements Runnable{
 			}
 			else{
 				try {
-					Thread.sleep(10000);
+					Thread.sleep(17000);
 				} catch(InterruptedException e){
 				}
+				stop=false;
 			}
 		}
 	}

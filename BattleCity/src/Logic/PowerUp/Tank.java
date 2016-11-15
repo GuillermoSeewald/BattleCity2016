@@ -36,6 +36,7 @@ public class Tank extends PowerUp implements Runnable{
 	public boolean collide(Player pla){
 		pla.incrementLifes();
 		pla.setPoints(points);
+		map.getPlay().getFrame().getInformationPanel().updatelabelPoints();
 		kill();
 		return false;
 	}

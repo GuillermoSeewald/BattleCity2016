@@ -118,9 +118,7 @@ public class Player extends Character implements Runnable{
 			graphic.changeDX(3);graphic.changeDY(0);dir=3;graphic.setDirection("derecha");;movimiento=true;
 			break;
 		case KeyEvent.VK_F :
-			if(!stop){
-				attack();
-			}
+			attack();
 			break;
 		}
 		if(graphic.getMoveImage()==0){

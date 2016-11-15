@@ -2,18 +2,17 @@ package Logic.PowerUp;
 
 import Logic.Map.*;
 import Logic.Tank.*;
-import Logic.Level.*;
 import Graphic.PowerUp.*;
 
-public class Star extends PowerUp implements Runnable{
+public class Timer extends PowerUp implements Runnable{
 	
-	private GraphicStar graphic;
+	private GraphicTimer graphic;
 	
-	public Star(int x, int y, int posX, int posY, Map map){
+	public Timer(int x, int y, int posX, int posY, Map map){
 		super(posX, posY, map);
-		graphic= new GraphicStar(x,y,"Estrella");
+		graphic= new GraphicTimer(x,y,"Timer");
 	}
-	public GraphicStar getGraphic(){
+	public GraphicTimer getGraphic(){
 		return graphic;
 	}
 	public void run(){
@@ -35,10 +34,9 @@ public class Star extends PowerUp implements Runnable{
 		return 0;
 	}
 	public boolean collide(Player pla){
-		Level l= pla.getLevel();
-		pla.setLevel(l.getNextLevel(pla));
+		Thread t= new Thread(new FreezerTanks(map, false));
+		t.start();
 		pla.setPoints(points);
-		map.getPlay().getFrame().getInformationPanel().updatelabelPoints();
 		kill();
 		return false;
 	}

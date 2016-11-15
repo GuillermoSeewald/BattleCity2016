@@ -1,22 +1,25 @@
 package Logic.Tank;
 
 import Logic.Map.*;
-import Logic.Shot.*;
+import Logic.Shot.ShotEnemy;
 import Graphic.Tank.*;
 
 import java.util.Random;
 
-public class PowerTank extends Enemy implements Runnable{
+public class BasicTank extends Enemy implements Runnable{
 	
 	private volatile boolean execute;
-	protected GraphicPowerTank graphic;
+	protected GraphicBasicTank graphic;
 	
-	public PowerTank(int x, int y, Map map, int posE, int posx, int posy){
-		super(55,1, map, posE, posx, posy);
-		graphic= new GraphicPowerTank(x,y,"Power tank abajo-mov1","abajo");
-		points=300;
+	public BasicTank(int x, int y, Map map, int posE, int posx, int posy){
+		super(60,1, map, posE, posx, posy);
+		graphic= new GraphicBasicTank(x,y,"Basic tank abajo-mov1","abajo");
+		points=100;
 		this.execute=true;
 		haveShot=false;
+	}
+	public GraphicBasicTank getGraphic(){
+		return graphic;
 	}
 	public void terminate(){
 		this.execute=false;
@@ -47,10 +50,9 @@ public class PowerTank extends Enemy implements Runnable{
 			}
 			else{
 				try {
-					Thread.sleep(17000);
+					Thread.sleep(10000);
 				} catch(InterruptedException e){
 				}
-				stop=false;
 			}
 		}
 	}
@@ -75,11 +77,11 @@ public class PowerTank extends Enemy implements Runnable{
 			graphic.changeDY(-4);graphic.changeDX(0);
 			graphic.setDirection("arriba");
 			break;
-		case 1: //Muevo hacia la izquierda
+		case 1: //Muevo hacia izquierda
 			graphic.changeDX(-4);graphic.changeDY(0);
 			graphic.setDirection("izquierda");
 			break;
-		case 2: //Muevo hacia abajo
+		case 2: //Muevo hacia la abajo
 			graphic.changeDY(4);graphic.changeDX(0);
 			graphic.setDirection("abajo");
 			break;
@@ -88,9 +90,6 @@ public class PowerTank extends Enemy implements Runnable{
 			graphic.setDirection("derecha");
 			break;
 		}
-	}
-	public GraphicPowerTank getGraphic(){
-		return graphic;
 	}
 	protected int kill(){
 		if(resistance==1){

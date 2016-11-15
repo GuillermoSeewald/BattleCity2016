@@ -38,7 +38,6 @@ public class Star extends PowerUp implements Runnable{
 		Level l= pla.getLevel();
 		pla.setLevel(l.getNextLevel(pla));
 		pla.setPoints(points);
-		map.getPlay().getFrame().getInformationPanel().updatelabelPoints();
 		kill();
 		return false;
 	}

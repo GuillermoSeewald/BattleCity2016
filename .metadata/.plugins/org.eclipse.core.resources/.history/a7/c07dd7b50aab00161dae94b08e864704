@@ -2,18 +2,18 @@ package Logic.PowerUp;
 
 import Logic.Map.*;
 import Logic.Tank.*;
-import Logic.Level.*;
+import Logic.Obstacle.*;
 import Graphic.PowerUp.*;
 
-public class Star extends PowerUp implements Runnable{
+public class Shovel extends PowerUp implements Runnable{
 	
-	private GraphicStar graphic;
+	private GraphicShovel graphic;
 	
-	public Star(int x, int y, int posX, int posY, Map map){
+	public Shovel(int x, int y, int posX, int posY, Map map){
 		super(posX, posY, map);
-		graphic= new GraphicStar(x,y,"Estrella");
+		graphic= new GraphicShovel(x,y,"Pala");
 	}
-	public GraphicStar getGraphic(){
+	public GraphicShovel getGraphic(){
 		return graphic;
 	}
 	public void run(){
@@ -35,10 +35,9 @@ public class Star extends PowerUp implements Runnable{
 		return 0;
 	}
 	public boolean collide(Player pla){
-		Level l= pla.getLevel();
-		pla.setLevel(l.getNextLevel(pla));
+		Thread t= new Thread(new BaseWall(map));
+		t.start();
 		pla.setPoints(points);
-		map.getPlay().getFrame().getInformationPanel().updatelabelPoints();
 		kill();
 		return false;
 	}

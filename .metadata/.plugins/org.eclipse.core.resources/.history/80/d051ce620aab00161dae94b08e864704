@@ -1,22 +1,25 @@
 package Logic.Tank;
 
 import Logic.Map.*;
-import Logic.Shot.*;
+import Logic.Shot.ShotEnemy;
 import Graphic.Tank.*;
 
 import java.util.Random;
 
-public class PowerTank extends Enemy implements Runnable{
+public class FastTank extends Enemy implements Runnable{
 	
 	private volatile boolean execute;
-	protected GraphicPowerTank graphic;
+	protected GraphicFastTank graphic;
 	
-	public PowerTank(int x, int y, Map map, int posE, int posx, int posy){
-		super(55,1, map, posE, posx, posy);
-		graphic= new GraphicPowerTank(x,y,"Power tank abajo-mov1","abajo");
-		points=300;
+	public FastTank(int x, int y, Map map, int posE, int posx, int posy){
+		super(35,1, map, posE, posx, posy);
+		points=200;
+		graphic= new GraphicFastTank(x,y,"Fast tank abajo-mov1","abajo");
 		this.execute=true;
 		haveShot=false;
+	}
+	public GraphicFastTank getGraphic(){
+		return graphic;
 	}
 	public void terminate(){
 		this.execute=false;
@@ -47,10 +50,9 @@ public class PowerTank extends Enemy implements Runnable{
 			}
 			else{
 				try {
-					Thread.sleep(17000);
+					Thread.sleep(10000);
 				} catch(InterruptedException e){
 				}
-				stop=false;
 			}
 		}
 	}
@@ -88,9 +90,6 @@ public class PowerTank extends Enemy implements Runnable{
 			graphic.setDirection("derecha");
 			break;
 		}
-	}
-	public GraphicPowerTank getGraphic(){
-		return graphic;
 	}
 	protected int kill(){
 		if(resistance==1){

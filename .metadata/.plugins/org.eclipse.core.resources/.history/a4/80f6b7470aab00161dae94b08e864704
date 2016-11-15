@@ -7,6 +7,7 @@ import Graphic.Tank.*;
 public abstract class Enemy extends Character{
 	
 	protected int posInEnemies;
+	protected boolean stop;
 	protected boolean haveShot;
 	
 	

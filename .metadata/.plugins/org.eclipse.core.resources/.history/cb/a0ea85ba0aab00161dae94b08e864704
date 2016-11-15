@@ -2,18 +2,17 @@ package Logic.PowerUp;
 
 import Logic.Map.*;
 import Logic.Tank.*;
-import Logic.Level.*;
 import Graphic.PowerUp.*;
 
-public class Star extends PowerUp implements Runnable{
+public class Grenade extends PowerUp implements Runnable{
 	
-	private GraphicStar graphic;
+	private GraphicGrenade graphic;
 	
-	public Star(int x, int y, int posX, int posY, Map map){
+	public Grenade(int x, int y, int posX, int posY, Map map){
 		super(posX, posY, map);
-		graphic= new GraphicStar(x,y,"Estrella");
+		graphic= new GraphicGrenade(x,y,"Granada");
 	}
-	public GraphicStar getGraphic(){
+	public GraphicGrenade getGraphic(){
 		return graphic;
 	}
 	public void run(){
@@ -23,7 +22,6 @@ public class Star extends PowerUp implements Runnable{
 		}
 		kill();
 	}
-	
 	protected int kill(){
 		map.deleteObstacle(posX, posY);
 		return 0;
@@ -35,10 +33,8 @@ public class Star extends PowerUp implements Runnable{
 		return 0;
 	}
 	public boolean collide(Player pla){
-		Level l= pla.getLevel();
-		pla.setLevel(l.getNextLevel(pla));
+		map.fullEnemyKill();
 		pla.setPoints(points);
-		map.getPlay().getFrame().getInformationPanel().updatelabelPoints();
 		kill();
 		return false;
 	}

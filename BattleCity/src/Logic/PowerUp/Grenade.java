@@ -35,6 +35,7 @@ public class Grenade extends PowerUp implements Runnable{
 	public boolean collide(Player pla){
 		map.fullEnemyKill();
 		pla.setPoints(points);
+		map.getPlay().getFrame().getInformationPanel().updatelabelPoints();
 		kill();
 		return false;
 	}
